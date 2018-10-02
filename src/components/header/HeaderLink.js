@@ -1,0 +1,34 @@
+import React from 'react'
+import styled from 'styled-components'
+import { connect } from 'react-redux'
+import { StyledLink } from './../../styles/components'
+import { media } from './../../styles/mixins'
+import { spacing } from './../../styles/theme.json'
+
+const HeaderLink = (props) => {
+  return (
+    <NavItem>
+      <StyledLink to={props.Path} className={(props.Path == props.route) ? 'active' : null}>
+        <span dangerouslySetInnerHTML={{__html: props.Page }}/>
+      </StyledLink>
+    </NavItem>
+  )
+}
+
+export default connect(
+  state => ({
+    route: state.router.location.pathname
+  })
+)(HeaderLink)
+
+// STYLES
+const NavItem = styled.li`
+  padding-bottom: ${spacing.double_pad};
+  ${media.medium`
+    padding-right: 4.5rem;
+    padding-bottom: 0;
+    &:last-child {
+      padding-right: 0;
+    }
+  `}
+`

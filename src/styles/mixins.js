@@ -1,0 +1,224 @@
+import { css, keyframes } from 'styled-components'
+import { spacing, fonts, global, breakpoints, colors } from './theme.json'
+
+// Media Queries
+const media = {
+  small: (...args) => css`
+    @media (max-width: 500px) {
+      ${ css(...args) }
+    }
+  `,
+  medium: (...args) => css`
+    @media (min-width: ${breakpoints.desktop}px) {
+      ${ css(...args) }
+    }
+  `,
+  desktopNav: (...args) => css`
+    @media (min-width: ${breakpoints.desktop}px) {
+      ${ css(...args) }
+    }
+  `,
+  touch: (...args) => css`
+    @media (hover: none) {
+      ${ css(...args) }
+    }
+  `
+}
+
+// Layout & Positioning UTILS
+const maxWidth = css`
+  width: 100%;
+  max-width: ${global.max_width};
+`
+
+const absoluteCentered = css`
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+`
+
+const fixedTopLeft = css`
+  position: fixed;
+  top: 0;
+  left: 0;
+`
+
+const mainPadding = css`
+  padding: ${spacing.double_pad};
+`
+
+const scrollPanel = css`
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+`
+
+// TYPOGRAPHY
+const sansFont = css`
+  font-family: ${fonts.sans};
+  font-weight: 400;
+`
+
+const bigType = css`
+  ${sansFont};
+  font-size: ${fonts.sizes.giant_sm};
+  line-height: 1;
+  ${media.medium`
+    font-size: ${fonts.sizes.giant};
+  `}
+`
+
+const mediumType = css`
+  ${sansFont};  
+  font-size: ${fonts.sizes.medium_sm};
+  line-height: 1;
+  ${media.medium`
+    font-size: ${fonts.sizes.medium};
+  `}
+`
+
+const bodyType = css`
+  ${sansFont};
+  font-size: ${fonts.sizes.body};
+  line-height: 1.25;
+  ${media.medium`
+    font-size: ${fonts.sizes.body_sm};
+  `}
+`
+
+const defaultLink = css`
+  ${sansFont};
+  ${bodyType};
+  -webkit-tap-highlight-color: rgba(255,255,255,0);
+  text-decoration: none;
+  color: ${colors.black};
+  cursor: pointer;
+  span {
+    position: relative;
+    z-index: 10;
+    display: block;
+  }
+  &:hover {
+    span {
+      text-decoration: underline;
+    }
+  }
+`
+
+// STYLE UTILS
+const buttonInit = css`
+  -webkit-tap-highlight-color: rgba(255,255,255,0);
+  border: 0;
+  background-color: rgba(255,255,255,0);
+  border-radius: 0;
+  appearance: none;
+  cursor: pointer;
+  display: block;
+`
+
+const transitionAll = (time) => {
+  return css`
+    transition-property: all;
+    transition-duration: ${time}ms;
+    transition-timing-function: ease;
+  `
+}
+
+// Flex Layout
+const flexColumn = css`
+  display: flex;
+  flex-direction: column;
+`
+const flexColumnCentered = css`
+  ${flexColumn};
+  align-items: center;
+`
+
+const flexRow = css`
+  display: flex;
+  flex-direction: row;
+`
+
+const flexRowWrap = css`
+  ${flexRow};
+  flex-wrap: wrap;
+`
+
+const flexRowCenteredVert = css`
+  ${flexRow};
+  align-items: center;
+`
+
+const flexRowCenteredAll = css`
+  ${flexRowCenteredVert};
+  justify-content: center;
+`
+
+const flexRowSpaceBetween = css`
+  ${flexRow};
+  justify-content: space-between;
+`
+
+// Animation
+const spin = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`
+
+const animationRotate = css`
+  animation: ${spin} 700ms linear 0s infinite normal;
+  animation-fill-mode: forwards;
+`
+
+const simpleFade = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`
+
+const animationFadeIn = (time, delay) => {
+  return css`
+    animation: ${simpleFade} ${time}ms ease normal;
+    animation-delay: ${delay}ms;
+    animation-fill-mode: both;
+  `
+}
+
+export {
+  media,
+  maxWidth,
+  absoluteCentered,
+  fixedTopLeft,
+  mainPadding,
+  scrollPanel,
+  bigType,
+  mediumType,
+  bodyType,
+  defaultLink,
+  transitionAll,
+  buttonInit,
+  animationRotate,
+  animationFadeIn,
+  flexColumn,
+  flexColumnCentered,
+  flexRow,
+  flexRowWrap,
+  flexRowCenteredVert,
+  flexRowSpaceBetween,
+  flexRowCenteredAll
+}

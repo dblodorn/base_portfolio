@@ -1,0 +1,16 @@
+{
+  "api_endpoint": "https://jsonplaceholder.typicode.com/todos/1",
+  "meta_defaults": {
+    "title": "Site Title",
+    "description": "This is a website, isn't that cool?!",
+    "site_url": "https://website.com",
+    "bgcolor": "#ffffff"
+  },
+  "mail_scrape": {
+    "cta": "Sign up for our enewsletter",
+    "mailchimp_url": ""
+  },
+  "fonts": [
+    "Authentic"
+  ]
+}
