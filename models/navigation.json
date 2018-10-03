@@ -1,0 +1,42 @@
+{
+  "navigation": {
+    "main_nav": [
+      {
+        "id": 1,
+        "title": "Super High Homepage",
+        "slug":"super-high-homepage",
+        "is_home": true,
+        "external_link": false
+      },
+      {
+        "id": 2,
+        "title": "Killer Weed",
+        "slug": "killer-weed",
+        "is_home": false,
+        "external_link": false
+      },
+      {
+        "id": 3,
+        "title": "Smoking Big",
+        "slug": "smoking-big",
+        "is_home": false,
+        "external_link": false
+      },
+      {
+        "id": 4,
+        "title": "Dank Nugs",
+        "slug": "dank-nugs",
+        "is_home": false,
+        "external_link": false
+      },
+      {
+        "id": 5,
+        "title": "Wiki",
+        "slug": "https://wikipedia.org",
+        "is_home": false,
+        "external_link": true
+      }
+    ],
+    "footer_nav": false
+  }
+}

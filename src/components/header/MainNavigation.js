@@ -8,9 +8,13 @@ import { breakpoints } from './../../styles/theme.json'
 export default withStore((props) => {
   const buildNav = (data) => {
     return data.map((item, i) => {
-      if (!item.is_home) {
-        return(
+      if (!item.is_home && !item.external_link) {
+        return (
           <HeaderLink Page={item.title} Path={item.slug} key={`${i}-${item.id}`}/>
+        )
+      } else if (item.external_link && !item.is_home) {
+        return (
+          <a href={item.slug} target='_blank' key={`${i}-${item.id}`}>ext {item.title}</a>
         )
       }
     })
@@ -18,7 +22,7 @@ export default withStore((props) => {
   return (
     <NavList>
       {(props.resize_state.window_width < breakpoints.desktop) && <HeaderLink Page={'Home'} Path={'/'}/>}
-      {(props.api_data) && buildNav(props.api_data.main_nav)}
+      {(props.api_data) && buildNav(props.api_data.navigation.main_nav)}
     </NavList>
   )
 })

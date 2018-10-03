@@ -1,6 +1,10 @@
 import fetch from 'isomorphic-fetch'
 import { api_endpoint } from './../../config.json'
 
+import models from './../../../models'
+
+console.log(models)
+
 const dataController = (endpoint) => {
   return new Promise((resolve, reject) => {
     fetch(endpoint, {
@@ -25,6 +29,6 @@ export default () => {
     }
     dataController(api_endpoint)
       .then(response => response.json())
-      .then((payload) => _dataHandler(payload))
+      .then((payload) => _dataHandler(models))
   }
 }
