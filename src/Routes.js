@@ -2,12 +2,14 @@ import React from 'react'
 import { Route, Switch } from 'react-router'
 import Document from './Document'
 import { withStore } from './components'
-import { Landing, NotFound, DefaultTemplate, CustomTemplate } from './views'
+import { NotFound } from './views'
+import { DefaultTemplate, CustomTemplate, HomeTemplate } from './templates'
 
 export default withStore((props) => {
   const templates = {
     'default': DefaultTemplate,
-    'custom': CustomTemplate
+    'custom': CustomTemplate,
+    'home': HomeTemplate
   }
 
   const buildRoutes = (data) => {
@@ -18,7 +20,7 @@ export default withStore((props) => {
         )
       } else {
         return (
-          <Route exact path={'/'} component={Landing}/>
+          <Route exact path={'/'} component={templates[page.template]} key={'landing'}/>
         )
       }
     })

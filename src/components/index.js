@@ -1,5 +1,6 @@
 // Higher Order Co./utils/Headts
 import withStore from './HOC/withStore'
+import pageData from './HOC/pageData'
 
 // Layout Components
 import Header from './header'
@@ -17,6 +18,7 @@ import SimpleVideo from './utils/SimpleVideo'
 
 export {
   withStore,
+  pageData,
   Head,
   BgImage,
   FitImage,
