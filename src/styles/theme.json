@@ -26,8 +26,8 @@
   "fonts": {
     "sans": "Authentic, system-ui, sans-serif",
     "sizes": {
-      "giant": "20vmin",
-      "giant_sm": "15vmin",
+      "giant": "7.5rem",
+      "giant_sm": "5.5rem",
       "medium": "3rem",
       "medium_sm": "2.5rem",
       "body": "2rem",

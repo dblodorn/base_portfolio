@@ -1,9 +1,7 @@
-import DefaultTemplate from './DefaultTemplate'
-import CustomTemplate from './CustomTemplate'
-import HomeTemplate from './HomeTemplate'
+import HomeTemplate from './home-page'
+import PostCollectionTemplate from './post-collection'
 
 export {
-  DefaultTemplate,
-  CustomTemplate,
-  HomeTemplate
+  HomeTemplate,
+  PostCollectionTemplate
 }

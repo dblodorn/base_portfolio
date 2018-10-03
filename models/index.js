@@ -1,4 +1,4 @@
-import { navigation } from './navigation.json'
+import navigation from './navigation.js'
 import pages from './pages.js'
 
 const models = {

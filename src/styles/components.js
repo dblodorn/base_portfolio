@@ -42,6 +42,10 @@ const H2 = styled.h2`
   ${_.mediumType};
 `
 
+const H3 = styled.h3`
+  ${_.bodyType};
+`
+
 const P = styled.p`
   ${_.bodyType};
 `
@@ -84,6 +88,7 @@ export {
   Article,
   H1,
   H2,
+  H3,
   P,
   StyledLink,
   LogoWrapperFixedTopRight,

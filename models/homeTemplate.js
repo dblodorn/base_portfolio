@@ -1,5 +1,5 @@
 const homeTemplate = {
-  template: 'custom',
+  template: 'home',
   sections: [
     {
       type: 'module_1',

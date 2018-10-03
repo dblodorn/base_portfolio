@@ -14,7 +14,7 @@ export default withStore((props) => {
         )
       } else if (item.external_link && !item.is_home) {
         return (
-          <a href={item.slug} target='_blank' key={`${i}-${item.id}`}>ext {item.title}</a>
+          <a href={item.slug} target='_blank' key={`${i}-${item.id}`}>{item.title}</a>
         )
       }
     })
