@@ -5,12 +5,20 @@ import withStore from './../HOC/withStore'
 import HeaderLink from './HeaderLink'
 
 export default withStore((props) => {
-  const NavItems = props.content.menu.map((item, i) =>
-    <HeaderLink Page={item.title} Path={item.slug} key={`hn-${i}-${item.slug}`}/>
-  )
+
+  const buildNav = (data) => {
+    return data.map((item, i) => {
+      if (!item.is_home) {
+        return(
+          <HeaderLink Page={item.title} Path={item.slug} key={`${i}-${item.id}`}/>
+        )
+      }
+    })
+  }
+  
   return (
     <NavList>
-      {NavItems}
+      {(props.api_data) && buildNav(props.api_data.main_nav)}
     </NavList>
   )
 })

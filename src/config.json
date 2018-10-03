@@ -1,5 +1,5 @@
 {
-  "api_endpoint": "https://cdn.dmbk.io/models/vert_brands.json",
+  "api_endpoint": "https://cdn.dmbk.io/models/api_test.json",
   "meta_defaults": {
     "title": "Site Title",
     "description": "This is a website, isn't that cool?!",
