@@ -10,9 +10,10 @@ export default pageData((props) => {
   return (
     <Section>
       <H1>{props.title}</H1>
+      <H2>Post Collection Template</H2>
       <PostList>
-        {props.content.post_list.map((item, i) =>
-          <PostCard cardData={item} key={`${item.id}-post-${i}`}/>
+        {props.content.post_collection.map((item, i) =>
+          <PostCard cardData={item} key={`${item.ID}-post-${i}`}/>
         )}
       </PostList>
     </Section>

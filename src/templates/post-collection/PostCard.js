@@ -7,11 +7,11 @@ import { spacing } from './../../styles/theme.json'
 
 export default (props) => {
   return (
-    <Card to={`/posts/${props.cardData.slug}`}>
-      <ProjectThumb>
+    <Card to={`/posts/${props.cardData.post_name}`}>
+      {/*<ProjectThumb>
         <FitImage src={props.cardData.thumbnail.large} />
-      </ProjectThumb>
-      <H3>{props.cardData.title}</H3>
+      </ProjectThumb>*/}
+      <H3>{props.cardData.post_title}</H3>
     </Card>
   )
 }

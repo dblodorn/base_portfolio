@@ -1,19 +1,4 @@
-import fetch from 'isomorphic-fetch'
-import { api_endpoint } from './../../config.json'
-
-import models from './../../../models'
-
-console.log(models)
-
-const dataController = (endpoint) => {
-  return new Promise((resolve, reject) => {
-    fetch(endpoint, {
-      method: 'GET'
-    })
-    .then(res => resolve(res))
-    .catch(err => reject(err))
-  })
-}
+import fetchWpDataController from './../../controllers/fetchWpDataController'
 
 export function apiData(payload) {
   return {
@@ -25,10 +10,11 @@ export function apiData(payload) {
 export default () => {
   return (dispatch) => {
     const _dataHandler = (payload) => {
+      console.log(payload)
       dispatch(apiData(payload))
     }
-    dataController(api_endpoint)
+    fetchWpDataController()
       .then(response => response.json())
-      .then((payload) => _dataHandler(models))
+      .then((payload) => _dataHandler(payload))
   }
 }

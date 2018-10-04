@@ -1,5 +1,5 @@
 {
-  "api_endpoint": "https://cdn.dmbk.io/models/api_test.json",
+  "wp_endpoint": "https://api-theme.dmbk.io/wp-json/api/v1/data/",
   "meta_defaults": {
     "title": "Site Title",
     "description": "This is a website, isn't that cool?!",

@@ -3,12 +3,14 @@ import { Route, Switch } from 'react-router'
 import Document from './Document'
 import { withStore } from './components'
 import { NotFound } from './views'
-import { HomeTemplate, PostCollectionTemplate } from './templates'
+import { HomeTemplate, PostCollectionTemplate, FlexibleImageGallery, PortfolioItem } from './templates'
 
 export default withStore((props) => {
   const templates = {
     'home': HomeTemplate,
-    'post-collection': PostCollectionTemplate
+    'post-collection': PostCollectionTemplate,
+    'flexible-image-gallery': FlexibleImageGallery,
+    'portfolio-item': PortfolioItem
   }
 
   const buildRoutes = (data) => {
