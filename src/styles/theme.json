@@ -22,7 +22,8 @@
   "colors": {
     "white": "#ffffff",
     "black": "#180c06",
-    "hover_color": "red"
+    "hover_color": "red",
+    "active_color": "purple"
   },
   "fonts": {
     "sans": "Authentic, system-ui, sans-serif",

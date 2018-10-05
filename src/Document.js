@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react'
+import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { injectGlobal } from 'styled-components'
 import { Main } from './styles/components'
@@ -7,22 +7,20 @@ import { routeName } from './scripts'
 import { Head, Footer, Header } from './components'
 import { LoadingPage } from './views'
 
-class Document extends Component {
-  render() {
-    if (this.props.api_data) {
-      return (
-        <Fragment>
-          <Head Title={routeName(this.props.router.location.pathname).routeTitle}/>
-          <Header/>
-          <Main id={routeName(this.props.router.location.pathname).routeClass}>
-            {this.props.children}
-          </Main>
-          <Footer/>
-        </Fragment>
-      )
-    } else {
-      return <LoadingPage/>
-    }
+const Document = (props) => {
+  if (props.api_data) {
+    return (
+      <Fragment>
+        <Head Title={routeName(props.router.location.pathname).routeTitle}/>
+        <Header/>
+        <Main id={routeName(props.router.location.pathname).routeClass}>
+          {props.children}
+        </Main>
+        <Footer/>
+      </Fragment>
+    )
+  } else {
+    return <LoadingPage/>
   }
 }
 

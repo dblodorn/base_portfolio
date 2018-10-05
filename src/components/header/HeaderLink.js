@@ -4,12 +4,12 @@ import { connect } from 'react-redux'
 import { StyledLink } from './../../styles/components'
 import { setMenuState } from './../../state/actions'
 import { media, smallType } from './../../styles/mixins'
-import { spacing } from './../../styles/theme.json'
+import { spacing, colors } from './../../styles/theme.json'
 
 const HeaderLink = (props) => {
   return (
-    <NavItem>
-      <NavLink to={`/${props.Path}`} className={(props.Path == props.route) ? 'active' : null} onClick={() => props.menu_toggle(false)}>
+    <NavItem className={(`/${props.Path}` == `${props.route}`) ? 'active' : null}>
+      <NavLink to={`/${props.Path}`} onClick={() => props.menu_toggle(false)}>
         <span dangerouslySetInnerHTML={{__html: props.Page }}/>
       </NavLink>
     </NavItem>
@@ -39,4 +39,8 @@ const NavItem = styled.li`
       padding-right: 0;
     }
   `}
+  &.active {
+    pointer-events: none!important;
+    * { color: ${colors.active_color}; }
+  }
 `

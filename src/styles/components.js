@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { heights, spacing, shared } from './theme.json'
+import { heights, spacing, shared, colors } from './theme.json'
 import * as _ from './mixins'
 
 // DOM NODES
@@ -74,13 +74,6 @@ const StyledMarkup = styled.article`
 // UI
 const StyledLink = styled(Link)`
   ${_.defaultLink};
-  &.active {
-    pointer-events: none;
-    &:after {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
 `
 
 const SocialLink = styled.a`
