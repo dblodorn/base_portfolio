@@ -6,7 +6,6 @@ import { spacing } from './../../styles/theme.json'
 import PostCard from './PostCard'
 
 export default pageData((props) => {
-  console.log(props)
   return (
     <Section>
       <H1>{props.title}</H1>

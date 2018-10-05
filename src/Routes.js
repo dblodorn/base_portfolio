@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router'
 import Document from './Document'
 import { withStore } from './components'
-import { NotFound } from './views'
+import { NotFound, Single } from './views'
 import { HomeTemplate, PostCollectionTemplate, FlexibleImageGallery, PortfolioItem } from './templates'
 
 export default withStore((props) => {
@@ -31,6 +31,7 @@ export default withStore((props) => {
     <Document>
       <Switch>
         {(props.api_data) && buildRoutes(props.api_data.pages)}
+        {(props.api_data) && <Route exact path={'/:postType/:id'} component={props => <Single {...props}/>}/>}
         <Route component={NotFound} />
       </Switch>
     </Document>

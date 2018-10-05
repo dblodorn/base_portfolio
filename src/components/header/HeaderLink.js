@@ -9,7 +9,7 @@ import { spacing } from './../../styles/theme.json'
 const HeaderLink = (props) => {
   return (
     <NavItem>
-      <StyledLink to={props.Path} className={(props.Path == props.route) ? 'active' : null} onClick={() => props.menu_toggle(false)}>
+      <StyledLink to={`/${props.Path}`} className={(props.Path == props.route) ? 'active' : null} onClick={() => props.menu_toggle(false)}>
         <span dangerouslySetInnerHTML={{__html: props.Page }}/>
       </StyledLink>
     </NavItem>
