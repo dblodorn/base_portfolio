@@ -1,5 +1,5 @@
 import { css, keyframes } from 'styled-components'
-import { spacing, fonts, global, breakpoints, colors } from './theme.json'
+import { spacing, fonts, shared, breakpoints, colors } from './theme.json'
 
 // Media Queries
 const media = {
@@ -28,7 +28,7 @@ const media = {
 // Layout & Positioning UTILS
 const maxWidth = css`
   width: 100%;
-  max-width: ${global.max_width};
+  max-width: ${shared.max_width};
 `
 
 const absoluteCentered = css`
@@ -87,10 +87,19 @@ const mediumType = css`
 
 const bodyType = css`
   ${sansFont};
-  font-size: ${fonts.sizes.body};
+  font-size: ${fonts.sizes.body_sm};
+  line-height: 1.35;
+  ${media.medium`
+    font-size: ${fonts.sizes.body};
+  `}
+`
+
+const smallType = css`
+  ${sansFont};
+  font-size: ${fonts.sizes.small_sm};
   line-height: 1.25;
   ${media.medium`
-    font-size: ${fonts.sizes.body_sm};
+    font-size: ${fonts.sizes.small};
   `}
 `
 
@@ -101,15 +110,15 @@ const defaultLink = css`
   text-decoration: none;
   color: ${colors.black};
   cursor: pointer;
+  text-decoration: underline;
   span {
     position: relative;
     z-index: 10;
     display: block;
   }
   &:hover {
-    span {
-      text-decoration: underline;
-    }
+    text-decoration: line-through;
+    color: ${colors.hover_color};
   }
 `
 
@@ -209,6 +218,7 @@ export {
   bigType,
   mediumType,
   bodyType,
+  smallType,
   defaultLink,
   transitionAll,
   buttonInit,

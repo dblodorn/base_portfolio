@@ -1,12 +1,22 @@
 import React from 'react'
-import { Section, H1, H2, P } from './../styles/components'
 import { pageData } from './../components';
+import { 
+  PortfolioItem,
+  FlexibleImageGallery,
+  PostCollectionTemplate, 
+  HomeTemplate 
+} from './../templates'
 
 export default pageData((props) => {
   return (
-    <Section>
-      <H1>{props.template}</H1>
-      <H2>SinglePost: {props.title}</H2>
-    </Section>
+    (props.template === 'portfolio-item')
+    ? <PortfolioItem/> :
+    (props.template === 'flexible-image-gallery')
+    ? <FlexibleImageGallery/> :
+    (props.template === 'post-collection')
+    ? <PostCollectionTemplate/> :
+    (props.template === 'home')
+    ? <HomeTemplate/> :
+    false
   )
 })

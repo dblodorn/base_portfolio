@@ -21,7 +21,8 @@
   },
   "colors": {
     "white": "#ffffff",
-    "black": "#180c06"
+    "black": "#180c06",
+    "hover_color": "red"
   },
   "fonts": {
     "sans": "Authentic, system-ui, sans-serif",
@@ -30,8 +31,10 @@
       "giant_sm": "5.5rem",
       "medium": "3rem",
       "medium_sm": "2.5rem",
-      "body": "2rem",
-      "body_sm": "1.75rem"
+      "body": "3rem",
+      "body_sm": "2.5rem",
+      "small": "1.75rem",
+      "small_sm": "1.35rem"
     }
   },
   "global": {
@@ -42,6 +45,20 @@
     "max_width": "92rem",
     "super_wide": "124rem",
     "column_width": "40rem",
-    "menu_width": "6.5rem"
+    "menu_width": "6.5rem",
+    "border_thin": "1px solid #180c06",
+    "border_thick": "4px solid #180c06"
+  },
+  "shared": {
+    "logo_size": "25vmin",
+    "border_weight": "5px",
+    "logo_size_desk": "8rem",
+    "article_width": "70rem",
+    "max_width": "92rem",
+    "super_wide": "124rem",
+    "column_width": "40rem",
+    "menu_width": "6.5rem",
+    "border_thin": "1px solid #180c06",
+    "border_thick": "10px solid #180c06"
   }
 }

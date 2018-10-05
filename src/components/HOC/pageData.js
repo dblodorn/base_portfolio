@@ -50,7 +50,7 @@ export default (InnerComponent) => {
   }
   return connect(
     state => ({
-      data: state.api_data,
+      data: state.api_data.posts,
       slug: state.router.location.pathname
     })
   )(PostWrapper)

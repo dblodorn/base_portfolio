@@ -29,6 +29,7 @@
     "react-dom": "^16.4.1",
     "react-helmet": "^5.2.0",
     "react-id-swiper": "^1.6.8",
+    "react-lazyload": "^2.3.0",
     "react-mailchimp-subscribe": "^2.0.2",
     "react-motion": "^0.5.2",
     "react-motion-ui-pack": "^0.10.3",

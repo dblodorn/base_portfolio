@@ -30,7 +30,7 @@ export default withStore((props) => {
   return (
     <Document>
       <Switch>
-        {(props.api_data) && buildRoutes(props.api_data.pages)}
+        {(props.api_data) && buildRoutes(props.api_data.posts.pages)}
         {(props.api_data) && <Route exact path={'/:postType/:id'} component={props => <Single {...props}/>}/>}
         <Route component={NotFound} />
       </Switch>

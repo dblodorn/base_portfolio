@@ -46,14 +46,27 @@ const H2 = styled.h2`
 
 const H3 = styled.h3`
   ${_.bodyType};
+  padding-bottom: ${spacing.double_pad};
 `
 
 const P = styled.p`
   ${_.bodyType};
 `
 
-// UI
+const SmallP = styled.p`
+  ${_.smallType};
+`
 
+const StyledMarkup = styled.article`
+  p {
+    ${_.bodyType};
+  }
+  a {
+    ${_.defaultLink};
+  }
+`
+
+// UI
 const StyledLink = styled(Link)`
   ${_.defaultLink};
   &.active {
@@ -102,6 +115,8 @@ export {
   H2,
   H3,
   P,
+  SmallP,
+  StyledMarkup,
   SocialLink,
   StyledLink,
   LogoWrapperFixedTopRight,
