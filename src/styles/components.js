@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { heights } from './theme.json'
+import { heights, spacing } from './theme.json'
 import * as _ from './mixins'
 
 // DOM NODES
@@ -36,10 +36,12 @@ const Article = styled.article`
 // TYPE
 const H1 = styled.h1`
   ${_.bigType};
+  padding-bottom: ${spacing.single_pad};
 `
 
 const H2 = styled.h2`
   ${_.mediumType};
+  padding-bottom: ${spacing.double_pad};
 `
 
 const H3 = styled.h3`
@@ -60,6 +62,16 @@ const StyledLink = styled(Link)`
       opacity: 1;
       transform: scale(1);
     }
+  }
+`
+
+const SocialLink = styled.a`
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  svg {
+    width: 100%;
+    height: auto;
   }
 `
 
@@ -90,6 +102,7 @@ export {
   H2,
   H3,
   P,
+  SocialLink,
   StyledLink,
   LogoWrapperFixedTopRight,
   FullPageBgWrapper

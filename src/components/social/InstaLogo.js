@@ -1,5 +1,5 @@
 import React from 'react'
-import { SocialLink } from './../styles'
+import { SocialLink } from './../styles/components'
 
 export default (props) =>
   <SocialLink href={props.link} target="_blank">

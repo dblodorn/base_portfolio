@@ -7,29 +7,29 @@ import { spacing } from './../../styles/theme.json'
 
 export default (props) => {
   return (
-    <Card to={`/posts/${props.cardData.post_name}`}>
-      {/*<ProjectThumb>
-        <FitImage src={props.cardData.thumbnail.large} />
-      </ProjectThumb>*/}
-      <H3>{props.cardData.post_title}</H3>
+    <Card to={`/${props.cardData.post_type}/${props.cardData.slug}`}>
+      <H3>{props.cardData.title}</H3>
+      {(props.cardData.thumbnail) && 
+        <ProjectThumb>
+          <FitImage src={props.cardData.thumbnail} />
+        </ProjectThumb>
+      }
     </Card>
   )
 }
 
 // STYLES
 const Card = styled(Link)`
-  width: calc(100% / 3);
+  width: 100%;
   position: relative;
   flex-grow: 0;
-  padding: 0 ${spacing.single_pad} ${spacing.double_pad};
+  padding: 0 0 ${spacing.double_pad};
 `
 
 const ProjectThumb = styled.div`
   width: 100%;
   height: 0;
   overflow-y: visible;
-  padding-bottom: 100%;
+  padding-bottom: 50%;
   position: relative;
-  top: 0;
-  left: 0;
 `
