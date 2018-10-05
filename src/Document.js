@@ -8,12 +8,6 @@ import { Head, Footer, Header } from './components'
 import { LoadingPage } from './views'
 
 class Document extends Component {
-  componentWillMount() {
-    window.scrollTo(0, 0)
-  }
-  componentWillUpdate() {
-    window.scrollTo(0, 0)
-  }
   render() {
     if (this.props.api_data) {
       return (
