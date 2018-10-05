@@ -24,10 +24,9 @@ export default (props) =>
 
 const TaxonomyWrapper = styled.div`
   width: 100%;
-  padding: ${spacing.double_pad} 0;
-  margin: ${spacing.double_pad} 0;
   border-top: ${shared.border_thin};
   border-bottom: ${shared.border_thin};
+  padding: ${spacing.double_pad};
 `
 
 const TaxColumns = styled.div`

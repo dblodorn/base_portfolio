@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { heights, spacing } from './theme.json'
+import { heights, spacing, shared } from './theme.json'
 import * as _ from './mixins'
 
 // DOM NODES
@@ -17,7 +17,6 @@ const Main = styled.main`
 
 const Section = styled.section`
   width: 100%;
-  ${_.mainPadding};
   ${_.flexColumn};
 `
 
@@ -33,6 +32,13 @@ const Article = styled.article`
   }
 `
 
+const PadWrapper = styled.div`
+  ${_.mainPadding};
+  &.add-top-border {
+    border-top: ${shared.border_thin};
+  }
+`
+
 // TYPE
 const H1 = styled.h1`
   ${_.bigType};
@@ -41,7 +47,6 @@ const H1 = styled.h1`
 
 const H2 = styled.h2`
   ${_.mediumType};
-  padding-bottom: ${spacing.double_pad};
 `
 
 const H3 = styled.h3`
@@ -111,6 +116,7 @@ export {
   Main,
   Section,
   Article,
+  PadWrapper,
   H1,
   H2,
   H3,

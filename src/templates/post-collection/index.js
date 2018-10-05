@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Section, H1, H2, StyledMarkup } from './../../styles/components'
+import { Section, H1, H2, StyledMarkup, PadWrapper } from './../../styles/components'
 import { pageData } from './../../components';
 import { spacing, shared } from './../../styles/theme.json'
 import PostCard from './PostCard'
@@ -16,13 +16,23 @@ export default pageData((props) => {
   }
   return (
     <Section>
-      <H1>{props.title}</H1>
-      <H2>{props.content.short_description}</H2>
-      <Taxonomies title={'All Taxonomies'} taxonomies={taxonomies}/>
-      <StyledMarkup dangerouslySetInnerHTML={{__html: props.content.description }}/>
+      <PadWrapper>
+        <H1>{props.title}</H1>
+        {(props.content.short_description) && <H2>{props.content.short_description}</H2>}
+      </PadWrapper>
+      {(props.content.show_taxonomies) && <Taxonomies title={'All Taxonomies'} taxonomies={taxonomies}/>}
+      <PadWrapper className={(!props.content.show_taxonomies) && 'add-top-border'}>
+        <StyledMarkup dangerouslySetInnerHTML={{__html: props.content.description }}/>
+      </PadWrapper>
       <PostList>
         {props.content.post_collection.map((item, i) =>
-          <PostCard cardData={item} key={`${item.ID}-post-${i}`}/>
+          <PostCard 
+            columns={props.content.columns}
+            showTaxonomies={props.content.show_post_taxonomies}
+            showThumbnail={props.content.show_thumbnail}
+            cardData={item} 
+            key={`${item.ID}-post-${i}`}
+          />
         )}
       </PostList>
     </Section>
@@ -35,7 +45,5 @@ const PostList = styled.ul`
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
-  padding: ${spacing.big_pad} 0;
-  margin-top: ${spacing.double_pad};
   border-top: ${shared.border_thick};
 `
