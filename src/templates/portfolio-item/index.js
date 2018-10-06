@@ -7,11 +7,11 @@ import { pageData } from './../../components';
 export default pageData((props) => {
   return (
     <Section>
-      <ThemeProvider theme={themeA}>
+      <ThemeProvider theme={themeB}>
         <PadWrapper>
           <H1>{props.title}</H1>
           {(props.content.short_description) && <H2>{props.content.short_description}</H2>}
-          <StyledMarkup dangerouslySetInnerHTML={{__html: props.content.description }}/>
+          <StyledMarkup className={'pad-top'} dangerouslySetInnerHTML={{__html: props.content.description }}/>
         </PadWrapper>
       </ThemeProvider>
     </Section>

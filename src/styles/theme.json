@@ -28,11 +28,11 @@
     "yellow": "yellow"
   },
   "fonts": {
-    "sans": "Authentic, system-ui, sans-serif",
-    "display_font_a": "David Regular, system-ui, sans-serif",
-    "display_font_b": "David Regular, system-ui, sans-serif",
-    "body_copy_font_a": "Authentic, system-ui, sans-serif",
-    "body_copy_font_b": "Knif Mono, Monaco, monospace",
+    "sans": "FFF Regular, system-ui, sans-serif",
+    "display_font_a": "David, system-ui, sans-serif",
+    "display_font_b": "Knif Mono, system-ui, sans-serif",
+    "body_copy_font_a": "Knif Mono, Monaco, monospace",
+    "body_copy_font_b": "FFF Regular, system-ui, sans-serif",
     "sizes": {
       "giant": "7.5rem",
       "giant_sm": "5.5rem",

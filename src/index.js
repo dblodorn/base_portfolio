@@ -36,7 +36,7 @@ window.addEventListener('touchstart', function onFirstTouch() {
 WebFont.load({
   custom: {
     families: config.fonts,
-    urls: ['/static/fonts.css']
+    urls: ['/assets/fonts.css']
   },
   active: function() {
     store.dispatch(fontsLoaded(true))

@@ -45,27 +45,35 @@ const H1 = styled.h1`
   ${_.bigType};
   padding-bottom: ${spacing.single_pad};
   color: ${props => props.theme.default_link.color};
+  font-family: ${props => props.theme.display_font};
 `
 
 const H2 = styled.h2`
   ${_.mediumType};
   color: ${props => props.theme.default_link.color};
+  font-family: ${props => props.theme.display_font};
 `
 
 const H3 = styled.h3`
   ${_.bodyType};
   padding-bottom: ${spacing.double_pad};
+  font-family: ${props => props.theme.display_font};
 `
 
 const P = styled.p`
   ${_.bodyType};
+  font-family: ${props => props.theme.body_copy_font};
 `
 
 const SmallP = styled.p`
   ${_.smallType};
+  font-family: ${props => props.theme.body_copy_font};
 `
 
 const StyledMarkup = styled.article`
+  &.pad-top {
+    padding-top: ${spacing.double_pad};
+  }
   p {
     ${_.bodyType};
   }
@@ -73,7 +81,8 @@ const StyledMarkup = styled.article`
     ${_.defaultLink};
   }
   * {
-    color: ${props => props.theme.default_link.color};
+    color: ${props => props.theme.default_link.color}!important;
+    font-family: ${props => props.theme.body_copy_font}!important;
   }
 `
 
