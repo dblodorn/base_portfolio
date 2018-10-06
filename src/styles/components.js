@@ -34,6 +34,7 @@ const Article = styled.article`
 
 const PadWrapper = styled.div`
   ${_.mainPadding};
+  background-color: ${props => props.theme.pad_wrapper};
   &.add-top-border {
     border-top: ${shared.border_thin};
   }
@@ -43,10 +44,12 @@ const PadWrapper = styled.div`
 const H1 = styled.h1`
   ${_.bigType};
   padding-bottom: ${spacing.single_pad};
+  color: ${props => props.theme.default_link.color};
 `
 
 const H2 = styled.h2`
   ${_.mediumType};
+  color: ${props => props.theme.default_link.color};
 `
 
 const H3 = styled.h3`
@@ -68,6 +71,9 @@ const StyledMarkup = styled.article`
   }
   a {
     ${_.defaultLink};
+  }
+  * {
+    color: ${props => props.theme.default_link.color};
   }
 `
 

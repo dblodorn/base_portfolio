@@ -1,4 +1,24 @@
 @font-face {
   font-family: 'Authentic';
-  src: url('/assets/fonts/AUTHENTIC-Sans.woff') format('woff');
+  src: url('/assets/fonts/authentic-sans.woff') format('woff');
+}
+@font-face {
+  font-family: "Knif Mono";
+  src: url("assets/fonts/knif-mono.woff") format("woff");
+}
+@font-face {
+  font-family: "David Regular";
+  src: url("assets/fonts/david-regular.otf") format("otf");
+}
+@font-face {
+  font-family: "Platform Bold";
+  src: url("assets/fonts/platform-bold.otf") format("otf");
+}
+@font-face {
+  font-family: "FFF Regular";
+  src: url("assets/fonts/fff-regular.woff") format("woff");
+}
+@font-face {
+  font-family: "FFF Regular Italic";
+  src: url("assets/fonts/fff-regular-italic.woff") format("woff");
 }

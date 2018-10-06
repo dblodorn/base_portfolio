@@ -1,9 +1,15 @@
 import React from 'react'
-import { Section, H1, Main } from './../styles/components'
+import { ThemeProvider } from 'styled-components'
+import { Section, H1, Main, PadWrapper } from './../styles/components'
+import { themeA, themeB } from './../styles/theme'
 
 export default () =>
   <Main>
     <Section>
-      <H1>Loading</H1>
+      <ThemeProvider theme={themeB}>
+        <PadWrapper>
+          <H1>Loading</H1>
+        </PadWrapper>
+      </ThemeProvider>
     </Section>
   </Main>

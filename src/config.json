@@ -11,6 +11,11 @@
     "mailchimp_url": ""
   },
   "fonts": [
-    "Authentic"
+    "Authentic",
+    "Knif Mono",
+    "David Regular",
+    "Platform Bold",
+    "FFF Regular",
+    "FFF Regular Italic"
   ]
 }

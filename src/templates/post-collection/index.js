@@ -1,5 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
+import { themeA, themeB } from './../../styles/theme'
 import { Section, H1, H2, StyledMarkup, PadWrapper } from './../../styles/components'
 import { pageData } from './../../components';
 import { spacing, shared } from './../../styles/theme.json'
@@ -14,16 +15,24 @@ export default pageData((props) => {
     client: parseTaxonomies(props.content.post_collection, 'taxonomies', 'client'),
     industry: parseTaxonomies(props.content.post_collection, 'taxonomies', 'industry')
   }
+  const themes = {
+    'a': themeA,
+    'b': themeB
+  }
   return (
     <Section>
-      <PadWrapper>
-        <H1>{props.title}</H1>
-        {(props.content.short_description) && <H2>{props.content.short_description}</H2>}
-      </PadWrapper>
+      <ThemeProvider theme={themes['a']}>
+        <PadWrapper>
+          <H1>{props.title}</H1>
+          {(props.content.short_description) && <H2>{props.content.short_description}</H2>}
+        </PadWrapper>
+      </ThemeProvider>
       {(props.content.show_taxonomies) && <Taxonomies title={'All Taxonomies'} taxonomies={taxonomies}/>}
-      <PadWrapper className={(!props.content.show_taxonomies) && 'add-top-border'}>
-        <StyledMarkup dangerouslySetInnerHTML={{__html: props.content.description }}/>
-      </PadWrapper>
+      <ThemeProvider theme={themes['b']}>
+        <PadWrapper className={(!props.content.show_taxonomies) && 'add-top-border'}>
+          <StyledMarkup dangerouslySetInnerHTML={{__html: props.content.description }}/>
+        </PadWrapper>
+      </ThemeProvider>
       <PostList>
         {props.content.post_collection.map((item, i) =>
           <PostCard 

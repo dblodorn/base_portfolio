@@ -23,10 +23,16 @@
     "white": "#ffffff",
     "black": "#180c06",
     "hover_color": "red",
-    "active_color": "purple"
+    "active_color": "purple",
+    "green": "green",
+    "yellow": "yellow"
   },
   "fonts": {
     "sans": "Authentic, system-ui, sans-serif",
+    "display_font_a": "David Regular, system-ui, sans-serif",
+    "display_font_b": "David Regular, system-ui, sans-serif",
+    "body_copy_font_a": "Authentic, system-ui, sans-serif",
+    "body_copy_font_b": "Knif Mono, Monaco, monospace",
     "sizes": {
       "giant": "7.5rem",
       "giant_sm": "5.5rem",
