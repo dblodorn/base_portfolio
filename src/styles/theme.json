@@ -66,6 +66,6 @@
     "column_width": "40rem",
     "menu_width": "6.5rem",
     "border_thin": "1px solid #180c06",
-    "border_thick": "10px solid #180c06"
+    "border_thick": "3px solid #180c06"
   }
 }

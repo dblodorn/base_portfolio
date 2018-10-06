@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import BgImage from '../utils/BgImage'
-import { breakpoints } from './../styles/theme.json'
+import { breakpoints } from './../../styles/theme.json'
 
 const CarouselSlide = (props) => {
   return (

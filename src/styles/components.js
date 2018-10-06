@@ -44,13 +44,13 @@ const PadWrapper = styled.div`
 const H1 = styled.h1`
   ${_.bigType};
   padding-bottom: ${spacing.single_pad};
-  color: ${props => props.theme.default_link.color};
+  color: ${colors.black};
   font-family: ${props => props.theme.display_font};
 `
 
 const H2 = styled.h2`
   ${_.mediumType};
-  color: ${props => props.theme.default_link.color};
+  color: ${colors.black};
   font-family: ${props => props.theme.display_font};
 `
 

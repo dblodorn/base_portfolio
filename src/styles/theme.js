@@ -6,7 +6,7 @@ import defaults from './defaults.json'
 export const themeA = {
   header_color: colors.white,
   body_font: fonts.body_copy,
-  pad_wrapper: colors.yellow,
+  pad_wrapper: colors.white,
   display_font: fonts.display_font_a,
   body_copy_font: fonts.body_copy_font_a,
   default_link: {
@@ -24,11 +24,11 @@ export const themeA = {
 
 export const themeB = {
   header_color: colors.green,
-  pad_wrapper: colors.black,
+  pad_wrapper: colors.white,
   display_font: fonts.display_font_b,
   body_copy_font: fonts.body_copy_font_b,
   default_link: {
-    color: colors.yellow,
+    color: colors.green,
     hover: colors.black,
     font: fonts.authentic,
     weight: 300,

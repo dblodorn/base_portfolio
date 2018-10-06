@@ -13,8 +13,8 @@ import FitImage from './utils/FitImage'
 import SimpleVideo from './utils/SimpleVideo'
 
 // Plugin Compnents - most have external dependencies
-// import MailScrape from './plugins/MailScrape'
-// import Carousel from './plugins/Carousel'
+//import MailScrape from './plugins/MailScrape'
+import Carousel from './plugins/Carousel'
 
 export {
   withStore,
@@ -24,7 +24,7 @@ export {
   FitImage,
   SimpleVideo,
   Header,
-  Footer
+  Footer,
   // MailScrape,
-  // Carousel
+  Carousel
 }

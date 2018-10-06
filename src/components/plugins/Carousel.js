@@ -71,7 +71,7 @@ class Carousel extends Component {
         }
       },
       autoplay: {
-        delay: 3500
+        delay: 1500
       },
       pagination: {
         el: '.hero-swiper-pagination',
@@ -87,7 +87,7 @@ class Carousel extends Component {
       fadeEffect: {
         crossFade: true
       },
-      speed: 4500
+      speed: 3000
     }
 
     const HeroSlides = this.props.slides.map((slide, i) =>

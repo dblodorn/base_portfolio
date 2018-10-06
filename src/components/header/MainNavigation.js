@@ -21,7 +21,7 @@ export default withStore((props) => {
   }
   return (
     <NavList>
-      {(props.resize_state.window_width < breakpoints.desktop) && <HeaderLink Page={'Home'} Path={'/'}/>}
+      {(props.resize_state.window_width < breakpoints.desktop) && <HeaderLink Page={'Home'} Path={''}/>}
       {(props.api_data) && buildNav(props.api_data.menus[0].items)}
     </NavList>
   )
