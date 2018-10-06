@@ -1,19 +1,6 @@
 import { store } from './../state/store'
 import { heights, spacing, fonts, colors, shared, breakpoints } from './theme.json'
-
-let apiStyles = false
-
-const apiStyleHandler = (apiData) => {
-  let apiListen = apiData
-  if (apiListen != false) {
-    apiStyles = apiData.options.site_styles
-  }
-}
-
-// NEED TO UNSUBSCRIBE SOMEHOW
-store.subscribe(() => 
-  apiStyleHandler(store.getState().api_data)
-)
+import defaults from './defaults.json'
 
 // Theme
 export const themeA = {
