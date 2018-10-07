@@ -3,6 +3,8 @@ const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const SWPrecache = require('sw-precache-webpack-plugin')
+
 const config = require('./src/config.json');
 
 const pathsToClean = [
@@ -18,6 +20,11 @@ const cleanOptions = {
 module.exports = (env) => {
   console.log(env);
   return { 
+    entry: './src/index.js',
+    output: {
+      path: path.resolve(__dirname, './dist'),
+      publicPath: '/dist/'
+    },
     module: {
       rules: [
         {
@@ -36,6 +43,8 @@ module.exports = (env) => {
     devServer: {
       publicPath: '/',
       historyApiFallback: true,
+      noInfo: true,
+      overlay: true
     },
     plugins: [
       new CleanWebpackPlugin(
@@ -52,7 +61,18 @@ module.exports = (env) => {
       new webpack.HotModuleReplacementPlugin(),
       new CopyWebpackPlugin([
         { from: './assets/**/*', to: './' }
-      ])
+      ]),
+            /*
+      new SWPrecache({
+        cacheId: "dmbk-archive-app",
+        filepath: 'service-worker.js', // place it on the root
+        staticFileGlobs: [
+          'index.html',
+          'manifest.json',
+          'dist/*.{js,css}'
+        ],
+        stripPrefix: '/' // removes the dist/ path
+      })*/
     ]
   };
 };
