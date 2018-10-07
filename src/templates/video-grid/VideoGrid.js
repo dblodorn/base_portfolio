@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Section, H1, StyledMarkup } from './../../styles/components'
 import { pageData, PostBasics } from './../../components';
 
 export default pageData((props) => {
+  console.log(props)
   return (
-    <PostBasics data={props}/>
+    <Fragment>
+      <PostBasics data={props}/>
+    </Fragment>
   )
 })
