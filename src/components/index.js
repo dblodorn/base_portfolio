@@ -12,6 +12,7 @@ import Head from './utils/Head'
 import BgImage from './utils/BgImage'
 import FitImage from './utils/FitImage'
 import SimpleVideo from './utils/SimpleVideo'
+import Video from './Video'
 
 // Plugin Compnents - most have external dependencies
 //import MailScrape from './plugins/MailScrape'
@@ -27,6 +28,7 @@ export {
   Header,
   Footer,
   PostBasics,
+  Video,
   // MailScrape,
   Carousel
 }

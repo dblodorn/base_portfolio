@@ -7,6 +7,16 @@ const pageState = (state =  null, action) => {
   }
 }
 
+const setVideoState = (state = null, action) => {
+  switch (action.type) {
+    case 'VIDEO_PLAYING':
+      return action.url
+    default:
+      return state
+  }
+}
+
 export {
-  pageState
+  pageState,
+  setVideoState
 }

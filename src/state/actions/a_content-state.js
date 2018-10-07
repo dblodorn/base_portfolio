@@ -5,6 +5,14 @@ const setPage = (slug) => {
   }
 }
 
+const setVideoPlaying = (url) => {
+  return {
+    type: 'VIDEO_PLAYING',
+    url
+  }
+}
+
 export {
-  setPage
+  setPage,
+  setVideoPlaying
 }

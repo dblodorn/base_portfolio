@@ -24,6 +24,7 @@
     "black": "#180c06",
     "hover_color": "red",
     "active_color": "purple",
+    "lt_grey": "#111111",
     "green": "green",
     "yellow": "yellow",
     "footer_bg_color": "#180c06",

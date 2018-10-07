@@ -189,6 +189,18 @@ const flexRowSpaceBetween = css`
 `
 
 // Animation
+const pulse = keyframes`
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+`
+
 const spin = keyframes`
   from {
     transform: rotate(0deg);
@@ -212,6 +224,10 @@ const simpleFade = keyframes`
   }
 `
 
+const pulseAnimation = css`
+  animation: 350ms linear ${pulse} infinite;
+`
+
 const animationFadeIn = (time, delay) => {
   return css`
     animation: ${simpleFade} ${time}ms ease normal;
@@ -225,6 +241,12 @@ const borderRadius = (radius) => {
     border-radius: ${radius}!important;
   `
 }
+
+const fullBg = `
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+`
 
 export {
   media,
@@ -251,5 +273,7 @@ export {
   flexRowCenteredVert,
   flexRowSpaceBetween,
   flexRowCenteredAll,
-  borderRadius
+  borderRadius,
+  pulseAnimation,
+  fullBg
 }

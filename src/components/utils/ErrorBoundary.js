@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { H2 } from './../styles'
+import { H2 } from './../../styles/components'
 
 class ErrorBoundary extends Component {
   constructor(props) {
