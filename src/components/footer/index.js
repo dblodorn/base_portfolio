@@ -21,4 +21,8 @@ const FooterWrapper =  styled.footer`
   height: ${heights.footer};
   position: relative;
   z-index: 100;
+  background-color: ${colors.footer_bg_color};
+  * {
+    color: ${colors.footer_type_color}!important;
+  }
 `

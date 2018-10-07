@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import MainNavigation from './MainNavigation'
 import { setMenuState } from './../../state/actions'
-import { flexColumn, defaultLink, buttonInit, scrollPanel } from './../../styles/mixins'
+import { flexColumn, defaultLink, buttonInit, scrollPanel, microType, shadow, borderRadius, flexRowCenteredAll } from './../../styles/mixins'
 import { heights, spacing, colors } from './../../styles/theme.json'
 
 const HeaderMobile = (props) => {
@@ -11,8 +11,8 @@ const HeaderMobile = (props) => {
     <HeaderWrapper>
       {
         (props.menu)
-        ? <MobileButton onClick={() => props.menu_toggle(false)}>Close</MobileButton>
-        : <MobileButton onClick={() => props.menu_toggle(true)}>Menu</MobileButton>
+        ? <MobileButton onClick={() => props.menu_toggle(false)}><span>Close</span></MobileButton>
+        : <MobileButton onClick={() => props.menu_toggle(true)}><span>Menu</span></MobileButton>
       }
       {props.menu &&
         <InnerHeader key="nav-wrapper" className="nav-wrapper__content">
@@ -44,6 +44,10 @@ const HeaderWrapper = styled.header`
   transition: opacity 750ms ease, transform 350ms ease;
   opacity: ${props => props.Opacity};
   transform: translateY(${props => props.Yposition});
+  background-color: ${colors.header_bg_color};
+  * {
+    color: ${colors.header_type_color}!important;
+  }
 `
 
 const InnerHeader = styled.div`
@@ -63,8 +67,17 @@ const InnerHeader = styled.div`
 const MobileButton = styled.button`
   ${defaultLink};
   ${buttonInit};
+  ${microType};
+  ${shadow};
+  ${flexRowCenteredAll};
+  ${borderRadius(`50%`)};
+  width: 6rem;
+  height: 6rem;
+  padding-top: .2rem;
+  text-transform: uppercase;
   position: fixed;
-  top: 2.5rem;
-  right: 2rem;
+  top: 1rem;
+  right: 1rem;
   z-index: 10000;
+  background-color: ${colors.yellow};
 `

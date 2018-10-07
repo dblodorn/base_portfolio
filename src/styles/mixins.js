@@ -103,6 +103,15 @@ const smallType = css`
   `}
 `
 
+const microType = css`
+  ${sansFont};
+  font-size: ${fonts.sizes.micro_sm};
+  line-height: 1.25;
+  ${media.medium`
+    font-size: ${fonts.sizes.micro};
+  `}
+`
+
 const defaultLink = css`
   ${sansFont};
   ${bodyType};
@@ -110,14 +119,13 @@ const defaultLink = css`
   text-decoration: none;
   color: ${colors.black};
   cursor: pointer;
-  text-decoration: underline;
   span {
     position: relative;
     z-index: 10;
     display: block;
   }
   &:hover {
-    text-decoration: line-through;
+    text-decoration: underline;
     color: ${colors.hover_color};
   }
 `
@@ -140,6 +148,10 @@ const transitionAll = (time) => {
     transition-timing-function: ease;
   `
 }
+
+const shadow = css`
+  box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.33);
+`
 
 // Flex Layout
 const flexColumn = css`
@@ -208,6 +220,12 @@ const animationFadeIn = (time, delay) => {
   `
 }
 
+const borderRadius = (radius) => {
+  return css`
+    border-radius: ${radius}!important;
+  `
+}
+
 export {
   media,
   maxWidth,
@@ -219,9 +237,11 @@ export {
   mediumType,
   bodyType,
   smallType,
+  microType,
   defaultLink,
   transitionAll,
   buttonInit,
+  shadow,
   animationRotate,
   animationFadeIn,
   flexColumn,
@@ -230,5 +250,6 @@ export {
   flexRowWrap,
   flexRowCenteredVert,
   flexRowSpaceBetween,
-  flexRowCenteredAll
+  flexRowCenteredAll,
+  borderRadius
 }

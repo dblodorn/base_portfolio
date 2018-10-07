@@ -74,4 +74,5 @@ const SlideWrapper = styled.div`
   left: 0;
   z-index: 50;
   transform: translateZ(0);
+  pointer-events: none;
 `

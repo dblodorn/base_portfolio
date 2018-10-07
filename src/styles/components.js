@@ -8,11 +8,13 @@ const Main = styled.main`
   ${_.animationFadeIn(1000, 150)};
   ${_.flexColumn};
   width: 100%;
-  padding-top: ${heights.header};
-  min-height: calc(100vh - ${heights.footer});
   position: relative;
+  min-height: calc(100vh - ${heights.footer});
   z-index: 100;
   z-index: 0;
+  ${_.media.desktopNav`
+    padding-top: ${heights.header};
+  `}
 `
 
 const Section = styled.section`

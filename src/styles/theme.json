@@ -25,7 +25,11 @@
     "hover_color": "red",
     "active_color": "purple",
     "green": "green",
-    "yellow": "yellow"
+    "yellow": "yellow",
+    "footer_bg_color": "#180c06",
+    "footer_type_color": "pink",
+    "header_bg_color": "#180c06",
+    "header_type_color": "pink"
   },
   "fonts": {
     "sans": "FFF Regular, system-ui, sans-serif",
@@ -41,7 +45,9 @@
       "body": "3rem",
       "body_sm": "2.5rem",
       "small": "1.75rem",
-      "small_sm": "1.35rem"
+      "small_sm": "1.75rem",
+      "micro": "1.25rem",
+      "micro_sm": "1.125rem"
     }
   },
   "global": {

@@ -100,6 +100,7 @@ class Carousel extends Component {
               height={'100%'}
               muted={true}
               loop={true}
+              playsinline={true}
               playing={this.state.playing}
             />
           }
