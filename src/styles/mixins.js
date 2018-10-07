@@ -61,6 +61,26 @@ const scrollPanel = css`
   -webkit-overflow-scrolling: touch;
 `
 
+const grid = css`
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 100%;
+  ${media.desktopNav`
+    &.one_col {
+      width: 100%;
+    }
+    &.three_col {
+      width: calc(100% / 3);
+    }
+    &.four_col {
+      width: 25%;
+    }
+    &.two_col {
+      width: 50%;
+    }
+  `}
+`
+
 // TYPOGRAPHY
 const sansFont = css`
   font-family: ${fonts.sans};
@@ -275,5 +295,6 @@ export {
   flexRowCenteredAll,
   borderRadius,
   pulseAnimation,
-  fullBg
+  fullBg,
+  grid
 }

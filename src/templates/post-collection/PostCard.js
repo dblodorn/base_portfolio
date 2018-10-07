@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import LazyLoad from 'react-lazyload'
 import { FitImage } from './../../components'
 import { P, PadWrapper } from './../../styles/components'
-import { defaultLink, bigType, flexColumn } from './../../styles/mixins'
+import { defaultLink, bigType, flexColumn, media, grid } from './../../styles/mixins'
 import { spacing, shared } from './../../styles/theme.json'
 import Taxonomies from './Taxonomies'
 
@@ -37,23 +37,14 @@ const CardWrapper = styled.li`
   ${flexColumn};
   border-bottom: ${shared.border_thin};
   position: relative;
-  flex-grow: 0;
-  flex-shrink: 0;
-  &.one_col {
-    width: 100%;
-  }
-  &.two_col {
-    width: 50%;
-    &:nth-child(odd) {
-      border-right: ${shared.border_thin};
+  ${grid};
+  ${media.desktopNav`
+    &.two_col {
+      &:nth-child(odd) {
+        border-right: ${shared.border_thin};
+      }
     }
-  }
-  &.three_col {
-    width: calc(100% / 3);
-  }
-  &.four_col {
-    width: 25%;
-  }
+  `}
 `
 
 const ExcerptWrapper = styled.div`
@@ -74,7 +65,7 @@ const ProjectThumb = styled.div`
   width: 100%;
   height: 0;
   overflow-y: visible;
-  padding-bottom: 50%;
+  padding-bottom: 65%;
   position: relative;
   border-top: ${shared.border_thin};
   &.one_col {
