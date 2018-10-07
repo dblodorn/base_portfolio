@@ -34,7 +34,6 @@ const Article = styled.article`
 
 const PadWrapper = styled.div`
   ${_.mainPadding};
-  background-color: ${props => props.theme.pad_wrapper};
   &.add-top-border {
     border-top: ${shared.border_thin};
   }
@@ -44,7 +43,7 @@ const PadWrapper = styled.div`
 const H1 = styled.h1`
   ${_.bigType};
   padding-bottom: ${spacing.single_pad};
-  color: ${colors.black};
+  color: ${props => props.theme.header_color}!important;
   font-family: ${props => props.theme.display_font};
 `
 
@@ -81,7 +80,7 @@ const StyledMarkup = styled.article`
     ${_.defaultLink};
   }
   * {
-    color: ${props => props.theme.default_link.color}!important;
+    color: ${props => props.theme.header_color}!important;
     font-family: ${props => props.theme.body_copy_font}!important;
   }
 `

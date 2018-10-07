@@ -4,14 +4,13 @@ import { injectGlobal } from 'styled-components'
 import { Main } from './styles/components'
 import { colors, fonts } from './styles/theme.json'
 import { routeName } from './scripts'
-import { Head, Footer, Header } from './components'
+import { Footer, Header } from './components'
 import { LoadingPage } from './views'
 
 const Document = (props) => {
   if (props.api_data) {
     return (
       <Fragment>
-        <Head Title={routeName(props.router.location.pathname).routeTitle}/>
         <Header/>
         <Main id={routeName(props.router.location.pathname).routeClass}>
           {props.children}

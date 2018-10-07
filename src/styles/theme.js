@@ -4,8 +4,8 @@ import defaults from './defaults.json'
 
 // Theme
 export const themeA = {
-  header_color: colors.white,
-  body_font: fonts.body_copy,
+  header_color: colors.black,
+  top_bg_color: colors.white,
   pad_wrapper: colors.white,
   display_font: fonts.display_font_a,
   body_copy_font: fonts.body_copy_font_a,
@@ -23,12 +23,13 @@ export const themeA = {
 }
 
 export const themeB = {
-  header_color: colors.green,
-  pad_wrapper: colors.white,
+  header_color: colors.white,
+  top_bg_color: colors.black,
+  pad_wrapper: colors.black,
   display_font: fonts.display_font_b,
   body_copy_font: fonts.body_copy_font_b,
   default_link: {
-    color: colors.green,
+    color: colors.white,
     hover: colors.black,
     font: fonts.authentic,
     weight: 300,

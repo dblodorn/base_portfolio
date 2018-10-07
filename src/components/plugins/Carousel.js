@@ -1,12 +1,10 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import ReactPlayer from 'react-player'
 import Swiper from 'react-id-swiper/lib/custom'
 import Waypoint from 'react-waypoint'
 import CarouselSlide from './CarouselSlide'
-import BgImage from '../utils/BgImage'
-import { breakpoints } from './../../styles/theme.json'
 
 class Carousel extends Component {
   constructor(props) {
@@ -94,21 +92,16 @@ class Carousel extends Component {
       <HeroSlide key={i} data-slidetype={slide.slide_type}>
         <CarouselSlide slideData={slide}>
           {(slide.slide_type === 'video') &&
-            <Fragment>
-              {(this.props.window_width >= breakpoints.desktop)
-                ? <ReactPlayer
-                    ref={node => { if (node) this.player = node.player }}
-                    url={slide.video}
-                    className='hero-player'
-                    width={'100%'}
-                    height={'100%'}
-                    muted={true}
-                    loop={true}
-                    playing={this.state.playing}
-                  />
-                : <BgImage source={slide.image.small} />
-              }
-            </Fragment>
+            <ReactPlayer
+              ref={node => { if (node) this.player = node.player }}
+              url={slide.video}
+              className='hero-player'
+              width={'100%'}
+              height={'100%'}
+              muted={true}
+              loop={true}
+              playing={this.state.playing}
+            />
           }
         </CarouselSlide>
       </HeroSlide>
@@ -139,9 +132,7 @@ export default connect(
 const HeroSlider = styled.div`
   width: 100vw;
   height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
   .swiper-container {
     height: 100%;
     width: 100%;

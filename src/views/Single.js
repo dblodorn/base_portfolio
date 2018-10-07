@@ -4,7 +4,8 @@ import {
   PortfolioItem,
   FlexibleImageGallery,
   PostCollectionTemplate, 
-  HomeTemplate 
+  HomeTemplate,
+  VideoGrid
 } from './../templates'
 
 export default pageData((props) => {
@@ -15,6 +16,8 @@ export default pageData((props) => {
     ? <FlexibleImageGallery/> :
     (props.template === 'post-collection')
     ? <PostCollectionTemplate/> :
+    (props.template === 'video-grid')
+    ? <VideoGrid/> :
     (props.template === 'home')
     ? <HomeTemplate/> :
     false

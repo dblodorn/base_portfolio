@@ -5,6 +5,7 @@ import pageData from './HOC/pageData'
 // Layout Components
 import Header from './header'
 import Footer from './footer'
+import PostBasics from './PostBasics'
 
 // Utility Components
 import Head from './utils/Head'
@@ -25,6 +26,7 @@ export {
   SimpleVideo,
   Header,
   Footer,
+  PostBasics,
   // MailScrape,
   Carousel
 }

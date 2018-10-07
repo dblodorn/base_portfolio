@@ -26,7 +26,7 @@ export default (props) => {
       }
       {(props.showTaxonomies) && <Taxonomies title={`${props.cardData.title} : Taxonomies`} taxonomies={props.cardData.taxonomies}/>}
       <LinkWrapper>
-        <ProjectLink to={`/${props.cardData.post_type}/${props.cardData.slug}`}><span>View {props.cardData.post_type} ></span></ProjectLink>
+        <ProjectLink to={(props.cardData.post_type === 'page') ? `/${props.cardData.slug}` : `/${props.cardData.post_type}/${props.cardData.slug}`}><span>View {props.cardData.post_type} ></span></ProjectLink>
       </LinkWrapper>
     </CardWrapper>
   )
@@ -35,7 +35,7 @@ export default (props) => {
 // STYLES
 const CardWrapper = styled.li`
   ${flexColumn};
-  border-bottom: ${shared.border_thick};
+  border-bottom: ${shared.border_thin};
   position: relative;
   flex-grow: 0;
   flex-shrink: 0;

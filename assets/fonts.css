@@ -22,3 +22,11 @@
   font-family: "FFF Regular Italic";
   src: url("/assets/fonts/fff-regular-italic.woff");
 }
+@font-face {
+  font-family: "GT America Expanded";
+  src: url("/assets/fonts/gt-america-expanded.woff2");
+}
+@font-face {
+  font-family: "GT America Extended";
+  src: url("/assets/fonts/gt-america-extended.woff2");
+}
