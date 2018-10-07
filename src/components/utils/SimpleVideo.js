@@ -13,7 +13,7 @@ export default class extends Component {
   render() {
     return (
       <VideoWrapper>
-        <video ref="vid" muted loop="true" playsInline>
+        <video ref="vid" muted loop={true} playsInline>
           <source src={this.props.src} type="video/mp4"/>
         </video>
       </VideoWrapper>

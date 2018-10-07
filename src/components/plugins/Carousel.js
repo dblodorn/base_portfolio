@@ -5,6 +5,8 @@ import ReactPlayer from 'react-player'
 import Swiper from 'react-id-swiper/lib/custom'
 import Waypoint from 'react-waypoint'
 import CarouselSlide from './CarouselSlide'
+import SimpleVideo from './../utils/SimpleVideo'
+import { breakpoints } from './../../styles/theme.json'
 
 class Carousel extends Component {
   constructor(props) {
@@ -92,17 +94,18 @@ class Carousel extends Component {
       <HeroSlide key={i} data-slidetype={slide.slide_type}>
         <CarouselSlide slideData={slide}>
           {(slide.slide_type === 'video') &&
-            <ReactPlayer
-              ref={node => { if (node) this.player = node.player }}
-              url={slide.video}
-              className='hero-player'
-              width={'100%'}
-              height={'100%'}
-              muted={true}
-              loop={true}
-              playsinline={true}
-              playing={this.state.playing}
-            />
+            (this.props.window_width >= breakpoints.desktop)
+              ? <ReactPlayer
+                  ref={node => { if (node) this.player = node.player }}
+                  url={slide.video}
+                  className='hero-player'
+                  width={'100%'}
+                  height={'100%'}
+                  muted={true}
+                  loop={true}
+                  playing={this.state.playing}
+                />
+              : <SimpleVideo src={slide.video}/>
           }
         </CarouselSlide>
       </HeroSlide>

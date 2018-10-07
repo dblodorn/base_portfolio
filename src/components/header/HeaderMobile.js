@@ -44,7 +44,6 @@ const HeaderWrapper = styled.header`
   transition: opacity 750ms ease, transform 350ms ease;
   opacity: ${props => props.Opacity};
   transform: translateY(${props => props.Yposition});
-  background-color: ${colors.header_bg_color};
   * {
     color: ${colors.header_type_color}!important;
   }
@@ -62,6 +61,7 @@ const InnerHeader = styled.div`
   top: 0;
   left: 0;
   padding: ${spacing.double_pad};
+  background-color: ${colors.header_bg_color};
 `
 
 const MobileButton = styled.button`
