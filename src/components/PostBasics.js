@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import { themeA, themeB } from './../styles/theme'
-import { spacing } from './../styles/theme.json'
-import { H1, H2, StyledMarkup, PadWrapper, Section } from './../styles/components'
+import { spacing, heights } from './../styles/theme.json'
+import { H1, StyledMarkup, Section } from './../styles/components'
+import { media } from './../styles/mixins'
 import Head from './utils/Head'
 
 const themes = {
@@ -29,5 +30,11 @@ export default (props) =>
 // STYLES
 const PostBasicsSection = styled(Section)`
   background-color: ${props => props.theme.top_bg_color};
-  padding: ${spacing.double_pad};
+  padding-top: calc(${heights.header} + ${spacing.double_pad});
+  padding-left: ${spacing.double_pad};
+  padding-right: ${spacing.double_pad};
+  padding-bottom: ${spacing.double_pad};
+  ${media.desktopNav`
+    padding-top: ${spacing.double_pad};
+  `}
 `

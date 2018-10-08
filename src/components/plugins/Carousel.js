@@ -7,7 +7,7 @@ import Waypoint from 'react-waypoint'
 import CarouselSlide from './CarouselSlide'
 import { spacing } from './../../styles/theme.json'
 import { buttonInit, absoluteTopFull, absoluteCentered } from './../../styles/mixins'
-import { PrevButton, NextButton } from './../PrevNextButton'
+import { PrevButton, NextButton } from './../utils/PrevNextButton'
 
 class Carousel extends Component {
   constructor(props) {

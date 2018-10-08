@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { opacityTransition } from './../styles/mixins'
-import { colors } from './../styles/theme.json'
+import { opacityTransition } from './../../styles/mixins'
+import { colors } from './../../styles/theme.json'
 
 const PlayerButton = styled.div`
   width: 15%;

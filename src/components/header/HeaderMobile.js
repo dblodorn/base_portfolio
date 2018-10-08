@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
-import MainNavigation from './MainNavigation'
+import Menu from './../menus/Menu'
 import { setMenuState } from './../../state/actions'
 import { flexColumn, defaultLink, buttonInit, scrollPanel, microType, shadow, borderRadius, flexRowCenteredAll } from './../../styles/mixins'
 import { heights, spacing, colors } from './../../styles/theme.json'
@@ -16,7 +16,7 @@ const HeaderMobile = (props) => {
       }
       {props.menu &&
         <InnerHeader key="nav-wrapper" className="nav-wrapper__content">
-          <MainNavigation/>
+          <Menu location={0}/>
         </InnerHeader>
       }
     </HeaderWrapper>

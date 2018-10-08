@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { StyledLink } from './../../styles/components'
 import { flexRowCenteredVert, bodyType } from './../../styles/mixins'
 import { heights, spacing, colors } from './../../styles/theme.json'
-import MainNavigation from './MainNavigation'
+import Menu from './../menus/Menu'
 import withStore from './../HOC/withStore'
 
 export default withStore((props) =>
@@ -11,7 +11,7 @@ export default withStore((props) =>
     <Logo to={'/'}>
       <span>{props.content.meta_defaults.title}</span>
     </Logo>
-    <MainNavigation/>
+    <Menu location={0}/>
   </HeaderWrapper>
 )
 

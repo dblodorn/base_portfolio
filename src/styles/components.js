@@ -107,6 +107,25 @@ const StyledLink = styled(Link)`
   ${_.defaultLink};
 `
 
+const NavItem = styled.li`
+  padding-bottom: ${spacing.double_pad};
+  &:last-child {
+    padding-bottom: 0;
+  }
+  ${_.media.medium`
+    padding-right: ${spacing.double_pad};
+    padding-bottom: 0;
+    &:last-child {
+      padding-right: 0;
+    }
+  `}
+  &.active {
+    pointer-events: none!important;
+    text-decoration: underline;
+    * { color: ${colors.active_color}; }
+  }
+`
+
 const SocialLink = styled.a`
   display: block;
   width: 3rem;
@@ -150,5 +169,6 @@ export {
   SocialLink,
   StyledLink,
   LogoWrapperFixedTopRight,
-  FullPageBgWrapper
+  FullPageBgWrapper,
+  NavItem
 }

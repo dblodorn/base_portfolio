@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-const imageModal = document.getElementById('image-modal')
+const imageModal = document.getElementById('single-image-modal')
 
 class ImageModal extends React.Component {
   constructor(props) {

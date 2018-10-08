@@ -2,55 +2,9 @@ import React, { PureComponent, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { media, flexRowCenteredAll, buttonInit } from './../../styles'
 import styled from 'styled-components'
-import ImageModal from './ImageModal'
-import BgImage from './BgImage'
+import ImageModal from './SingleImagePortal'
+import BgImage from '../utils/BgImage'
 
-const Image = styled.img`
-  display: block;
-  position: relative;
-  width: 100%;
-  height: auto;
-  transition: all 500ms ease;
-  opacity: ${props => props.Opacity};
-  cursor: pointer;
-  ${media.desktop`
-    width: auto;
-    height: 100%;
-  `}
-  &:hover {
-    opacity: .85;
-  }
-`
-
-const Modal = styled.div`
-  ${flexRowCenteredAll};
-  position: fixed;
-  z-index: 12000;
-  width: 100vw;
-  height: 100vh;
-  background-color: ${props => props.BgColor};
-`
-
-const ModalImageWrapper = styled.div`
-  width: 90vw;
-  height: 90vh;
-  max-width: 120rem;
-  max-height: 70rem;
-  display: block;
-  position: relative;
-`
-
-const CloseButton = styled.button`
-  ${buttonInit};
-  color: white;
-  position: fixed;
-  top: 2rem;
-  right: 2rem;
-  svg {
-    width: 4rem;
-    height: 4rem;
-  }
-`
 class RegImage extends PureComponent {
   constructor(props) {
     super(props)
@@ -102,3 +56,52 @@ export default connect(
   }),
   dispatch => ({})
 )(RegImage)
+
+// STYLES
+
+const Image = styled.img`
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto;
+  transition: all 500ms ease;
+  opacity: ${props => props.Opacity};
+  cursor: pointer;
+  ${media.desktop`
+    width: auto;
+    height: 100%;
+  `}
+  &:hover {
+    opacity: .85;
+  }
+`
+
+const Modal = styled.div`
+  ${flexRowCenteredAll};
+  position: fixed;
+  z-index: 12000;
+  width: 100vw;
+  height: 100vh;
+  background-color: ${props => props.BgColor};
+`
+
+const ModalImageWrapper = styled.div`
+  width: 90vw;
+  height: 90vh;
+  max-width: 120rem;
+  max-height: 70rem;
+  display: block;
+  position: relative;
+`
+
+const CloseButton = styled.button`
+  ${buttonInit};
+  color: white;
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  svg {
+    width: 4rem;
+    height: 4rem;
+  }
+`

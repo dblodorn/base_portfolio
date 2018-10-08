@@ -2,12 +2,12 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import styled, { css } from 'styled-components'
 import ReactPlayer from 'react-player'
-import { setVideoPlaying } from './../state/actions'
-import { buttonInit, flexRowCenteredAll, absoluteTopFull, opacityTransition } from './../styles/mixins'
-import { colors } from './../styles/theme.json'
-import ErrorBoundary from './utils/ErrorBoundary'
-import BgImage from './utils/BgImage'
-import PlayButton from './PlayButton'
+import { setVideoPlaying } from './../../state/actions'
+import { buttonInit, flexRowCenteredAll, absoluteTopFull, opacityTransition } from './../../styles/mixins'
+import { colors } from './../../styles/theme.json'
+import ErrorBoundary from '../utils/ErrorBoundary'
+import BgImage from './../utils/BgImage'
+import PlayButton from './../utils/PlayButton'
 
 class Video extends PureComponent {
   state = {

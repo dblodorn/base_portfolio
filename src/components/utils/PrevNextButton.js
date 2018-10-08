@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { opacityTransition, buttonInit } from '../styles/mixins'
-import { colors } from './../styles/theme.json'
+import { opacityTransition, buttonInit } from '../../styles/mixins'
+import { colors } from './../../styles/theme.json'
 
 const Button = styled.div`
   ${buttonInit};
