@@ -24,6 +24,7 @@ export default pageData((props) => {
           {props.content.post_collection.map((item, i) =>
             <PostCard 
               columns={props.content.columns}
+              thumbnail_proportion={props.content.thumbnail_proportion}
               showTaxonomies={props.content.show_post_taxonomies}
               showThumbnail={props.content.show_thumbnail}
               cardData={item} 
@@ -42,5 +43,4 @@ const PostList = styled.ul`
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
-  border-top: ${shared.border_thick};
 `

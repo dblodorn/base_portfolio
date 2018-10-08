@@ -41,6 +41,7 @@ const NavItem = styled.li`
   `}
   &.active {
     pointer-events: none!important;
+    text-decoration: underline;
     * { color: ${colors.active_color}; }
   }
 `

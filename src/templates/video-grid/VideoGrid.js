@@ -14,7 +14,7 @@ export default pageData((props) => {
         <VideoList>
           {props.content.video_collection.map((item, i) =>
             <VideoThumb className={props.content.columns} key={item.post_id + 'vg' + i}>
-              <Video coverUrl={item.video_cover.large} videoUrl={item.video_url}/>
+              <Video coverUrl={item.video_cover} videoUrl={item.video_url}/>
             </VideoThumb>
           )}
         </VideoList>
@@ -25,9 +25,11 @@ export default pageData((props) => {
 
 const VideoList = styled.ul`
   ${flexRowWrap};
+  padding: ${spacing.single_pad};
 `
 
 const VideoThumb = styled.li`
-  margin-bottom: ${spacing.big_pad};
+  padding: ${spacing.single_pad};
   ${grid};
+  overflow: hidden;
 `

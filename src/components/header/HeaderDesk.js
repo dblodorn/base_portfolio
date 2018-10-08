@@ -26,7 +26,6 @@ const HeaderWrapper = styled.header`
   left: 0;
   z-index: 9000;
   border-bottom: 1px solid ${colors.black};
-  background-color: ${colors.white};
   background-color: ${colors.header_bg_color};
   * {
     color: ${colors.header_type_color}!important;

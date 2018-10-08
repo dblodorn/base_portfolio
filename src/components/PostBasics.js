@@ -29,5 +29,5 @@ export default (props) =>
 // STYLES
 const PostBasicsSection = styled(Section)`
   background-color: ${props => props.theme.top_bg_color};
-  padding: ${spacing.double_pad} ${spacing.double_pad} ${spacing.big_pad};
+  padding: ${spacing.double_pad};
 `

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import LazyLoad from 'react-lazyload'
 import { FitImage } from './../../components'
 import { P, PadWrapper } from './../../styles/components'
-import { defaultLink, bigType, flexColumn, media, grid } from './../../styles/mixins'
+import { defaultLink, bigType, flexColumn, media, grid, flexRow } from './../../styles/mixins'
 import { spacing, shared } from './../../styles/theme.json'
 import Taxonomies from './Taxonomies'
 
@@ -15,19 +15,21 @@ export default (props) => {
         <ProjectTitle>{props.cardData.title}</ProjectTitle>
       </PadWrapper>
       {(props.cardData.thumbnail && props.showThumbnail) && 
-        <ProjectThumb className={props.columns}>
+        <ProjectThumb className={props.columns} Proportion={`${props.thumbnail_proportion}%`}>
           <LazyLoad height='100%'><FitImage src={props.cardData.thumbnail}/></LazyLoad>
         </ProjectThumb>
       }
-      {(props.cardData.short_description) &&
-        <ExcerptWrapper>
-          <P>{props.cardData.short_description}</P>
-        </ExcerptWrapper>
-      }
-      {(props.showTaxonomies) && <Taxonomies title={`${props.cardData.title} : Taxonomies`} taxonomies={props.cardData.taxonomies}/>}
-      <LinkWrapper>
-        <ProjectLink to={(props.cardData.post_type === 'page') ? `/${props.cardData.slug}` : `/${props.cardData.post_type}/${props.cardData.slug}`}><span>View {props.cardData.post_type} ></span></ProjectLink>
-      </LinkWrapper>
+      <CardInfo className={props.columns}>
+        {(props.cardData.short_description) &&
+          <ExcerptWrapper>
+            <P>{props.cardData.short_description}</P>
+          </ExcerptWrapper>
+        }
+        {(props.showTaxonomies) && <Taxonomies title={`${props.cardData.title} : Taxonomies`} taxonomies={props.cardData.taxonomies}/>}
+        <LinkWrapper>
+          <ProjectLink to={(props.cardData.post_type === 'page') ? `/${props.cardData.slug}` : `/${props.cardData.post_type}/${props.cardData.slug}`}><span>View {props.cardData.post_type} ></span></ProjectLink>
+        </LinkWrapper>
+      </CardInfo>
     </CardWrapper>
   )
 }
@@ -48,7 +50,6 @@ const CardWrapper = styled.li`
 `
 
 const ExcerptWrapper = styled.div`
-  border-top: ${shared.border_thin};
   padding: ${spacing.double_pad};
 `
 
@@ -58,23 +59,37 @@ const ProjectLink = styled(Link)`
 
 const ProjectTitle = styled.h3`
   ${bigType};
-  padding-bottom: ${spacing.single_pad};
 `
 
 const ProjectThumb = styled.div`
   width: 100%;
   height: 0;
   overflow-y: visible;
-  padding-bottom: 65%;
+  padding-bottom: ${props => props.Proportion};
   position: relative;
   border-top: ${shared.border_thin};
-  &.one_col {
-    border-bottom: ${shared.border_thin};
-  }
 `
 
 const LinkWrapper = styled(PadWrapper)`
   display: flex;
   margin-top: auto;
   justify-content: flex-end;
+`
+
+const CardInfo = styled.div`
+  border-top: ${shared.border_thin};
+  width: 100%;
+  height: 100%;
+  ${media.desktopNav`
+    ${flexRow};
+    justify-content: space-between;
+  `}
+  &.two_col,
+  &.three_col,
+  &.four_col {
+    ${media.desktopNav`
+      ${flexColumn};
+      justify-content: ;
+    `}
+  }
 `

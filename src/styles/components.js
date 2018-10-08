@@ -75,6 +75,21 @@ const StyledMarkup = styled.article`
   &.pad-top {
     padding-top: ${spacing.double_pad};
   }
+  h1 {
+    ${_.bigType};
+  }
+  h2 {
+    ${_.mediumType};
+  }
+  h3 {
+    ${_.bodyType};
+  }
+  h4 {
+    ${_.bodyType};
+  }
+  h5 {
+    ${_.bodyType};
+  }
   p {
     ${_.bodyType};
   }
@@ -82,7 +97,7 @@ const StyledMarkup = styled.article`
     ${_.defaultLink};
   }
   * {
-    color: ${props => props.theme.header_color}!important;
+    color: ${props => props.theme.header_color};
     font-family: ${props => props.theme.body_copy_font}!important;
   }
 `

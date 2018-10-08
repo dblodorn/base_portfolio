@@ -19,7 +19,7 @@ const CarouselSlide = (props) => {
     <InnerSlide className={`${props.slideData.slide_type}-slide`}>
       <SlideWrapper>
         {(props.slideData.slide_type == 'image')
-          ? <BgImage Source={(props.window_width >= breakpoints.desktop) ? props.slideData.image.large : props.slideData.image.medium} BgSize={props.slideData.style}/> :
+          ? <BgImage Source={(props.window_width >= breakpoints.medium) ? props.slideData.image.large : props.slideData.image.medium} BgSize={props.slideData.style}/> :
           (props.slideData.slide_type == 'text')
           ? <ThemeProvider theme={themes[props.slideData.theme]}>
               <TextCard bg_color={props.slideData.bg_color} text_color={props.slideData.text_color}>

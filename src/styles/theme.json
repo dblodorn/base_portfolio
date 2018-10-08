@@ -1,6 +1,7 @@
 {
   "breakpoints": {
     "mobile": 0,
+    "medium": 570,
     "desktop": 1140
   },
   "transitions": {
@@ -8,9 +9,9 @@
     "damping_fast": 30
   },
   "heights": {
-    "header": "7rem",
+    "header": "6rem",
     "mobile_header": "6rem",
-    "footer": "7rem",
+    "footer": "6rem",
     "player_icons": "2.5rem"
   },
   "spacing": {
@@ -24,13 +25,13 @@
     "black": "#180c06",
     "hover_color": "red",
     "active_color": "purple",
-    "lt_grey": "#111111",
+    "lt_grey": "#D8D8D8",
     "green": "green",
     "yellow": "yellow",
-    "footer_bg_color": "#180c06",
-    "footer_type_color": "pink",
-    "header_bg_color": "#180c06",
-    "header_type_color": "pink"
+    "footer_bg_color": "#fff",
+    "footer_type_color": "#180c06",
+    "header_bg_color": "#fff",
+    "header_type_color": "#180c06"
   },
   "fonts": {
     "sans": "FFF Regular, system-ui, sans-serif",

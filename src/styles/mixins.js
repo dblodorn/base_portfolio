@@ -144,10 +144,18 @@ const defaultLink = css`
     z-index: 10;
     display: block;
   }
+  &.active {
+    text-decoration: underline;
+  }
   &:hover {
     text-decoration: underline;
     color: ${colors.hover_color};
   }
+`
+
+const opacityTransition = css`
+  transition: opacity 450ms ease-in-out;
+  will-change: opacity;
 `
 
 // STYLE UTILS
@@ -262,10 +270,60 @@ const borderRadius = (radius) => {
   `
 }
 
-const fullBg = `
+const fullBg = css`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+`
+
+const fullWindow = css`
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+`
+
+const absoluteTopFull = css`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+`
+
+const positionClasses = css`
+  display: flex;
+  flex-direction: column;
+  &.centered {
+    align-items: center;
+    justify-content: center;
+  }
+  &.centered_right {
+    align-items: flex-end;
+    justify-content: center;
+  }
+  &.top_right {
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+  &.bottom_right {
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+  &.centered_left {
+    align-items: flex-start;
+    justify-content: center;
+  }
+  &.top_left {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  &.bottom_left {
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
 `
 
 export {
@@ -296,5 +354,9 @@ export {
   borderRadius,
   pulseAnimation,
   fullBg,
-  grid
+  grid,
+  fullWindow,
+  positionClasses,
+  absoluteTopFull,
+  opacityTransition
 }

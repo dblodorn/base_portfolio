@@ -8,7 +8,6 @@ import _ from 'lodash/wrapperLodash'
 import { fetchApiData, setResizeState, hasTouch, fontsLoaded } from './state/actions'
 import App from './App'
 import config from './config.json'
-
 import { history, store } from './state/store'
 
 mixin(_, {

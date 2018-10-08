@@ -1,14 +1,22 @@
 import React from 'react'
 import styled from 'styled-components'
+import { opacityTransition } from './../styles/mixins'
 import { colors } from './../styles/theme.json'
 
 const PlayerButton = styled.div`
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 15%;
+  height: 15%;
   padding: 1px;
   margin: auto;
+  &:hover {
+    svg {
+      opacity: .35;
+    }
+  }
   svg,
   img {
+    ${opacityTransition};
+    opacity: 1;
     width: 100%;
     height: 100%;
     fill: ${colors.overlay};
@@ -17,5 +25,5 @@ const PlayerButton = styled.div`
 
 export default (props) =>
   <PlayerButton>
-    <h1>PLAY</h1>
+    <svg version="1.1" viewBox="0 0 48 48" width="48" height="48"><title>button play</title><g stroke-linecap="square" stroke-linejoin="miter" stroke-width="1" fill="#111111" stroke="#111111"><polygon fill="none" stroke="#111111" stroke-miterlimit="10" points="11,44 11,4 41,24 "></polygon></g></svg>
   </PlayerButton>
