@@ -6,7 +6,7 @@ import Swiper from 'react-id-swiper/lib/custom'
 import Waypoint from 'react-waypoint'
 import CarouselSlide from './CarouselSlide'
 import { spacing } from './../../styles/theme.json'
-import { buttonInit } from './../../styles/mixins'
+import { buttonInit, absoluteTopFull, absoluteCentered } from './../../styles/mixins'
 import { PrevButton, NextButton } from './../PrevNextButton'
 
 class Carousel extends Component {
@@ -96,7 +96,7 @@ class Carousel extends Component {
     }
 
     const HeroSlides = this.props.slides.map((slide, i) =>
-      <HeroSlide key={i} data-slidetype={slide.slide_type}>
+      <HeroSlide key={i} data-slidetype={slide.slide_type} className={(this.props.navigation) && 'nav'}>
         <CarouselSlide slideData={slide}>
           {(slide.slide_type === 'video') &&
             <ReactPlayer
@@ -144,6 +144,14 @@ const buttonWrap = css`
   height: 6rem;
 `
 
+const HeroSlide = styled.div`
+  width: 100%;
+  height: 100%;
+  &.nav {
+    padding: 0 5.25rem;
+  }
+`
+
 const HeroSlider = styled.div`
   width: 100vw;
   height: 100%;
@@ -166,28 +174,13 @@ const HeroSlider = styled.div`
     right: ${spacing.micro_pad};
   }
   .hero-player {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    ${absoluteTopFull};
     z-index: 100;
   }
   video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    margin: auto;
+    ${absoluteCentered};
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-`
-
-const HeroSlide = styled.div`
-  width: 100%;
-  height: 100%;
-  padding: 0 5.25rem;
 `

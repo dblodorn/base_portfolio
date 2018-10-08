@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import styled, { ThemeProvider } from 'styled-components'
 import { themeA, themeB } from './../../styles/theme'
-import { flexRowCenteredAll, mainPadding } from './../../styles/mixins'
+import { flexRowCenteredAll, mainPadding, absoluteTopFull, flexCenteredAll } from './../../styles/mixins'
 import { H1 } from './../../styles/components'
 import BgImage from '../utils/BgImage'
 import { breakpoints, shared } from './../../styles/theme.json'
@@ -45,11 +45,7 @@ const TextCard = styled.div`
   background-color: ${props => props.bg_color};
   ${flexRowCenteredAll};
   ${mainPadding};
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
+  ${absoluteTopFull};
   text-align: center;
   * {
     color: ${props => props.text_color}!important;
@@ -60,20 +56,12 @@ const InnerSlide = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
-  transform: translateZ(0);
 `
 
 const SlideWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  left: 0;
+  ${absoluteTopFull};
+  ${flexCenteredAll};
   z-index: 50;
-  transform: translateZ(0);
   pointer-events: none;
   border-right: ${shared.border_thin};
   border-left: ${shared.border_thin};

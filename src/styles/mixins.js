@@ -211,6 +211,12 @@ const flexRowCenteredAll = css`
   justify-content: center;
 `
 
+const flexCenteredAll = css`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
 const flexRowSpaceBetween = css`
   ${flexRow};
   justify-content: space-between;
@@ -351,6 +357,7 @@ export {
   flexRowCenteredVert,
   flexRowSpaceBetween,
   flexRowCenteredAll,
+  flexCenteredAll,
   borderRadius,
   pulseAnimation,
   fullBg,
