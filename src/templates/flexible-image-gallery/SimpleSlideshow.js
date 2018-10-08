@@ -6,7 +6,13 @@ import { media } from './../../styles/mixins'
 
 export default (props) =>
   <CarouselWrapper className={(props.data.is_hero) && 'fixed-hero'}>
-    <Carousel slides={props.data.slides}/>
+    <Carousel 
+      slides={props.data.slides}
+      navigation={props.data.controls}
+      pagination={props.data.pagination}
+      captions={props.data.captions}
+      autoplay={props.data.autoplay}
+    />
   </CarouselWrapper>
 
 // STYLES

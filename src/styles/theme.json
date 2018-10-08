@@ -15,7 +15,7 @@
     "player_icons": "2.5rem"
   },
   "spacing": {
-    "micro_pad": ".75rem",
+    "micro_pad": ".5rem",
     "single_pad": "1rem",
     "double_pad": "2rem",
     "big_pad": "6rem"

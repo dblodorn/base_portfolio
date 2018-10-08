@@ -7,7 +7,6 @@ import withStore from './../HOC/withStore'
 
 export default withStore(() =>
   <FooterWrapper>
-    <P>Footer</P>
   </FooterWrapper>
 )
 
