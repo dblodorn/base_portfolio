@@ -8,6 +8,11 @@
     "stiffness_fast": 300,
     "damping_fast": 30
   },
+  "widths": {
+    "max_large": "124rem",
+    "max_medium": "92rem",
+    "max_small": "72rem"
+  },
   "heights": {
     "header": "6rem",
     "mobile_header": "6rem",
@@ -23,6 +28,8 @@
   "colors": {
     "white": "#ffffff",
     "black": "#180c06",
+    "grey": "#8f8f8f",
+    "med_grey": "#939393",
     "hover_color": "red",
     "active_color": "purple",
     "lt_grey": "#D8D8D8",
@@ -36,9 +43,11 @@
   "fonts": {
     "sans": "FFF Regular, system-ui, sans-serif",
     "display_font_a": "David, system-ui, sans-serif",
-    "body_copy_font_a": "Knif Mono, Monaco, monospace",
+    "body_copy_font_a": "FFF Regular, Monaco, monospace",
+    "nav_font_a": "FFF Regular, Monaco, monospace",
     "display_font_b": "GT America Expanded, system-ui, sans-serif",
-    "body_copy_font_b": "GT America Extended, system-ui, sans-serif",
+    "body_copy_font_b": "Knif Mono, system-ui, sans-serif",
+    "nav_font_b": "David, system-ui, sans-serif",
     "sizes": {
       "giant": "7.5rem",
       "giant_sm": "5.5rem",
@@ -48,8 +57,8 @@
       "body_sm": "2.5rem",
       "small": "1.75rem",
       "small_sm": "1.75rem",
-      "micro": "1.25rem",
-      "micro_sm": "1.125rem"
+      "micro": "1rem",
+      "micro_sm": "1rem"
     }
   },
   "global": {

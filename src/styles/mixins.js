@@ -1,5 +1,6 @@
+import chroma from 'chroma-js'
 import { css, keyframes } from 'styled-components'
-import { spacing, fonts, shared, breakpoints, colors } from './theme.json'
+import { spacing, fonts, shared, breakpoints, colors, widths } from './theme.json'
 
 // Media Queries
 const media = {
@@ -222,6 +223,46 @@ const flexRowSpaceBetween = css`
   justify-content: space-between;
 `
 
+//
+
+const buttonStyle = css`
+  ${buttonInit};
+  ${microType};
+  ${flexCenteredAll};
+  text-transform: uppercase;
+  height: 3rem;
+  background-color: ${chroma(colors.grey).darken(.2)};
+  color: ${colors.white};
+  border-radius: 1.5rem;
+  will-change: background-color;
+  transition: background-color 250ms ease;
+  max-width: 16rem;
+  text-decoration: none;
+  padding: 0 ${spacing.single_pad}!important;
+  letter-spacing: 1px;
+  span {
+    padding-top: .2rem;
+  }
+  &:hover {
+    background-color: ${chroma(colors.grey).darken(1.5)};
+  }
+  &.active {
+    background-color: ${chroma(colors.grey).darken(.5)};
+  }
+  ${media.small`
+    background-color: ${chroma(colors.grey).darken(1.125)}; 
+    width: auto;
+    min-width: 10rem;
+    padding: 0 1.5rem;
+    span {
+      padding-top: 2px;
+    }
+    &.active {
+      background-color: ${chroma(colors.grey).darken(1.5)};
+    }
+  `}
+`
+
 // Animation
 const pulse = keyframes`
   0% {
@@ -332,6 +373,23 @@ const positionClasses = css`
   }
 `
 
+const wrapperWidths = css`
+  width: 100%;
+  margin: 0 auto;
+  &.full_width {
+    max-width: 100%;
+  }
+  &.max_large {
+    max-width: ${widths.max_large};
+  }
+  &.max_medium {
+    max-width: ${widths.max_medium};
+  }
+  &.max_small {
+    max-width: ${widths.max_small};
+  }
+`
+
 export {
   media,
   maxWidth,
@@ -365,5 +423,7 @@ export {
   fullWindow,
   positionClasses,
   absoluteTopFull,
-  opacityTransition
+  opacityTransition,
+  wrapperWidths,
+  buttonStyle
 }

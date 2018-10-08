@@ -4,16 +4,14 @@ import { StyledLink } from './../../styles/components'
 import { flexRowCenteredVert, bodyType } from './../../styles/mixins'
 import { heights, spacing, colors } from './../../styles/theme.json'
 import Menu from './../menus/Menu'
-import withStore from './../HOC/withStore'
 
-export default withStore((props) =>
+export default () =>
   <HeaderWrapper>
     <Logo to={'/'}>
-      <span>{props.content.meta_defaults.title}</span>
+      <span>Logo</span>
     </Logo>
     <Menu location={0}/>
   </HeaderWrapper>
-)
 
 /* STYLES */
 const HeaderWrapper = styled.header`

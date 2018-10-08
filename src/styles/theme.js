@@ -9,6 +9,7 @@ export const themeA = {
   pad_wrapper: colors.white,
   display_font: fonts.display_font_a,
   body_copy_font: fonts.body_copy_font_a,
+  display_case: 'uppercase',
   default_link: {
     color: colors.black,
     hover: colors.green,
@@ -28,6 +29,7 @@ export const themeB = {
   pad_wrapper: colors.black,
   display_font: fonts.display_font_b,
   body_copy_font: fonts.body_copy_font_b,
+  display_case: 'capitalize',
   default_link: {
     color: colors.white,
     hover: colors.black,

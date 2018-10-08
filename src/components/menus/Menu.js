@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import MenuLink from './MenuLink'
 import { flexRow, flexColumn, flexCenteredAll, media, defaultLink, smallType } from './../../styles/mixins'
 import { NavItem } from './../../styles/components'
-import { breakpoints } from './../../styles/theme.json'
 
 const Menu = (props) => {
   const buildNav = (data) => {
@@ -25,7 +24,7 @@ const Menu = (props) => {
   return (
     <MenuWrapper>
       <NavList>
-        {((props.window_width < breakpoints.desktop) && props.api_data.menus[0]) && <MenuLink page={'Home'} path={''}/>}
+        {props.children}
         {(props.api_data) && buildNav(props.api_data.menus[props.location].items)}
       </NavList>
     </MenuWrapper>
@@ -34,7 +33,6 @@ const Menu = (props) => {
 
 export default connect(
   state => ({
-    window_width: state.resize_state.window_width,
     api_data: state.api_data
   })
 )(Menu)

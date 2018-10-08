@@ -13,7 +13,6 @@ const themes = {
 }
 
 export default pageData((props) => {
-  console.log(props)
   return (
     <Fragment>
       <PostBasics data={props}/>

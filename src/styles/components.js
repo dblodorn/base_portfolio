@@ -22,18 +22,6 @@ const Section = styled.section`
   ${_.flexColumn};
 `
 
-const Article = styled.article`
-  ${_.flexColumn};
-  width: 100%;
-  max-width: 96rem;
-  z-index: 100;
-  position: relative;
-  p {
-    ${_.bodyType};
-    color: ${props => props.color};
-  }
-`
-
 const PadWrapper = styled.div`
   ${_.mainPadding};
   &.add-top-border {
@@ -47,6 +35,7 @@ const H1 = styled.h1`
   padding-bottom: ${spacing.single_pad};
   color: ${props => props.theme.header_color}!important;
   font-family: ${props => props.theme.display_font};
+  text-transform: ${props => props.theme.display_case};
 `
 
 const H2 = styled.h2`
@@ -71,7 +60,21 @@ const SmallP = styled.p`
   font-family: ${props => props.theme.body_copy_font};
 `
 
-const StyledMarkup = styled.article`
+const StyledButton = styled.button`
+  ${_.buttonStyle};
+`
+
+const ButtonLink = styled(Link)`
+  ${_.buttonStyle};
+`
+
+const Article = styled.article`
+  ${_.wrapperWidths};
+  padding-left: ${spacing.double_pad};
+  padding-right: ${spacing.double_pad};
+`
+
+const StyledMarkup = styled.div`
   &.pad-top {
     padding-top: ${spacing.double_pad};
   }
@@ -170,5 +173,7 @@ export {
   StyledLink,
   LogoWrapperFixedTopRight,
   FullPageBgWrapper,
-  NavItem
+  NavItem,
+  ButtonLink,
+  StyledButton
 }
