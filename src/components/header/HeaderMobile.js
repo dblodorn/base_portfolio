@@ -3,28 +3,28 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import Menu from './../menus/Menu'
 import MenuLink from './../menus/MenuLink'
-import TransitionWrapper from './../plugins/TransitionWrapper'
+import { Transition } from 'react-spring'
 import { setMenuState } from './../../state/actions'
 import { flexColumn, defaultLink, buttonInit, scrollPanel, microType, shadow, borderRadius, flexRowCenteredAll } from './../../styles/mixins'
 import { heights, spacing, colors } from './../../styles/theme.json'
 
+const MenuWrapper = (props) =>
+  <InnerHeader style={props.style} className="nav-wrapper__content">
+    <Menu location={0}>
+      <MenuLink page={'Home'} path={''}/>
+    </Menu>
+  </InnerHeader>
+
 const HeaderMobile = (props) => {
   return (
     <HeaderWrapper>
-      {
-        (props.menu)
+      {(props.menu)
         ? <MobileButton onClick={() => props.menu_toggle(false)}><span>Close</span></MobileButton>
         : <MobileButton onClick={() => props.menu_toggle(true)}><span>Menu</span></MobileButton>
       }
-      <TransitionWrapper>
-        {props.menu &&
-          <InnerHeader key="nav-wrapper" className="nav-wrapper__content">
-            <Menu location={0}>
-              <MenuLink page={'Home'} path={''}/>
-            </Menu>
-          </InnerHeader>
-        }
-      </TransitionWrapper>
+      <Transition from={{ opacity: 0, transform: 'scale(1.025)' }} enter={{ opacity: 1, transform: 'scale(1)' }} leave={{ opacity: 0, transform: 'scale(1.05)', pointerEvents: 'none' }}>
+        {props.menu && (styles => <MenuWrapper style={styles}/>)}
+      </Transition>
     </HeaderWrapper>
   )
 }
@@ -68,6 +68,8 @@ const InnerHeader = styled.div`
   left: 0;
   padding: ${spacing.double_pad};
   background-color: ${colors.header_bg_color};
+  will-change: opacity, transform;
+  zoom: 0;
 `
 
 const MobileButton = styled.button`

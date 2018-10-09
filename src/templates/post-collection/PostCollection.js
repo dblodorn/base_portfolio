@@ -15,6 +15,7 @@ const returnTaxonomies = (props) => {
 }
 
 export default pageData((props) => {
+  console.log(props)
   return (
     <Fragment>
       <PostBasics data={props}/>
@@ -38,7 +39,7 @@ export default pageData((props) => {
                   showTitle={props.content.show_title}
                   linkButton={props.content.link_button}
                   columns={props.content.columns}
-                  thumbnail_proportion={props.content.thumbnail_proportion}
+                  proportion={props.content}
                   showTaxonomies={props.content.show_post_taxonomies}
                   showThumbnail={props.content.show_thumbnail}
                   cardData={item} 

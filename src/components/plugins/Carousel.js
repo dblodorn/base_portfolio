@@ -109,7 +109,7 @@ class Carousel extends Component {
               loop={true}
               playsinline={true}
               playing={this.state.playing}
-            /> 
+            />
           }
         </CarouselSlide>
       </HeroSlide>
@@ -120,11 +120,11 @@ class Carousel extends Component {
         <Swiper {...swiperParams} ref={node => { if (node) this.swiper = node.swiper }}>
           {HeroSlides}
         </Swiper>
-        {/*<Waypoint
+        <Waypoint
           onEnter={this._wayPointEnter}
           onLeave={this._wayPointLeft}
           topOffset='50%'
-        />*/}
+        />
       </HeroSlider>
     )
   }

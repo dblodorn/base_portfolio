@@ -2,7 +2,8 @@
   "breakpoints": {
     "mobile": 0,
     "medium": 570,
-    "desktop": 960
+    "desktop": 960,
+    "big": 1500
   },
   "transitions": {
     "stiffness_fast": 300,
@@ -35,10 +36,16 @@
     "lt_grey": "#D8D8D8",
     "green": "green",
     "yellow": "yellow",
+    "display_font_a_color": "#2619d1",
+    "display_font_b_color": "#fff",
+    "body_font_a_color": "#8f8f8f",
+    "body_font_b_color": "#fff",
     "footer_bg_color": "#fff",
     "footer_type_color": "#180c06",
     "header_bg_color": "#fff",
-    "header_type_color": "#180c06"
+    "header_type_color": "#2619d1",
+    "button_color": "#2619d1",
+    "button_typs_color": "#fff"
   },
   "fonts": {
     "sans": "FFF Regular, system-ui, sans-serif",

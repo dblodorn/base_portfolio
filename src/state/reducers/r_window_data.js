@@ -16,6 +16,15 @@ const menuState = (state = false, action) => {
   }
 }
 
+const modalState = (state = false, action) => {
+  switch (action.type) {
+    case 'MODAL_STATE':
+      return action.bool
+    default:
+      return state
+  }
+}
+
 const fontState = (state = false, action) => {
   switch (action.type) {
     case 'FONTS_LOADED':
@@ -38,5 +47,6 @@ export {
   resizeState,
   menuState,
   fontState,
-  touchState
+  touchState,
+  modalState
 }

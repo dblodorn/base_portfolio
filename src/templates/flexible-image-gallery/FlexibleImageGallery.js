@@ -1,11 +1,12 @@
 import React, { Fragment } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import { themeA, themeB } from './../../styles/theme'
-import { Section, H2, StyledMarkup } from './../../styles/components'
+import { Section, H2, StyledMarkup, Article } from './../../styles/components'
 import { pageData, PostBasics, PopupGrid } from './../../components'
 import { fullWindow, positionClasses } from './../../styles/mixins'
 import { heights, spacing, shared } from './../../styles/theme.json'
 import SimpleSlideShow from './SimpleSlideshow'
+import VideoEmbed from './VideoEmbed'
 
 const themes = {
   'a': themeA,
@@ -26,7 +27,7 @@ export default pageData((props) => {
         </ThemeProvider>
       }
       {(props.content.layout) && props.content.layout.map((item, i) =>
-        <LayoutSection className={(item.is_hero) && 'hero'} key={props.content.slug + i + item.module}>
+        <LayoutSection className={(item.is_hero) && 'hero'} key={`${i}-${item.module}`}>
           { (item.module === 'simple_slideshow')
             ? <SimpleSlideShow data={item}/> :
             (item.module === 'slideshow')
@@ -38,7 +39,15 @@ export default pageData((props) => {
                 columns={item.ig_columns}
                 proportion={item.thumbnail_proportion}
                 collectionType={null}
-              />
+              /> :
+            (item.module === 'wysiwig_content') 
+            ? <ThemeProvider theme={themes[props.theme]}>
+                <Article className={item.wysiwig_width}>
+                  <StyledMarkup dangerouslySetInnerHTML={{__html: item.wysiwig }}/>
+                </Article>
+              </ThemeProvider> :
+            (item.module === 'video_embed_file')
+            ? <VideoEmbed data={item}/>
             : <H2>{item.module}</H2>
           }
         </LayoutSection>

@@ -4,11 +4,13 @@ import defaults from './defaults.json'
 
 // Theme
 export const themeA = {
-  header_color: colors.black,
+  header_color: colors.display_font_a_color,
   top_bg_color: colors.white,
   pad_wrapper: colors.white,
+  display_font_color: colors.display_font_a_color,
   display_font: fonts.display_font_a,
   body_copy_font: fonts.body_copy_font_a,
+  body_copy_color: fonts.body_font_a_color,
   display_case: 'uppercase',
   default_link: {
     color: colors.black,
@@ -24,11 +26,13 @@ export const themeA = {
 }
 
 export const themeB = {
-  header_color: colors.white,
+  header_color: colors.display_font_b_color,
   top_bg_color: colors.black,
   pad_wrapper: colors.black,
+  display_font_color: colors.display_font_b_color,
   display_font: fonts.display_font_b,
   body_copy_font: fonts.body_copy_font_b,
+  body_copy_color: fonts.body_font_b_color,
   display_case: 'capitalize',
   default_link: {
     color: colors.white,

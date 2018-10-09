@@ -27,6 +27,13 @@ function hasTouch (bool) {
   }
 }
 
+function setModalState (bool) {
+  return {
+    type: 'MODAL_STATE',
+    bool
+  }
+}
+
 const setResizeState = () => {
   return (dispatch) => {
     dispatch(resizeData({
@@ -41,5 +48,6 @@ export {
   setResizeState,
   setMenuState,
   fontsLoaded,
-  hasTouch
+  hasTouch,
+  setModalState
 }

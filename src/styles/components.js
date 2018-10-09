@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { heights, spacing, shared, colors } from './theme.json'
+import { heights, spacing, shared, colors, breakpoints } from './theme.json'
 import * as _ from './mixins'
 
 // DOM NODES
@@ -40,25 +40,31 @@ const GridWrapper = styled.ul`
 `
 
 const ProportionWrapper = styled.div`
-  padding-bottom: ${props => props.Proportion};
   height: 0;
   overflow-y: visible;
   position: relative;
-  width: 100%
+  width: 100%;
+  padding-bottom: ${props => props.Mobile};
+  ${_.media.medium`
+    padding-bottom: ${props => props.Proportion};
+  `}
+  ${_.media.big`
+    padding-bottom: ${props => props.Max};
+  `}
 `
 
 // TYPE
 const H1 = styled.h1`
   ${_.bigType};
   padding-bottom: ${spacing.single_pad};
-  color: ${props => props.theme.header_color}!important;
+  color: ${props => props.theme.display_font_color}!important;
   font-family: ${props => props.theme.display_font};
   text-transform: ${props => props.theme.display_case};
 `
 
 const H2 = styled.h2`
   ${_.mediumType};
-  color: ${colors.black};
+  color: ${props => props.theme.display_font_color}!important;
   font-family: ${props => props.theme.display_font};
 `
 
@@ -112,7 +118,7 @@ const StyledMarkup = styled.div`
     ${_.defaultLink};
   }
   * {
-    color: ${props => props.theme.header_color};
+    color: ${props => props.theme.body_copy_color}!important;
     font-family: ${props => props.theme.body_copy_font}!important;
   }
 `

@@ -4,7 +4,7 @@ import LazyLoad from 'react-lazyload'
 import { themeA, themeB } from './../../styles/theme'
 import { FitImage } from './../../components'
 import { P, PadWrapper, ButtonLink, ProportionWrapper } from './../../styles/components'
-import { bigType, flexColumn, media, grid, flexRow } from './../../styles/mixins'
+import { bigType, flexColumn, media, grid, flexRowWrap } from './../../styles/mixins'
 import { spacing, shared, widths } from './../../styles/theme.json'
 import Taxonomies from './Taxonomies'
 
@@ -16,20 +16,21 @@ const themes = {
 export default (props) => {
   return (
     <CardWrapper className={`${props.columns} ${props.style}`}>
-      {(props.showTitle) &&
-        <ThemeProvider theme={themes[props.theme]}>
-          <ProjectTitle>{props.cardData.title}</ProjectTitle>
-        </ThemeProvider>
-      }
       {(props.cardData.thumbnail && props.showThumbnail) && 
-        <ProjectThumb className={(props.showTitle) && props.style} Proportion={`${props.thumbnail_proportion}%`}>
+        <ThumbnailWrapper
+          className={`${props.columns} ${props.style}`}
+          Proportion={`${props.proportion.thumbnail_proportion}%`}
+          Mobile={`${props.proportion.thumbnail_proportion_mobile}%`}
+          Max={`${props.proportion.thumbnail_proportion_max}%`}
+        >
           <LazyLoad height='100%'>
             <FitImage src={props.cardData.thumbnail} fit={'cover'}/>
           </LazyLoad>
-        </ProjectThumb>
+        </ThumbnailWrapper>
       }
       <ThemeProvider theme={themes[props.theme]}>
         <CardInfo className={`${props.columns} ${props.style}`}>
+          {(props.showTitle) && <ProjectTitle>{props.cardData.title}</ProjectTitle>}
           {(props.cardData.short_description) &&
             <ExcerptWrapper>
               <CardP>{props.cardData.short_description}</CardP>
@@ -41,7 +42,7 @@ export default (props) => {
           {(props.linkButton) &&
             <LinkWrapper>
               <ButtonLink to={(props.cardData.post_type === 'page') ? `/${props.cardData.slug}` : `/${props.cardData.post_type}/${props.cardData.slug}`}>
-                <span>More Info</span>
+                <span>More</span>
               </ButtonLink>
             </LinkWrapper>
           }
@@ -63,7 +64,16 @@ const CardWrapper = styled.li`
         border-right: ${shared.border_thin};
       }
     }
+    &:last-child {
+      border-bottom: 0;
+    }
   `}
+  }
+`
+
+const ThumbnailWrapper = styled(ProportionWrapper)`
+  &.border {
+    border-bottom: ${shared.border_thin};
   }
 `
 
@@ -74,18 +84,14 @@ const ExcerptWrapper = styled.div`
 
 const ProjectTitle = styled.h3`
   ${bigType};
-  color: ${props => props.theme.header_color}!important;
+  color: ${props => props.theme.display_font_color}!important;
   font-family: ${props => props.theme.display_font};
   text-transform: ${props => props.theme.display_case};
   background-color: ${props => props.theme.top_bg_color};
-  padding: ${spacing.double_pad};
+  padding: ${spacing.double_pad} ${spacing.double_pad} 0;
   display: block;
-`
-
-const ProjectThumb = styled(ProportionWrapper)`
-  &.border {
-    border-top: ${shared.border_thin};
-  }
+  width: 100%;
+  margin-bottom: 0;
 `
 
 const LinkWrapper = styled(PadWrapper)`
@@ -106,8 +112,8 @@ const LinkWrapper = styled(PadWrapper)`
 `
 
 const CardP = styled(P)`
-  color: ${props => props.theme.header_color}!important;
-  font-family: ${props => props.theme.display_font};
+  color: ${props => props.theme.display_font_color}!important;
+  font-family: ${props => props.theme.body_copy_font};
   max-width: ${widths.max_small};
 `
 
@@ -115,11 +121,8 @@ const CardInfo = styled.div`
   width: 100%;
   height: 100%;
   background-color: ${props => props.theme.top_bg_color};
-  &.border {
-    border-top: ${shared.border_thin}; 
-  }
   ${media.desktopNav`
-    ${flexRow};
+    ${flexRowWrap};
     justify-content: space-between;
   `}
   &.two_col,

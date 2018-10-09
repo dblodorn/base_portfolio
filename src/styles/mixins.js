@@ -1,4 +1,4 @@
-import chroma from 'chroma-js'
+import Color from 'color'
 import { css, keyframes } from 'styled-components'
 import { spacing, fonts, shared, breakpoints, colors, widths } from './theme.json'
 
@@ -16,6 +16,11 @@ const media = {
   `,
   desktopNav: (...args) => css`
     @media (min-width: ${breakpoints.desktop}px) {
+      ${ css(...args) }
+    }
+  `,
+  big: (...args) => css`
+    @media (min-width: ${breakpoints.big}px) {
       ${ css(...args) }
     }
   `,
@@ -211,26 +216,28 @@ const buttonStyle = css`
   ${flexCenteredAll};
   text-transform: uppercase;
   height: 3rem;
-  background-color: ${chroma(colors.grey).darken(.2)};
-  color: ${colors.white};
+  background-color: ${Color(colors.button_color).hsl().string()};
+  color: ${colors.button_typs_color};
   border-radius: 1.5rem;
   will-change: background-color;
   transition: background-color 250ms ease;
-  max-width: 16rem;
   text-decoration: none;
-  padding: 0 ${spacing.single_pad}!important;
+  padding: 0 calc(${spacing.single_pad} * 1.5)!important;
   letter-spacing: 1px;
+  font-weight: 600;
+  flex-grow: 0;
+  flex-shrink: 0;
   span {
-    padding-top: .2rem;
+    padding-top: .25rem;
   }
   &:hover {
-    background-color: ${chroma(colors.grey).darken(1.5)};
+    background-color: ${Color(colors.button_color).darken(.25).hsl().string()};
   }
   &.active {
-    background-color: ${chroma(colors.grey).darken(.5)};
+    background-color: ${Color(colors.button_color).darken(.5).hsl().string()};
   }
   ${media.small`
-    background-color: ${chroma(colors.grey).darken(1.125)}; 
+    background-color: ${Color(colors.button_color).darken(.125).hsl().string()}; 
     width: auto;
     min-width: 10rem;
     padding: 0 1.5rem;
@@ -238,7 +245,7 @@ const buttonStyle = css`
       padding-top: 2px;
     }
     &.active {
-      background-color: ${chroma(colors.grey).darken(1.5)};
+      background-color: ${Color(colors.button_color).darken(1.5)};
     }
   `}
 `

@@ -1,67 +1,42 @@
-import React, { PureComponent, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
-import { Motion, spring } from 'react-motion'
-import { media, flexRowCenteredAll, buttonInit, animationFadeIn } from './../../styles/mixins'
+import { Transition } from 'react-spring'
+import { flexRowCenteredAll, buttonInit, animationFadeIn } from './../../styles/mixins'
 import styled from 'styled-components'
-import { transitions, heights } from './../../styles/theme.json'
+import { setModalState } from './../../state/actions'
+import { heights, colors } from './../../styles/theme.json'
 import ImageModal from './SingleImagePortal'
 import FitImage from './../utils/FitImage'
+import Close from './../utils/Close'
 
-class SingleImageModal extends PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = {
-      OpenModal: false
-    }
-  }
-
-  _ImageEnlarge() {
-    this.setState({
-      OpenModal: !this.state.OpenModal
-    })
-  }
-
-  render() {
-    return (
-      <Fragment>
-        <FitImage clickFunction={() => this._ImageEnlarge()} src={this.props.src} fit={'contain'}/>
-        {
-          (this.state.OpenModal) ?
-          <Motion defaultStyle={{opacity: 0, scale: 1.05}} style={{
-            opacity: spring(1, {stiffness: transitions.stiffness_fast, damping: transitions.damping_fast}),
-            scale: spring(1, {stiffness: transitions.stiffness_fast, damping: transitions.damping_fast})
-          }}>
-            {obj => {
-              const { opacity, scale } = obj
-              let style= {
-                opacity: opacity,
-                transform: `scale(${scale})`
-              }
-              return <ImageModal>
-                        <Modal BgColor={'#ffffff'} style={style}>
-                          <CloseButton onClick={() => this._ImageEnlarge()}>
-                            <svg version='1.1' xmlns="http://www.w3.org/2000/svg" x='0px' y='0px' viewBox='0 0 64 64' width='64' height='64'>
-                              <g className="nc-icon-wrapper" fill={'black'}>
-                                <line fill="none" stroke={'black'} strokeWidth="2" strokeLinecap="square" strokeMiterlimit="10" x1="54" y1="10" x2="10" y2="54" strokeLinejoin="miter"></line>
-                                <line fill="none" stroke={'black'} strokeWidth="2" strokeLinecap="square" strokeMiterlimit="10" x1="54" y1="54" x2="10" y2="10" strokeLinejoin="miter"></line>
-                              </g>
-                            </svg>
-                          </CloseButton>
-                          <ModalImageWrapper>
-                            <FitImage src={this.props.src} fit={'contain'}/>
-                          </ModalImageWrapper>
-                        </Modal>
-                      </ImageModal>
-              }}
-            </Motion>
-          : null
-        }
-      </Fragment>
-    )
-  }
+const SingleImageModal = (props) => {
+  return (
+    <Fragment>
+      <FitImage clickFunction={() => props.modal_toggle(true)} src={props.src} fit={'contain'}/>
+      <Transition from={{ opacity: 0, transform: 'scale(1.005)' }} enter={{ opacity: 1, transform: 'scale(1)' }} leave={{ opacity: 0, transform: 'scale(1.005)', pointerEvents: 'none' }}>
+        {props.modal && (styles => 
+          <ImageModal>
+            <Modal BgColor={'#ffffff'} style={styles}>
+              <Close clickFunction={() => props.modal_toggle(false)} color={colors.black}/>
+              <ModalImageWrapper>
+                <FitImage src={props.src} fit={'contain'}/>
+              </ModalImageWrapper>
+            </Modal>
+          </ImageModal>
+        )}
+      </Transition>
+    </Fragment>
+  )
 }
 
-export default SingleImageModal
+export default connect(
+  state => ({
+    modal: state.modal
+  }),
+  dispatch => ({
+    modal_toggle: (bool) => dispatch(setModalState(bool))
+  })
+)(SingleImageModal)
 
 // STYLES
 const Modal = styled.div`

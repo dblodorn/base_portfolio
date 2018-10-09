@@ -1,8 +1,8 @@
 import React from 'react'
 import { Carousel } from './../../components'
 import styled from 'styled-components'
-import { heights } from './../../styles/theme.json'
-import { media } from './../../styles/mixins'
+import { heights, spacing } from './../../styles/theme.json'
+import { media, fixedTopLeft } from './../../styles/mixins'
 
 export default (props) =>
   <CarouselWrapper className={(props.data.is_hero) && 'fixed-hero'}>
@@ -17,10 +17,16 @@ export default (props) =>
 
 // STYLES
 const CarouselWrapper = styled.div`
-  width: 100%;
-  height: 100vh;
+  display: block;
+  width: 100vw;
+  height: 56.25vw;
   position: relative;
+  max-height: calc(100vh - (${heights.header} * 3));
+  margin-bottom: ${spacing.big_pad};
   &.fixed-hero {
+    ${fixedTopLeft};
+    height: 100vh;
+    max-height: 100vh;
     padding-bottom: ${heights.footer};
     ${media.desktopNav`
       padding-top: ${heights.header};
