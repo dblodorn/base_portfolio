@@ -21,13 +21,14 @@ const CarouselWrapper = styled.div`
   width: 100vw;
   height: 56.25vw;
   position: relative;
-  max-height: calc(100vh - (${heights.header} * 3));
-  margin-bottom: ${spacing.big_pad};
+  max-height: calc(100vh - ${heights.header});
+  margin: ${spacing.big_pad} 0 ${spacing.big_pad};
   &.fixed-hero {
     ${fixedTopLeft};
     height: 100vh;
     max-height: 100vh;
     padding-bottom: ${heights.footer};
+    margin: 0!important;
     ${media.desktopNav`
       padding-top: ${heights.header};
     `}

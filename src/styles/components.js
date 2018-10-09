@@ -98,27 +98,37 @@ const StyledMarkup = styled.div`
   }
   h1 {
     ${_.bigType};
+    color: ${props => props.theme.display_font_color}!important;
+    font-family: ${props => props.theme.display_font}!important;
   }
   h2 {
     ${_.mediumType};
+    color: ${props => props.theme.display_font_color}!important;
+    font-family: ${props => props.theme.display_font}!important;
   }
   h3 {
     ${_.bodyType};
+    color: ${props => props.theme.body_copy_color}!important;
+    font-family: ${props => props.theme.display_font}!important;
   }
   h4 {
     ${_.bodyType};
+    color: ${props => props.theme.body_copy_color}!important;
+    font-family: ${props => props.theme.body_copy_font}!important;
   }
   h5 {
     ${_.bodyType};
+    color: ${props => props.theme.body_copy_color}!important;
+    font-family: ${props => props.theme.body_copy_font}!important;
   }
   p {
     ${_.bodyType};
+    color: ${props => props.theme.body_copy_color}!important;
+    font-family: ${props => props.theme.body_copy_font}!important;
   }
   a {
     ${_.defaultLink};
-  }
-  * {
-    color: ${props => props.theme.body_copy_color}!important;
+    color: ${props => props.theme.display_font_color}!important;
     font-family: ${props => props.theme.body_copy_font}!important;
   }
 `
