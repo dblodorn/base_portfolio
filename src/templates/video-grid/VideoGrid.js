@@ -24,6 +24,5 @@ export default pageData((props) => {
 })
 
 const VideoThumb = styled.li`
-  padding: ${spacing.single_pad};
   overflow: hidden;
 `

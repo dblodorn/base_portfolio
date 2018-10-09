@@ -46,9 +46,11 @@ export default pageData((props) => {
                   <StyledMarkup dangerouslySetInnerHTML={{__html: item.wysiwig }}/>
                 </Article>
               </ThemeProvider> :
-            (item.module === 'video_embed_file')
-            ? <VideoEmbed data={item}/>
-            : <H2>{item.module}</H2>
+            (item.module === 'single_video_photo')
+            ? <VideoEmbed data={item}/> :
+            (item.module === 'details_popup')
+            ? <H2>{item.module}</H2>
+            : null
           }
         </LayoutSection>
       )}

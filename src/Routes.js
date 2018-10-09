@@ -3,14 +3,13 @@ import { Route, Switch } from 'react-router'
 import Document from './Document'
 import { withStore } from './components'
 import { NotFound, Single } from './views'
-import { HomeTemplate, PostCollectionTemplate, FlexibleImageGallery, PortfolioItem, VideoGrid } from './templates'
+import { HomeTemplate, PostCollectionTemplate, FlexibleImageGallery, VideoGrid } from './templates'
 
 export default withStore((props) => {
   const templates = {
     'home': HomeTemplate,
     'post-collection': PostCollectionTemplate,
     'flexible-image-gallery': FlexibleImageGallery,
-    'portfolio-item': PortfolioItem,
     'video-grid': VideoGrid
   }
 

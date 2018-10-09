@@ -1,42 +1,49 @@
-import React, { Fragment } from 'react'
-import { connect } from 'react-redux'
+import React, { Fragment, Component } from 'react'
 import { Transition } from 'react-spring'
 import { flexRowCenteredAll, buttonInit, animationFadeIn } from './../../styles/mixins'
 import styled from 'styled-components'
-import { setModalState } from './../../state/actions'
 import { heights, colors } from './../../styles/theme.json'
 import ImageModal from './SingleImagePortal'
 import FitImage from './../utils/FitImage'
 import Close from './../utils/Close'
 
-const SingleImageModal = (props) => {
-  return (
-    <Fragment>
-      <FitImage clickFunction={() => props.modal_toggle(true)} src={props.src} fit={'contain'}/>
-      <Transition from={{ opacity: 0, transform: 'scale(1.005)' }} enter={{ opacity: 1, transform: 'scale(1)' }} leave={{ opacity: 0, transform: 'scale(1.005)', pointerEvents: 'none' }}>
-        {props.modal && (styles => 
-          <ImageModal>
-            <Modal BgColor={'#ffffff'} style={styles}>
-              <Close clickFunction={() => props.modal_toggle(false)} color={colors.black}/>
-              <ModalImageWrapper>
-                <FitImage src={props.src} fit={'contain'}/>
-              </ModalImageWrapper>
-            </Modal>
-          </ImageModal>
-        )}
-      </Transition>
-    </Fragment>
-  )
+class SingleImageModal extends Component {
+    constructor(props) {
+      super(props)
+      this.state = {
+        modal: false
+      }
+      this._ImageEnlarge = this._ImageEnlarge.bind(this)
+    }
+  
+    _ImageEnlarge() {
+      this.setState({
+        modal: !this.state.modal
+      })
+    }
+
+    render() {
+      return (
+        <Fragment>
+          <FitImage clickFunction={() => this._ImageEnlarge()} src={this.props.src} fit={'contain'}/>
+          <Transition from={{ opacity: 0 }} enter={{ opacity: 1 }} leave={{ opacity: 0, pointerEvents: 'none' }}>
+            {this.state.modal && (styles => 
+              <ImageModal>
+                <Modal BgColor={'#ffffff'} style={styles}>
+                  <Close clickFunction={() => this._ImageEnlarge()} color={colors.black}/>
+                  <ModalImageWrapper>
+                    <FitImage clickFunction={() => this._ImageEnlarge()} src={this.props.src} fit={'contain'}/>
+                  </ModalImageWrapper>
+                </Modal>
+              </ImageModal>
+            )}
+          </Transition>
+        </Fragment>
+    )
+  }
 }
 
-export default connect(
-  state => ({
-    modal: state.modal
-  }),
-  dispatch => ({
-    modal_toggle: (bool) => dispatch(setModalState(bool))
-  })
-)(SingleImageModal)
+export default SingleImageModal
 
 // STYLES
 const Modal = styled.div`
@@ -57,16 +64,4 @@ const ModalImageWrapper = styled.div`
   max-height: 95rem;
   display: block;
   position: relative;
-`
-
-const CloseButton = styled.button`
-  ${buttonInit};
-  color: white;
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  svg {
-    width: 4rem;
-    height: 4rem;
-  }
 `
