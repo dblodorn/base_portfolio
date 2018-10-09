@@ -62,26 +62,6 @@ const scrollPanel = css`
   -webkit-overflow-scrolling: touch;
 `
 
-const grid = css`
-  flex-grow: 0;
-  flex-shrink: 0;
-  width: 100%;
-  ${media.desktopNav`
-    &.one_col {
-      width: 100%;
-    }
-    &.three_col {
-      width: calc(100% / 3);
-    }
-    &.four_col {
-      width: 25%;
-    }
-    &.two_col {
-      width: 50%;
-    }
-  `}
-`
-
 // TYPOGRAPHY
 const sansFont = css`
   font-family: ${fonts.sans};
@@ -388,6 +368,28 @@ const wrapperWidths = css`
   &.max_small {
     max-width: ${widths.max_small};
   }
+`
+
+const grid = css`
+  flex-grow: 0;
+  flex-shrink: 0;
+  li {
+    width: 100%;
+  }
+  ${media.desktopNav`
+    &.one_col > li {
+      width: 100%;
+    }
+    &.three_col > li {
+      width: calc(100% / 3);
+    }
+    &.four_col > li {
+      width: 25%;
+    }
+    &.two_col > li {
+      width: 50%;
+    }
+  `}
 `
 
 export {

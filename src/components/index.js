@@ -12,6 +12,10 @@ import Head from './utils/Head'
 import BgImage from './utils/BgImage'
 import FitImage from './utils/FitImage'
 import SimpleVideo from './utils/SimpleVideo'
+import PopupGrid from './PopupGrid'
+
+// Modals
+import SingleImageModal from './modals/SingleImageModal'
 
 // Plugin Compnents - most have external dependencies
 //import MailScrape from './plugins/MailScrape'
@@ -28,7 +32,9 @@ export {
   Header,
   Footer,
   PostBasics,
+  SingleImageModal,
   Video,
+  PopupGrid,
   // MailScrape,
   Carousel
 }

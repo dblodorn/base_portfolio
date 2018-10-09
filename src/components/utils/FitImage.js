@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
 import Spinner from './Spinner'
-import { absoluteCentered } from './../../styles/mixins'
+import { absoluteCentered, opacityTransition, absoluteTopFull } from './../../styles/mixins'
 
 export default class extends Component {
   constructor(props) {
@@ -21,27 +21,39 @@ export default class extends Component {
 
   render() {
     return (
-      <ImgWrapper Opacity={(this.state.loaded) ? 1 : 0}>
-        <img src={this.props.src} onLoad={this.handleImageLoaded.bind(this)}/>
+      <Wrapper>
+        <ImgWrapper Opacity={(this.state.loaded) ? 1 : 0} onClick={this.props.clickFunction} className={(this.props.clickFunction) && 'hover'}>
+          <ImgFit src={this.props.src} onLoad={this.handleImageLoaded.bind(this)} Fit={this.props.fit}/>
+        </ImgWrapper>
         {(!this.state.loaded) && <Spinner/> }
-      </ImgWrapper>
+      </Wrapper>
     )
   }
 }
 
 // STYLE
+const Wrapper = styled.div`
+  ${absoluteTopFull};
+`
+
 const ImgWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  img {
-    ${absoluteCentered};
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 1500ms ease;
-    opacity: ${props => props.Opacity};
+  ${absoluteTopFull};
+  ${opacityTransition};
+  opacity: ${props => props.Opacity};
+  &.hover {
+    cursor: pointer;
+    &:hover {
+      img {
+        opacity: .75;
+      }
+    }
   }
 `
+
+const ImgFit = styled.img`
+  ${absoluteCentered};
+  width: 100%;
+  height: 100%;
+  object-fit: ${props => props.Fit};
+`
+

@@ -3,9 +3,9 @@ import styled, { ThemeProvider } from 'styled-components'
 import LazyLoad from 'react-lazyload'
 import { themeA, themeB } from './../../styles/theme'
 import { FitImage } from './../../components'
-import { P, PadWrapper, ButtonLink } from './../../styles/components'
+import { P, PadWrapper, ButtonLink, ProportionWrapper } from './../../styles/components'
 import { bigType, flexColumn, media, grid, flexRow } from './../../styles/mixins'
-import { spacing, shared } from './../../styles/theme.json'
+import { spacing, shared, widths } from './../../styles/theme.json'
 import Taxonomies from './Taxonomies'
 
 const themes = {
@@ -23,17 +23,21 @@ export default (props) => {
       }
       {(props.cardData.thumbnail && props.showThumbnail) && 
         <ProjectThumb className={(props.showTitle) && props.style} Proportion={`${props.thumbnail_proportion}%`}>
-          <LazyLoad height='100%'><FitImage src={props.cardData.thumbnail}/></LazyLoad>
+          <LazyLoad height='100%'>
+            <FitImage src={props.cardData.thumbnail} fit={'cover'}/>
+          </LazyLoad>
         </ProjectThumb>
       }
       <ThemeProvider theme={themes[props.theme]}>
-        <CardInfo className={props.columns} className={props.style}>
+        <CardInfo className={`${props.columns} ${props.style}`}>
           {(props.cardData.short_description) &&
             <ExcerptWrapper>
               <CardP>{props.cardData.short_description}</CardP>
             </ExcerptWrapper>
           }
-          {(props.showTaxonomies) && <Taxonomies title={`${props.cardData.title} : Taxonomies`} taxonomies={props.cardData.taxonomies}/>}
+          {(props.showTaxonomies) && 
+            <Taxonomies title={`${props.cardData.title} : Taxonomies`} taxonomies={props.cardData.taxonomies}/>
+          }
           {(props.linkButton) &&
             <LinkWrapper>
               <ButtonLink to={(props.cardData.post_type === 'page') ? `/${props.cardData.slug}` : `/${props.cardData.post_type}/${props.cardData.slug}`}>
@@ -51,7 +55,6 @@ export default (props) => {
 const CardWrapper = styled.li`
   ${flexColumn};
   position: relative;
-  ${grid};
   &.border {
     border-bottom: ${shared.border_thin};
     ${media.desktopNav`
@@ -79,12 +82,7 @@ const ProjectTitle = styled.h3`
   display: block;
 `
 
-const ProjectThumb = styled.div`
-  width: 100%;
-  height: 0;
-  overflow-y: visible;
-  padding-bottom: ${props => props.Proportion};
-  position: relative;
+const ProjectThumb = styled(ProportionWrapper)`
   &.border {
     border-top: ${shared.border_thin};
   }
@@ -95,14 +93,22 @@ const LinkWrapper = styled(PadWrapper)`
   margin-top: auto;
   justify-content: flex-end;
   ${media.desktopNav`
-    height: 100%;
-    align-items: center;
+    &.one_col {
+      height: 100%;
+      align-items: center;
+    }
   `}
+  &.two_col,
+  &.three_col,
+  &.four_col {
+    justify-content: flex-end;
+  }
 `
 
 const CardP = styled(P)`
   color: ${props => props.theme.header_color}!important;
   font-family: ${props => props.theme.display_font};
+  max-width: ${widths.max_small};
 `
 
 const CardInfo = styled.div`
@@ -119,8 +125,6 @@ const CardInfo = styled.div`
   &.two_col,
   &.three_col,
   &.four_col {
-    ${media.desktopNav`
-      ${flexColumn};
-    `}
+    ${flexColumn};
   }
 `

@@ -12,7 +12,7 @@ const MapCategories = (props) =>
   </TaxUL>
 
 export default (props) =>
-  <TaxonomyWrapper>
+  <TaxonomyWrapper className={props.class}>
     <H3>{props.title}</H3>
     <TaxColumns>
       <MapCategories list={props.taxonomies.category}/>
@@ -24,9 +24,11 @@ export default (props) =>
 
 const TaxonomyWrapper = styled.div`
   width: 100%;
-  border-top: ${shared.border_thin};
-  border-bottom: ${shared.border_thin};
   padding: ${spacing.double_pad};
+  &.top {
+    border-top: ${shared.border_thin};
+    border-bottom: ${shared.border_thin};
+  }
 `
 
 const TaxColumns = styled.div`

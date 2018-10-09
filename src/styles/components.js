@@ -10,8 +10,6 @@ const Main = styled.main`
   width: 100%;
   position: relative;
   min-height: calc(100vh - ${heights.footer});
-  z-index: 100;
-  z-index: 0;
   ${_.media.desktopNav`
     padding-top: ${heights.header};
   `}
@@ -22,11 +20,31 @@ const Section = styled.section`
   ${_.flexColumn};
 `
 
+const Article = styled.article`
+  ${_.wrapperWidths};
+  padding-left: ${spacing.double_pad};
+  padding-right: ${spacing.double_pad};
+`
+
 const PadWrapper = styled.div`
   ${_.mainPadding};
   &.add-top-border {
     border-top: ${shared.border_thin};
   }
+`
+
+const GridWrapper = styled.ul`
+  ${_.wrapperWidths};
+  ${_.flexRowWrap};
+  ${_.grid};
+`
+
+const ProportionWrapper = styled.div`
+  padding-bottom: ${props => props.Proportion};
+  height: 0;
+  overflow-y: visible;
+  position: relative;
+  width: 100%
 `
 
 // TYPE
@@ -66,12 +84,6 @@ const StyledButton = styled.button`
 
 const ButtonLink = styled(Link)`
   ${_.buttonStyle};
-`
-
-const Article = styled.article`
-  ${_.wrapperWidths};
-  padding-left: ${spacing.double_pad};
-  padding-right: ${spacing.double_pad};
 `
 
 const StyledMarkup = styled.div`
@@ -175,5 +187,7 @@ export {
   FullPageBgWrapper,
   NavItem,
   ButtonLink,
-  StyledButton
+  StyledButton,
+  GridWrapper,
+  ProportionWrapper
 }

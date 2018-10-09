@@ -4,7 +4,7 @@ import styled, { ThemeProvider } from 'styled-components'
 import { themeA, themeB } from './../../styles/theme'
 import { flexRowCenteredAll, mainPadding, absoluteTopFull, flexCenteredAll } from './../../styles/mixins'
 import { H1 } from './../../styles/components'
-import BgImage from '../utils/BgImage'
+import FitImage from '../utils/FitImage'
 import { breakpoints, shared } from './../../styles/theme.json'
 
 
@@ -19,7 +19,7 @@ const CarouselSlide = (props) => {
     <InnerSlide className={`${props.slideData.slide_type}-slide`}>
       <SlideWrapper>
         {(props.slideData.slide_type == 'image')
-          ? <BgImage Source={(props.window_width >= breakpoints.medium) ? props.slideData.image.large : props.slideData.image.medium} BgSize={props.slideData.style}/> :
+          ? <FitImage src={(props.window_width >= breakpoints.medium) ? props.slideData.image.large : props.slideData.image.medium} fit={props.slideData.image_style}/> :
           (props.slideData.slide_type == 'text')
           ? <ThemeProvider theme={themes[props.slideData.theme]}>
               <TextCard bg_color={props.slideData.bg_color} text_color={props.slideData.text_color}>

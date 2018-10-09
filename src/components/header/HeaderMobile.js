@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import Menu from './../menus/Menu'
 import MenuLink from './../menus/MenuLink'
+import TransitionWrapper from './../plugins/TransitionWrapper'
 import { setMenuState } from './../../state/actions'
 import { flexColumn, defaultLink, buttonInit, scrollPanel, microType, shadow, borderRadius, flexRowCenteredAll } from './../../styles/mixins'
 import { heights, spacing, colors } from './../../styles/theme.json'
@@ -15,13 +16,15 @@ const HeaderMobile = (props) => {
         ? <MobileButton onClick={() => props.menu_toggle(false)}><span>Close</span></MobileButton>
         : <MobileButton onClick={() => props.menu_toggle(true)}><span>Menu</span></MobileButton>
       }
-      {props.menu &&
-        <InnerHeader key="nav-wrapper" className="nav-wrapper__content">
-          <Menu location={0}>
-            <MenuLink page={'Home'} path={''}/>
-          </Menu>
-        </InnerHeader>
-      }
+      <TransitionWrapper>
+        {props.menu &&
+          <InnerHeader key="nav-wrapper" className="nav-wrapper__content">
+            <Menu location={0}>
+              <MenuLink page={'Home'} path={''}/>
+            </Menu>
+          </InnerHeader>
+        }
+      </TransitionWrapper>
     </HeaderWrapper>
   )
 }
