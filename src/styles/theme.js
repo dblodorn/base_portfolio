@@ -11,6 +11,8 @@ export const themeA = {
   display_font: fonts.display_font_a,
   body_copy_font: fonts.body_copy_font_a,
   body_copy_color: fonts.body_font_a_color,
+  popup_bg_color: colors.popup_bg_color_a,
+  popup_close_color: colors.popup_close_color_a,
   display_case: 'uppercase',
   default_link: {
     color: colors.black,
@@ -33,6 +35,8 @@ export const themeB = {
   display_font: fonts.display_font_b,
   body_copy_font: fonts.body_copy_font_b,
   body_copy_color: fonts.body_font_b_color,
+  popup_bg_color: colors.popup_bg_color_b,
+  popup_close_color: colors.popup_close_color_b,
   display_case: 'capitalize',
   default_link: {
     color: colors.white,

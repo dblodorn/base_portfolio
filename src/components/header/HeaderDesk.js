@@ -8,7 +8,7 @@ import Menu from './../menus/Menu'
 export default () =>
   <HeaderWrapper>
     <Logo to={'/'}>
-      <span>Logo</span>
+      <span>Dain Blodorn Kim</span>
     </Logo>
     <Menu location={0}/>
   </HeaderWrapper>

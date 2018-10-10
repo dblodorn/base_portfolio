@@ -44,12 +44,12 @@ const ProportionWrapper = styled.div`
   overflow-y: visible;
   position: relative;
   width: 100%;
-  padding-bottom: ${props => props.Mobile};
+  padding-bottom: ${props => `${props.Mobile}%` || `100%`};
   ${_.media.medium`
-    padding-bottom: ${props => props.Proportion};
+    padding-bottom: ${props => `${props.Desktop}%` || `50%`};
   `}
   ${_.media.big`
-    padding-bottom: ${props => props.Max};
+    padding-bottom: ${props => `${props.Max}%` || `45%`};
   `}
 `
 
@@ -70,7 +70,27 @@ const H2 = styled.h2`
 
 const H3 = styled.h3`
   ${_.bodyType};
-  padding-bottom: ${spacing.double_pad};
+  padding-bottom: ${spacing.small_pad};
+  color: ${props => props.theme.display_font_color}!important;
+  font-family: ${props => props.theme.display_font};
+`
+
+const H4 = styled.h4`
+  ${_.bodyType};
+  padding-bottom: ${spacing.small_pad};
+  color: ${props => props.theme.display_font_color}!important;
+  font-family: ${props => props.theme.display_font};
+`
+
+const H5 = styled.h5`
+  ${_.bodyType};
+  padding-bottom: ${spacing.small_pad};
+  font-family: ${props => props.theme.display_font};
+`
+
+const H6 = styled.h6`
+  ${_.bodyType};
+  padding-bottom: ${spacing.small_pad};
   font-family: ${props => props.theme.display_font};
 `
 
@@ -121,6 +141,11 @@ const StyledMarkup = styled.div`
     color: ${props => props.theme.body_copy_color}!important;
     font-family: ${props => props.theme.body_copy_font}!important;
   }
+  h6 {
+    ${_.bodyType};
+    color: ${props => props.theme.body_copy_color}!important;
+    font-family: ${props => props.theme.body_copy_font}!important;
+  }
   p {
     ${_.bodyType};
     color: ${props => props.theme.body_copy_color}!important;
@@ -136,6 +161,7 @@ const StyledMarkup = styled.div`
 // UI
 const StyledLink = styled(Link)`
   ${_.defaultLink};
+  color: ${props => props.theme.display_font_color}!important;
 `
 
 const NavItem = styled.li`
@@ -194,6 +220,9 @@ export {
   H1,
   H2,
   H3,
+  H4,
+  H5,
+  H6,
   P,
   SmallP,
   StyledMarkup,

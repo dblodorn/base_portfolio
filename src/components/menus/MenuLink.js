@@ -1,9 +1,10 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
+import { themeA, themes } from './../../styles/theme'
 import { connect } from 'react-redux'
 import { StyledLink, NavItem } from './../../styles/components'
 import { setMenuState } from './../../state/actions'
-import { media, smallType } from './../../styles/mixins'
+import { smallType } from './../../styles/mixins'
 
 // (props.cardData.post_type === 'page') ? `/${props.cardData.slug}` : `/${props.cardData.post_type}/${props.cardData.slug}`
 
@@ -17,11 +18,13 @@ const returnLink = (slug, subroute) => {
 
 const Menulink = (props) => {
   return (
-    <NavItem className={(`/${props.path}` == `${props.route}`) ? 'active' : null}>
-      <NavLink to={returnLink(props.path, props.sub_route)} onClick={() => props.menu_toggle(false)}>
-        <span dangerouslySetInnerHTML={{__html: props.page }}/>
-      </NavLink>
-    </NavItem>
+    <ThemeProvider theme={themes[props.theme] || themeA}>
+      <NavItem className={(`/${props.path}` == `${props.route}`) ? 'active' : null}>
+        <NavLink to={returnLink(props.path, props.sub_route)} onClick={() => props.menu_toggle(false)}>
+          <span dangerouslySetInnerHTML={{__html: props.page }}/>
+        </NavLink>
+      </NavItem>
+    </ThemeProvider>
   )
 }
 

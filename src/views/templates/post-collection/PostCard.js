@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { ThemeProvider } from 'styled-components'
-import LazyLoad from 'react-lazyload'
 import { themeA, themes } from './../../../styles/theme'
+import LazyLoad from 'react-lazyload'
 import { FitImage } from './../../../components'
 import { P, PadWrapper, ButtonLink, ProportionWrapper } from './../../../styles/components'
 import { bigType, flexColumn, media, flexRowWrap } from './../../../styles/mixins'
@@ -13,9 +13,9 @@ export default (props) =>
       {(props.cardData.thumbnail && props.showThumbnail) && 
         <ThumbnailWrapper
           className={`${props.columns} ${props.style}`}
-          Proportion={`${props.proportion.thumbnail_proportion}%`}
-          Mobile={`${props.proportion.thumbnail_proportion_mobile}%`}
-          Max={`${props.proportion.thumbnail_proportion_max}%`}
+          DeskTop={props.proportion.thumbnail_proportion}
+          Mobile={props.proportion.thumbnail_proportion_mobile}
+          Max={props.proportion.thumbnail_proportion_max}
         >
           <LazyLoad height='100%'>
             <FitImage src={props.cardData.thumbnail} fit={'cover'}/>

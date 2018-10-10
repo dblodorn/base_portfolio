@@ -16,7 +16,17 @@ const setVideoState = (state = null, action) => {
   }
 }
 
+const videoPlayingState = (state = 'stopped', action) => {
+  switch (action.type) {
+    case 'VIDEO_STATE':
+      return action.string
+    default:
+      return state
+  }
+}
+
 export {
   pageState,
-  setVideoState
+  setVideoState,
+  videoPlayingState
 }

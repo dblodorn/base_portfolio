@@ -1,7 +1,8 @@
 import React, { Fragment, Component } from 'react'
 import { Transition } from 'react-spring'
-import { flexRowCenteredAll, buttonInit, animationFadeIn } from './../../styles/mixins'
-import styled from 'styled-components'
+import { flexRowCenteredAll } from './../../styles/mixins'
+import styled, { ThemeProvider } from 'styled-components'
+import { themeA, themes } from './../../styles/theme'
 import { heights, colors } from './../../styles/theme.json'
 import ImageModal from './SingleImagePortal'
 import FitImage from './../utils/FitImage'
@@ -29,12 +30,14 @@ class SingleImageModal extends Component {
           <Transition from={{ opacity: 0 }} enter={{ opacity: 1 }} leave={{ opacity: 0, pointerEvents: 'none' }}>
             {this.state.modal && (styles => 
               <ImageModal>
-                <Modal BgColor={'#ffffff'} style={styles}>
-                  <Close clickFunction={() => this._ImageEnlarge()} color={colors.black}/>
-                  <ModalImageWrapper>
-                    <FitImage clickFunction={() => this._ImageEnlarge()} src={this.props.src} fit={'contain'}/>
-                  </ModalImageWrapper>
-                </Modal>
+                <ThemeProvider theme={themes[this.props.theme] || themeA}>
+                  <ModalWrapper style={styles}>
+                    <Close clickFunction={() => this._ImageEnlarge()} color={themes[this.props.theme].popup_close_color || themeA.popup_close_color}/>
+                    <ModalImageWrapper maxHeight={'50rem'}>
+                      <FitImage clickFunction={() => this._ImageEnlarge()} src={this.props.src} fit={'contain'}/>
+                    </ModalImageWrapper>
+                  </ModalWrapper>
+                </ThemeProvider>
               </ImageModal>
             )}
           </Transition>
@@ -46,21 +49,21 @@ class SingleImageModal extends Component {
 export default SingleImageModal
 
 // STYLES
-const Modal = styled.div`
+const ModalWrapper = styled.div`
   ${flexRowCenteredAll};
   position: fixed;
   z-index: 12000;
   width: 100vw;
   height: 100vh;
-  background-color: ${props => props.BgColor};
+  background-color: ${props => props.theme.popup_bg_color};
   padding: calc(${heights.header} / 2);
 `
 
 const ModalImageWrapper = styled.div`
-  width: 90vw;
+  max-height: ${props => props.maxHeight};
+  width: 100%;
   height: 100%;
-  max-width: 140rem;
-  max-height: 95rem;
+  max-width: 124rem;
   display: block;
   position: relative;
 `

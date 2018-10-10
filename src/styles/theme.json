@@ -46,7 +46,11 @@
     "header_bg_color": "#fff",
     "header_type_color": "#2619d1",
     "button_color": "#2619d1",
-    "button_typs_color": "#fff"
+    "button_typs_color": "#fff",
+    "popup_bg_color_a": "#180c06",
+    "popup_bg_color_b": "#2619d1",
+    "popup_close_color_a": "#ffffff",
+    "popup_close_color_b": "#ffffff"
   },
   "fonts": {
     "sans": "FFF Regular, system-ui, sans-serif",

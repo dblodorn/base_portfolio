@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import styled, { css } from 'styled-components'
 import ReactPlayer from 'react-player'
-import { setVideoPlaying } from './../../state/actions'
+import { setVideoPlaying, setVideoState } from './../../state/actions'
 import { buttonInit, flexRowCenteredAll, absoluteTopFull, opacityTransition } from './../../styles/mixins'
 import { colors } from './../../styles/theme.json'
 import ErrorBoundary from '../utils/ErrorBoundary'
@@ -52,6 +52,7 @@ class Video extends PureComponent {
       playing: false
     })
     this.props.video_playing(null)
+    this.props.video_state('stopped')
   }
   onPlay = () => {
     setTimeout(() => {
@@ -61,12 +62,14 @@ class Video extends PureComponent {
         started: true
       })
       this.props.video_playing(this.props.videoUrl)
+      this.props.video_state('playing')
     }, 1)
   }
   onPause = () => {
     this.setState({
       playing: false
     })
+    this.props.video_state('paused')
   }
   onEnded = () => {
     this.setState({
@@ -74,17 +77,20 @@ class Video extends PureComponent {
       started: false
     })
     this.props.video_playing(null)
+    this.props.video_state('stopped')
   }
   onStart = () => {
     this.setState({
       started: true,
       playing: true
     })
+    this.props.video_state('playing')
   }
   onBuffer = () => {
     this.setState({
       buffering: true
     })
+    this.props.video_state('buffering')
   }
   ref = player => {
     this.player = player
@@ -141,10 +147,11 @@ class Video extends PureComponent {
 export default connect(
   state => ({
     window_width: state.resize_state.window_width,
-    current_video: state.video_playing
+    current_video: state.current_video
   }),
   dispatch => ({
-    video_playing: (url) => dispatch(setVideoPlaying(url))
+    video_playing: (url) => dispatch(setVideoPlaying(url)),
+    video_state: (url) => dispatch(setVideoState(url))
   })
 )(Video)
 

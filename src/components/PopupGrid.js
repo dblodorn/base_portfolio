@@ -8,12 +8,12 @@ export default (props) =>
     {props.images.map((item, i) =>
       <li key={i}>
         <ProportionWrapper 
-          DeskTop={`${props.proportion}%`}
-          Mobile={`${props.proportion}%`}
-          Max={`${props.proportion}%`}
+          DeskTop={props.proportion}
+          Mobile={props.proportion}
+          Max={props.proportion}
         >
           <LazyLoad height='100%'>
-            <SingleImageModal src={(props.collectionType === 'post-collection') ? item.thumbnail : item.image.large}/>
+            <SingleImageModal src={(props.collectionType === 'post-collection') ? item.thumbnail : item.image.large} theme={'b'}/>
           </LazyLoad>
         </ProportionWrapper>
       </li>

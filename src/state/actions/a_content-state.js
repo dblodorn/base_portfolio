@@ -12,7 +12,15 @@ const setVideoPlaying = (url) => {
   }
 }
 
+const setVideoState = (string) => {
+  return {
+    type: 'VIDEO_STATE',
+    string
+  }
+}
+
 export {
   setPage,
-  setVideoPlaying
+  setVideoPlaying,
+  setVideoState
 }

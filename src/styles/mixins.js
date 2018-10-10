@@ -304,6 +304,12 @@ const borderRadius = (radius) => {
   `
 }
 
+const textShadow = (blur, color) => {
+  return css`
+    text-shadow: 2px 2px ${blur}px ${color};
+  `
+}
+
 const fullBg = css`
   background-repeat: no-repeat;
   background-size: cover;
@@ -382,6 +388,7 @@ const grid = css`
   flex-shrink: 0;
   li {
     width: 100%;
+    position: relative;
   }
   ${media.desktopNav`
     &.one_col > li {
@@ -434,5 +441,6 @@ export {
   absoluteTopFull,
   opacityTransition,
   wrapperWidths,
-  buttonStyle
+  buttonStyle,
+  textShadow
 }

@@ -1,6 +1,6 @@
 import fetchApiData from './fetchApiData'
 import { setResizeState, setMenuState, hasTouch, fontsLoaded, setModalState } from './a_window_data'
-import { setPage, setVideoPlaying } from './a_content-state'
+import { setPage, setVideoPlaying, setVideoState } from './a_content-state'
 
 export {
   fetchApiData,
@@ -10,5 +10,6 @@ export {
   setVideoPlaying,
   hasTouch,
   fontsLoaded,
-  setModalState
+  setModalState,
+  setVideoState
 }

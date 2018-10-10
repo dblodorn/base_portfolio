@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import { apiData, taxonomyData, themeData } from './apiData'
 import { resizeState, menuState, fontState, touchState, modalState } from './r_window_data'
-import { pageState, setVideoState } from './r_content-state'
+import { pageState, setVideoState, videoPlayingState } from './r_content-state'
 import content from './content'
 
 const rootReducer = combineReducers({
@@ -15,7 +15,8 @@ const rootReducer = combineReducers({
   menu: menuState,
   content: content,
   page: pageState,
-  video_playing: setVideoState
+  current_video: setVideoState,
+  video_state: videoPlayingState
 })
 
 export default rootReducer
