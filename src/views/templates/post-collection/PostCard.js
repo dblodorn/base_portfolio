@@ -1,11 +1,11 @@
 import React from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import LazyLoad from 'react-lazyload'
-import { themeA, themes } from './../../styles/theme'
-import { FitImage } from './../../components'
-import { P, PadWrapper, ButtonLink, ProportionWrapper } from './../../styles/components'
-import { bigType, flexColumn, media, flexRowWrap } from './../../styles/mixins'
-import { spacing, shared, widths } from './../../styles/theme.json'
+import { themeA, themes } from './../../../styles/theme'
+import { FitImage } from './../../../components'
+import { P, PadWrapper, ButtonLink, ProportionWrapper } from './../../../styles/components'
+import { bigType, flexColumn, media, flexRowWrap } from './../../../styles/mixins'
+import { spacing, shared, widths } from './../../../styles/theme.json'
 import Taxonomies from './Taxonomies'
 
 export default (props) =>

@@ -1,9 +1,9 @@
 import React from 'react'
-import { Section, GridWrapper } from './../../styles/components'
-import { PopupGrid } from './../../components'
+import { Section, GridWrapper } from './../../../styles/components'
+import { PopupGrid } from './../../../components'
 import PostCard from './PostCard'
 import Taxonomies from './Taxonomies'
-import { parseTaxonomies } from './../../scripts'
+import { parseTaxonomies } from './../../../scripts'
 
 const returnTaxonomies = (props) => {
   return {

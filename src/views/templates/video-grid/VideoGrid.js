@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { Section, GridWrapper } from './../../styles/components'
-import { Video } from './../../components'
+import { Section, GridWrapper } from './../../../styles/components'
+import { Video } from './../../../components'
 
 export default (props) => 
   <Section>

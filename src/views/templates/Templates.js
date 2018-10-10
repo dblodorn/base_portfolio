@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react'
-import { pageData, PostBasics } from './../components';
+import { pageData, PostBasics } from './../../components'
 import HomeTemplate from './home-page/HomePage'
 import PostCollectionTemplate from './post-collection/PostCollection'
 import FlexibleImageGallery from './flexible-image-gallery/FlexibleImageGallery'
 import VideoGrid from './video-grid/VideoGrid'
-import { NotFound } from './../views'
+import NotFound from './../NotFound'
 
 export default pageData((props) => {
   console.log(props)

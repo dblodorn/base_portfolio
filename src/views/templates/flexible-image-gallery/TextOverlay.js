@@ -1,9 +1,9 @@
 import React from 'react'
 import styled, { ThemeProvider } from 'styled-components'
-import { ThemeA, themes } from './../../styles/theme'
-import { StyledMarkup } from './../../styles/components'
-import { fullWindow, positionClasses } from './../../styles/mixins'
-import { heights, spacing, shared } from './../../styles/theme.json'
+import { ThemeA, themes } from './../../../styles/theme'
+import { StyledMarkup } from './../../../styles/components'
+import { fullWindow, positionClasses } from './../../../styles/mixins'
+import { heights, spacing, shared } from './../../../styles/theme.json'
 
 export default (props) =>
   <ThemeProvider theme={themes[props.theme] || ThemeA}>

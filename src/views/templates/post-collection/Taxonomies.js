@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { H3, SmallP } from './../../styles/components'
-import { flexRowWrap } from './../../styles/mixins'
-import { spacing, shared } from './../../styles/theme.json'
+import { H3, SmallP } from './../../../styles/components'
+import { flexRowWrap } from './../../../styles/mixins'
+import { spacing, shared } from './../../../styles/theme.json'
 
 const MapCategories = (props) => 
   <TaxUL>

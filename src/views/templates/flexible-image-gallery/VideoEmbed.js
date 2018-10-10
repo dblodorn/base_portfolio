@@ -1,8 +1,7 @@
 import React from 'react'
-import { SimpleVideo, FitImage } from './../../components'
+import { SimpleVideo, FitImage } from './../../../components'
 import styled from 'styled-components'
-import { heights, spacing } from './../../styles/theme.json'
-import { media } from './../../styles/mixins'
+import { heights, spacing } from './../../../styles/theme.json'
 import TextOverlay from './TextOverlay'
 
 export default (props) => {

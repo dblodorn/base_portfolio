@@ -1,8 +1,8 @@
 import React from 'react'
-import { Carousel } from './../../components'
+import { Carousel } from './../../../components'
 import styled from 'styled-components'
-import { heights, spacing } from './../../styles/theme.json'
-import { media, fixedTopLeft } from './../../styles/mixins'
+import { heights, spacing } from './../../../styles/theme.json'
+import { media, fixedTopLeft } from './../../../styles/mixins'
 
 export default (props) =>
   <CarouselWrapper className={(props.data.is_hero) && 'fixed-hero'}>

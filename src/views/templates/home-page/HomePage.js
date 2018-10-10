@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { ThemeProvider } from 'styled-components'
-import { themeA, themes } from './../../styles/theme'
-import { Section, H2 } from './../../styles/components';
+import { themeA, themes } from './../../../styles/theme'
+import { Section, H2 } from './../../../styles/components';
 
 export default (props) => {
   return (

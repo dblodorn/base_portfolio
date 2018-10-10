@@ -1,9 +1,9 @@
 import LoadingPage from './LoadingPage'
 import NotFound from './NotFound'
-import Single from './Single'
+import Templates from './templates/Templates'
 
 export {
   LoadingPage,
   NotFound,
-  Single
+  Templates
 }

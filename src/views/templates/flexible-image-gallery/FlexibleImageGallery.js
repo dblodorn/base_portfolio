@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
-import { themeA, themes } from './../../styles/theme'
-import { Section, H2, StyledMarkup, Article } from './../../styles/components'
-import { PopupGrid } from './../../components'
+import { themeA, themes } from './../../../styles/theme'
+import { Section, H2, StyledMarkup, Article } from './../../../styles/components'
+import { PopupGrid } from './../../../components'
 import SimpleSlideShow from './SimpleSlideshow'
 import VideoEmbed from './VideoEmbed'
-import { spacing } from './../../styles/theme.json'
+import { spacing } from './../../../styles/theme.json'
 
 export default (props) =>
   <Fragment>

@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Route, Switch } from 'react-router'
 import Document from './Document'
-import { NotFound } from './views'
-import Templates from './templates'
+import { NotFound, Templates } from './views'
 
 class Routes extends Component {
   constructor(props) {
