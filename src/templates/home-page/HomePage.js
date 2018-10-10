@@ -1,9 +1,14 @@
 import React from 'react'
-import { Section, H1, StyledMarkup } from './../../styles/components'
-import { pageData, PostBasics } from './../../components';
+import styled, { ThemeProvider } from 'styled-components'
+import { themeA, themes } from './../../styles/theme'
+import { Section, H2 } from './../../styles/components';
 
-export default pageData((props) => {
+export default (props) => {
   return (
-    <PostBasics data={props}/>
+    <ThemeProvider theme={themes[props.theme] || themeA}>
+      <Section>
+        <H2>Home Page</H2>
+      </Section>
+    </ThemeProvider>
   )
-})
+}

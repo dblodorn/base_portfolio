@@ -13,6 +13,7 @@ import BgImage from './utils/BgImage'
 import FitImage from './utils/FitImage'
 import SimpleVideo from './utils/SimpleVideo'
 import PopupGrid from './PopupGrid'
+import Spinner from './utils/Spinner'
 
 // Modals
 import SingleImageModal from './modals/SingleImageModal'
@@ -35,6 +36,7 @@ export {
   SingleImageModal,
   Video,
   PopupGrid,
+  Spinner,
   // MailScrape,
   Carousel
 }

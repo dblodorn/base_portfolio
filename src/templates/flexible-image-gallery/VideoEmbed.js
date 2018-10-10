@@ -8,7 +8,9 @@ import TextOverlay from './TextOverlay'
 export default (props) => {
   return (
     <VideoWrapper className={(props.data.is_hero) && 'fixed-hero'}>
-      {(props.data.has_text_overlay) && <TextOverlay content={props.data} theme={props.theme}/>}
+      {(props.data.has_text_overlay) &&
+        <TextOverlay content={props.data} theme={(props.theme === null) ? 'a' : props.theme}/>
+      }
       {(props.data.media_type !== 'photo')
         ? <SimpleVideo src={props.data.video_file}/> : 
         (props.data.video_cover_image.large !== null)
@@ -28,9 +30,9 @@ const VideoWrapper = styled.div`
   max-height: calc(100vh - ${heights.header});
   margin-bottom: ${spacing.big_pad};
   &.fixed-hero {
-    padding-bottom: ${heights.footer};
-    ${media.desktopNav`
-      padding-top: ${heights.header};
-    `}
+    margin: 0;
+    max-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
   }
 `

@@ -46,3 +46,8 @@ export const themeB = {
     case: 'lowercase'
   }
 }
+
+export const themes = {
+  'a': themeA,
+  'b': themeB
+}

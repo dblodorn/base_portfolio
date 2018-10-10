@@ -1,17 +1,12 @@
 import React from 'react'
 import styled, { ThemeProvider } from 'styled-components'
-import { themeA, themeB } from './../../styles/theme'
+import { ThemeA, themes } from './../../styles/theme'
 import { StyledMarkup } from './../../styles/components'
 import { fullWindow, positionClasses } from './../../styles/mixins'
 import { heights, spacing, shared } from './../../styles/theme.json'
 
-const themes = {
-  'a': themeA,
-  'b': themeB
-}
-
 export default (props) =>
-  <ThemeProvider theme={themes[props.theme]}>
+  <ThemeProvider theme={themes[props.theme] || ThemeA}>
     <TextOverlay className={props.content.text_overlay_postion}>
       <OverlayWrapper>
         <StyledMarkup dangerouslySetInnerHTML={{__html: props.content.text_overlay_content }}/>

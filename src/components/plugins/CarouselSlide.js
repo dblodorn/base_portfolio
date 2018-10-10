@@ -1,18 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import styled, { ThemeProvider } from 'styled-components'
-import { themeA, themeB } from './../../styles/theme'
+import { themeA, themes } from './../../styles/theme'
 import { flexRowCenteredAll, mainPadding, absoluteTopFull, flexCenteredAll } from './../../styles/mixins'
 import { H1 } from './../../styles/components'
 import FitImage from '../utils/FitImage'
 import { breakpoints, shared } from './../../styles/theme.json'
-
-
-
-const themes = {
-  'a': themeA,
-  'b': themeB
-}
 
 const CarouselSlide = (props) => {
   return (
@@ -21,7 +14,7 @@ const CarouselSlide = (props) => {
         {(props.slideData.slide_type == 'image')
           ? <FitImage src={(props.window_width >= breakpoints.medium) ? props.slideData.image.large : props.slideData.image.medium} fit={props.slideData.image_style}/> :
           (props.slideData.slide_type == 'text')
-          ? <ThemeProvider theme={themes[props.slideData.theme]}>
+          ? <ThemeProvider theme={themes[props.slideData.theme] || themeA}>
               <TextCard bg_color={props.slideData.bg_color} text_color={props.slideData.text_color}>
                 <H1>{props.slideData.text}</H1>
               </TextCard>

@@ -1,15 +1,16 @@
 import React from 'react'
-import { ThemeProvider } from 'styled-components'
-import { Section, H1, Main, PadWrapper } from './../styles/components'
-import { themeA, themeB } from './../styles/theme'
+import styled from 'styled-components'
+import { fullWindow } from './../styles/mixins'
+import { Spinner } from './../components'
+import { colors } from './../styles/theme.json'
 
 export default () =>
-  <Main>
-    <Section>
-      <ThemeProvider theme={themeB}>
-        <PadWrapper>
-          <H1>Loading</H1>
-        </PadWrapper>
-      </ThemeProvider>
-    </Section>
-  </Main>
+  <LoadingWrapper>
+    <Spinner size={'40vmin'} color={colors.white} stroke={1} />
+  </LoadingWrapper>
+
+// STYLES
+const LoadingWrapper = styled.div`
+  ${fullWindow};
+  background-color: ${colors.blue};
+`

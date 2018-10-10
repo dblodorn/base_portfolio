@@ -57,7 +57,6 @@ const Modal = styled.div`
 `
 
 const ModalImageWrapper = styled.div`
-  ${animationFadeIn(1000, 50)};
   width: 90vw;
   height: 100%;
   max-width: 140rem;

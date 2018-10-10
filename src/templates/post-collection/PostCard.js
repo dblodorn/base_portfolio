@@ -1,20 +1,14 @@
 import React from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import LazyLoad from 'react-lazyload'
-import { themeA, themeB } from './../../styles/theme'
+import { themeA, themes } from './../../styles/theme'
 import { FitImage } from './../../components'
 import { P, PadWrapper, ButtonLink, ProportionWrapper } from './../../styles/components'
-import { bigType, flexColumn, media, grid, flexRowWrap } from './../../styles/mixins'
+import { bigType, flexColumn, media, flexRowWrap } from './../../styles/mixins'
 import { spacing, shared, widths } from './../../styles/theme.json'
 import Taxonomies from './Taxonomies'
 
-const themes = {
-  'a': themeA,
-  'b': themeB
-}
-
-export default (props) => {
-  return (
+export default (props) =>
     <CardWrapper className={`${props.columns} ${props.style}`}>
       {(props.cardData.thumbnail && props.showThumbnail) && 
         <ThumbnailWrapper
@@ -28,7 +22,7 @@ export default (props) => {
           </LazyLoad>
         </ThumbnailWrapper>
       }
-      <ThemeProvider theme={themes[props.theme]}>
+      <ThemeProvider theme={themes[props.theme] || themeA}>
         <CardInfo className={`${props.columns} ${props.style}`}>
           {(props.showTitle) && <ProjectTitle>{props.cardData.title}</ProjectTitle>}
           {(props.cardData.short_description) &&
@@ -49,8 +43,6 @@ export default (props) => {
         </CardInfo>
       </ThemeProvider>
     </CardWrapper>
-  )
-}
 
 // STYLES
 const CardWrapper = styled.li`
