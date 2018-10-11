@@ -7,7 +7,7 @@ import TextOverlay from './TextOverlay'
 
 export default (props) => {
   return (
-    <VideoWrapper className={(props.data.is_hero) && 'fixed-hero half_fixed'}>
+    <VideoWrapper className={(props.data.is_hero) && `fixed-hero ${(props.data.width === 'fixed_left' || 'fixed_right') && props.data.width}`}>
       {(props.data.has_text_overlay) &&
         <TextOverlay content={props.data} theme={(props.theme === null) ? 'a' : props.theme}/>
       }
@@ -31,8 +31,4 @@ const VideoWrapper = styled.div`
   margin-bottom: ${spacing.big_pad};
   ${fixedHero(0, 0, 0)};
   ${halfFixed};
-  &.half_fixed {
-    left: auto;
-    right: 0;
-  }
 `
