@@ -4,11 +4,11 @@ import styled, { css } from 'styled-components'
 import ReactPlayer from 'react-player'
 import { setVideoPlaying, setVideoState, setFooterState, setHeaderState } from './../../state/actions'
 import { absoluteTopFull, opacityTransition } from './../../styles/mixins'
-import { PlayButtonWrapper } from './../../styles/components'
 import { colors } from './../../styles/theme.json'
-import ErrorBoundary from '../utils/ErrorBoundary'
+import ErrorBoundary from './../utils/ErrorBoundary'
 import FitImage from './../utils/FitImage'
 import PlayButton from './../utils/PlayButton'
+import Spinner from './../utils/Spinner'
 
 class Video extends Component {
   state = {
@@ -39,7 +39,7 @@ class Video extends Component {
   componentWillUnmount() {
     this.setState({
       playing: false,
-      started: true
+      started: false
     })
     this.props.video_playing(null)
     this.props.video_state('stopped')
@@ -51,10 +51,12 @@ class Video extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.state.url != this.props.current_video) {
+      this.props.video_state('stopped')
       this.setState({
         url: null,
         playing: false,
-        started: false
+        started: false,
+        buffering: false
       })
       this.player.seekTo(0)
     }
@@ -65,28 +67,27 @@ class Video extends Component {
       playing: !this.state.playing
     })
   }
-
   stop = () => {
     this.setState({
       url: null,
-      playing: false
+      playing: false,
+      started: false,
+      buffering: false,
+      loaded: true
     })
     this.props.video_playing(null)
     this.props.video_state('stopped')
   }
-
   onPlay = () => {
     setTimeout(() => {
       this.setState({
         playing: true,
-        buffering: false,
         started: true
       })
       this.props.video_playing(this.props.videoUrl)
       this.props.video_state('playing')
     }, 1)
   }
-
   onPause = () => {
     this.setState({
       playing: false
@@ -94,19 +95,17 @@ class Video extends Component {
     this.props.video_state('paused')
   }
   onEnded = () => {
-    this.setState({
-      playing: false,
-      started: false
-    })
-    this.props.video_playing(null)
-    this.props.video_state('stopped')
+    this.stop()
   }
   onStart = () => {
     this.setState({
       started: true,
-      playing: true
+      playing: true,
+      buffering: false,
+      loaded: true
     })
-    this.props.video_state('playing')
+    console.log('play')
+    this.props.video_state('start')
   }
   onBuffer = () => {
     this.setState({
@@ -124,7 +123,10 @@ class Video extends Component {
           <VideoWrapper>
             {(!this.props.autoplay) &&
               <VideoThumbnail Opacity={(this.state.started) ? 0 : 1} className={(this.state.started) && 'playing'}>
-                <PlayButtonWrapper onClick={this.onPlay}><PlayButton color={colors.white}/></PlayButtonWrapper>
+                {(!this.state.started) &&
+                  <PlayButton clickFunction={() => this.onPlay()} color={colors.white}/>
+                }
+                {(this.state.started && !this.state.loaded) && <LoadingWrapper><Spinner size={'4rem'} color={colors.white} stroke={1} /></LoadingWrapper>}
                 {(this.props.coverUrl != null) && <FitImage src={this.props.coverUrl} fit={'cover'}/>}
               </VideoThumbnail>
             }
@@ -212,4 +214,9 @@ const VideoHolder = styled.div`
   ${absoluteTopFull};
   ${opacityTransition};
   opacity: ${props => props.Opacity};
+`
+
+const LoadingWrapper = styled.div`
+  ${absoluteTopFull};
+  z-index: 100;
 `
