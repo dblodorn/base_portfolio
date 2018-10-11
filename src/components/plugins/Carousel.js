@@ -15,7 +15,7 @@ class Carousel extends Component {
     this.state = {
       playing: false,
       autoplay: {
-        delay: 3000,
+        delay: 1500,
         disableOnInteraction: false
       }
     }
@@ -57,7 +57,7 @@ class Carousel extends Component {
         this.setState({
           playing: false
         })
-      }, 1750)
+      }, 1)
     }
   }
 

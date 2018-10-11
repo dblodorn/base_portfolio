@@ -6,13 +6,12 @@ import { fixedHero, flexCenteredAll } from './../styles/mixins'
 import { colors, heights } from './../styles/theme.json'
 
 export default pageData((props) => {
-  console.log(props)
   return (
     <Fragment>
       <PostBasics data={props}/>
       <VideoSection>
         <VideoWrapper>
-          <Video coverUrl={props.thumbnail} videoUrl={props.video_url} autoplay={true}/>
+          <Video coverUrl={props.thumbnail} videoUrl={props.video_url} autoplay={true} single={true}/>
         </VideoWrapper>
       </VideoSection>
     </Fragment>

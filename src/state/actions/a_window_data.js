@@ -13,6 +13,27 @@ const setMenuState = (bool) => {
   }
 }
 
+const setHeaderState = (bool) => {
+  return {
+    type: 'HEADER_STATE',
+    bool
+  }
+}
+
+const setHeaderStyle = (string) => {
+  return {
+    type: 'HEADER_STYLE',
+    string
+  }
+}
+
+const setFooterState = (bool) => {
+  return {
+    type: 'FOOTER_STATE',
+    bool
+  }
+}
+
 function fontsLoaded (bool) {
   return {
     type: 'FONTS_LOADED',
@@ -49,5 +70,8 @@ export {
   setMenuState,
   fontsLoaded,
   hasTouch,
-  setModalState
+  setModalState,
+  setHeaderState,
+  setFooterState,
+  setHeaderStyle
 }

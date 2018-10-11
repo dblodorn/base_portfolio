@@ -10,6 +10,9 @@
     "cta": "Sign up for our enewsletter",
     "mailchimp_url": ""
   },
+  "styling": {
+    "header_style": "top"
+  },
   "fonts": [
     "Authentic",
     "Knif Mono",

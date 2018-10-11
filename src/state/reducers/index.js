@@ -1,7 +1,20 @@
 import { combineReducers } from 'redux'
 import { apiData, taxonomyData, themeData } from './apiData'
-import { resizeState, menuState, fontState, touchState, modalState } from './r_window_data'
-import { pageState, setVideoState, videoPlayingState } from './r_content-state'
+import { 
+  resizeState, 
+  menuState, 
+  fontState, 
+  touchState, 
+  modalState, 
+  headerStyle,
+  headerState,
+  footerState
+} from './r_window_data'
+import { 
+  pageState,
+  setVideoState,
+  videoPlayingState
+} from './r_content-state'
 import content from './content'
 
 const rootReducer = combineReducers({
@@ -13,6 +26,9 @@ const rootReducer = combineReducers({
   touch_state: touchState,
   modal: modalState,
   menu: menuState,
+  header_state: headerState,
+  header_style: headerStyle,
+  footer_state: footerState,
   content: content,
   page: pageState,
   current_video: setVideoState,

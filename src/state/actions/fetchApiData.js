@@ -1,6 +1,7 @@
 import fetchWpDataController from './../../controllers/fetchWpDataController'
 import { parseTaxonomies } from './../../scripts'
 import { heights, spacing, fonts, colors, shared, breakpoints } from './../../styles/theme.json'
+import { setHeaderState, setFooterState } from './a_window_data'
 
 export function apiData(payload) {
   return {
@@ -50,6 +51,10 @@ export default () => {
       dispatch(taxonomyData(taxonomies))
       dispatch(apiData(payload))
       dispatch(themeData(themes))
+      setTimeout(() => {
+        dispatch(setHeaderState(true))
+        dispatch(setFooterState(true))
+      }, 1500)
     }
     fetchWpDataController()
       .then(response => response.json())
