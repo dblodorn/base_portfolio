@@ -18,7 +18,7 @@ const menuState = (state = false, action) => {
   }
 }
 
-const headerState = (state = false, action) => {
+const headerState = (state = true, action) => {
   switch (action.type) {
     case 'HEADER_STATE':
       return action.bool
@@ -36,7 +36,7 @@ const headerStyle = (state = styling.header_style, action) => {
   }
 }
 
-const footerState = (state = false, action) => {
+const footerState = (state = true, action) => {
   switch (action.type) {
     case 'FOOTER_STATE':
       return action.bool

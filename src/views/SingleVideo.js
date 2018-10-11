@@ -21,10 +21,7 @@ export default pageData((props) => {
 const VideoSection = styled(Section)`
   ${flexCenteredAll};
   ${fixedHero(0, 0, 0)};
-  position: fixed;
-  top: 0;
   background-color: ${colors.black};
-  height: 100vh;
 `
 
 const VideoWrapper = styled.div`

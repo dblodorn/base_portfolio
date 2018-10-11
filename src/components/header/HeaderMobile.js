@@ -42,7 +42,7 @@ export default connect(
 const HeaderWrapper = styled.header`
   width: 100vw;
   height: ${heights.mobile_header};
-  padding: 0 ${spacing.double_pad};
+  padding: 0 ${spacing.double_pad} ${spacing.double_pad};
   position: fixed;
   top: 0;
   left: 0;

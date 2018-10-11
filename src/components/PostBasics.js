@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import { themeA, themes } from './../styles/theme'
-import { spacing, heights } from './../styles/theme.json'
+import { spacing, heights, shared } from './../styles/theme.json'
 import { H1, StyledMarkup, Section, Article } from './../styles/components'
-import { media } from './../styles/mixins'
+import { media, halfFixed } from './../styles/mixins'
 import Head from './utils/Head'
 
 export default (props) => 
@@ -11,7 +11,7 @@ export default (props) =>
     <Head title={props.data.title} description={props.data.short_description}/>
     {(props.data.top_content) &&
       <ThemeProvider theme={themes[props.data.theme] || themeA}>
-        <PostBasicsSection>
+        <PostBasicsSection className={'half_fixed'}>
           <Article className={props.data.container_width}> 
             <H1>{props.data.title}</H1>
             <StyledMarkup dangerouslySetInnerHTML={{__html: props.data.description }}/>
@@ -29,4 +29,9 @@ const PostBasicsSection = styled(Section)`
   ${media.desktopNav`
     padding-top: ${spacing.double_pad};
   `}
+  ${halfFixed}
+  article {
+    padding-top: ${spacing.double_pad};
+    padding-bottom: ${heights.footer};
+  }
 `

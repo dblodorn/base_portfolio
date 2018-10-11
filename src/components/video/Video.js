@@ -30,7 +30,7 @@ class Video extends Component {
     if (this.props.autoplay) {
       this.onPlay()
     }
-    if (this.props.single) {
+    if ( this.props.single ) {
       this.props.hide_footer(false)
       this.props.hide_header(false)
     }
@@ -203,7 +203,6 @@ const VideoThumbnail = styled.div`
   ${opacityTransition};
   z-index: 1000;
   opacity: ${props => props.Opacity};
-  background-color: ${colors.lt_grey};
   &.playing {
     pointer-events: none;
   }

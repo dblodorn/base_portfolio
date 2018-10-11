@@ -51,10 +51,6 @@ export default () => {
       dispatch(taxonomyData(taxonomies))
       dispatch(apiData(payload))
       dispatch(themeData(themes))
-      setTimeout(() => {
-        dispatch(setHeaderState(true))
-        dispatch(setFooterState(true))
-      }, 1500)
     }
     fetchWpDataController()
       .then(response => response.json())

@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react'
 import { Transition } from 'react-spring'
-import { flexRowCenteredAll } from './../../styles/mixins'
+import { flexRowCenteredAll, media } from './../../styles/mixins'
 import styled, { ThemeProvider } from 'styled-components'
 import { themeA, themes } from './../../styles/theme'
 import { heights, colors } from './../../styles/theme.json'
@@ -56,7 +56,10 @@ const ModalWrapper = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: ${props => props.theme.popup_bg_color};
-  padding: calc(${heights.header} / 2);
+  padding: calc(${heights.header} / 2) 0;
+  ${media.desktopNav`
+    padding: calc(${heights.header} / 2);
+  `}
 `
 
 const ModalImageWrapper = styled.div`

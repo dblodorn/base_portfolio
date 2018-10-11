@@ -1,6 +1,6 @@
 import Color from 'color'
 import { css, keyframes } from 'styled-components'
-import { spacing, fonts, shared, breakpoints, colors, widths } from './theme.json'
+import { spacing, fonts, shared, breakpoints, colors, widths, heights } from './theme.json'
 
 // Media Queries
 const media = {
@@ -406,6 +406,21 @@ const grid = css`
   `}
 `
 
+const fancyScroll = css`
+  ::-webkit-scrollbar {
+    width: 2px;
+  }
+  ::-webkit-scrollbar-track {
+    background: ${colors.white};
+  }
+  ::-webkit-scrollbar-thumb {
+    background: ${colors.blue};
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: ${colors.grey};
+  }
+`
+
 const fixedHero = (top, bottom, left) => {
   return css`
     &.fixed-hero {
@@ -417,10 +432,30 @@ const fixedHero = (top, bottom, left) => {
         padding-bottom: ${bottom};
         padding-top: ${top};
         padding-left: ${left};
+        position: fixed;
+        top: 0;
+        height: 100vh;
       `}
     }
   `
 }
+
+const halfFixed = css`
+  &.half_fixed {
+    ${fancyScroll};
+    padding: ${heights.header} 0 ${heights.footer};
+    width: 50vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    border-right: ${shared.border_thin};
+    z-index: 100;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+`
 
 export {
   media,
@@ -459,5 +494,6 @@ export {
   wrapperWidths,
   buttonStyle,
   textShadow,
-  fixedHero
+  fixedHero,
+  halfFixed
 }

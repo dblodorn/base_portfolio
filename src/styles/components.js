@@ -12,6 +12,7 @@ const Main = styled.main`
   min-height: calc(100vh - ${heights.footer});
   ${_.media.desktopNav`
     padding-top: ${heights.header};
+    padding-bottom: ${heights.footer};
   `}
 `
 

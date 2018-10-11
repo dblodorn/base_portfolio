@@ -2,12 +2,12 @@ import React from 'react'
 import { SimpleVideo, FitImage } from './../../../components'
 import styled from 'styled-components'
 import { heights, spacing } from './../../../styles/theme.json'
-import { fixedHero } from './../../../styles/mixins'
+import { fixedHero, halfFixed } from './../../../styles/mixins'
 import TextOverlay from './TextOverlay'
 
 export default (props) => {
   return (
-    <VideoWrapper className={(props.data.is_hero) && 'fixed-hero'}>
+    <VideoWrapper className={(props.data.is_hero) && 'fixed-hero half_fixed'}>
       {(props.data.has_text_overlay) &&
         <TextOverlay content={props.data} theme={(props.theme === null) ? 'a' : props.theme}/>
       }
@@ -30,4 +30,9 @@ const VideoWrapper = styled.div`
   max-height: calc(100vh - ${heights.header});
   margin-bottom: ${spacing.big_pad};
   ${fixedHero(0, 0, 0)};
+  ${halfFixed};
+  &.half_fixed {
+    left: auto;
+    right: 0;
+  }
 `

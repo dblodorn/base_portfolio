@@ -57,7 +57,7 @@ class Carousel extends Component {
         this.setState({
           playing: false
         })
-      }, 1)
+      }, 3000)
     }
   }
 
@@ -66,6 +66,15 @@ class Carousel extends Component {
       this._slideChange()
     } else {
       this.swiper.autoplay.stop()
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.state.playing) {
+      this.setState({
+        playing: false
+      })
+      this.player.seekTo(0)
     }
   }
 
@@ -114,7 +123,6 @@ class Carousel extends Component {
         </CarouselSlide>
       </HeroSlide>
     )
-
     return (
       <HeroSlider>
         <Swiper {...swiperParams} ref={node => { if (node) this.swiper = node.swiper }}>
