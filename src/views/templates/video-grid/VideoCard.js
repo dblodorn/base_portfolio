@@ -10,7 +10,7 @@ import { colors } from './../../../styles/theme.json'
 const VideoCaption = (props) =>
   <VideoCaptionWrapper className={'hover-reveal'}>
     <H3>{props.item.title}</H3>
-    <SmallP>{props.item.title}</SmallP>
+    <SmallP>{props.item.short_description}</SmallP>
   </VideoCaptionWrapper>
 
 const VideoGridEmbed = (props) =>
@@ -22,7 +22,7 @@ const VideoGridEmbed = (props) =>
     >
       <LazyLoad height='100%'>
         {((props.video_state == 'stopped') || (props.video_state == 'paused')) &&
-          <ThemeProvider theme={themes[props.theme] || themeA}>
+          <ThemeProvider theme={themes[props.item.theme] || themeA}>
             <VideoCaption item={props.item}/>
           </ThemeProvider>
         }
