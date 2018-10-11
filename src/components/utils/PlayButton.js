@@ -5,7 +5,7 @@ import { colors } from './../../styles/theme.json'
 
 export default (props) =>
   <PlayerButton>
-    <svg version="1.1" viewBox="0 0 48 48" width="48" height="48"><title>button play</title><g strokeLinecap="square" strokeLinejoin="miter" strokeWidth="1" fill="#111111" stroke="#111111"><polygon fill="none" stroke="#111111" strokeMiterlimit="10" points="11,44 11,4 41,24 "></polygon></g></svg>
+    <svg version="1.1" viewBox="0 0 48 48" width="48" height="48"><title>button play</title><g strokeLinecap="square" strokeLinejoin="miter" strokeWidth="1" fill={props.color} stroke={props.color}><polygon fill="none" stroke={props.color} strokeMiterlimit="10" points="11,44 11,4 41,24 "></polygon></g></svg>
   </PlayerButton>
 
 const PlayerButton = styled.div`

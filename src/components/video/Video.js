@@ -29,6 +29,8 @@ class Video extends PureComponent {
       playing: false,
       started: true
     })
+    this.props.video_playing(null)
+    this.props.video_state('stopped')
   }
   componentWillReceiveProps(nextProps) {
     if (this.state.url != this.props.current_video) {
@@ -101,7 +103,7 @@ class Video extends PureComponent {
         <ErrorBoundary>
           <VideoWrapper>
             <VideoThumbnail Opacity={(this.state.started) ? 0 : 1} className={(this.state.started) && 'playing'}>
-              <PlayButtonWrapper onClick={this.onPlay}><PlayButton/></PlayButtonWrapper>
+              <PlayButtonWrapper onClick={this.onPlay}><PlayButton color={colors.white}/></PlayButtonWrapper>
               {(this.props.coverUrl != null) && <BgImage Source={this.props.coverUrl} BgSize={'cover'}/>}
             </VideoThumbnail>
             <VideoHolder Opacity={(this.state.started) ? 1 : 0}>

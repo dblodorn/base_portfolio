@@ -21,7 +21,7 @@ import SingleImageModal from './modals/SingleImageModal'
 // Plugin Compnents - most have external dependencies
 //import MailScrape from './plugins/MailScrape'
 import Carousel from './plugins/Carousel'
-import Video from './plugins/Video'
+import Video from './video/Video'
 
 export {
   withStore,

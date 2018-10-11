@@ -1,7 +1,7 @@
 {
   "wp_endpoint": "https://api-theme.dmbk.io/wp-json/api/v1/data/",
   "meta_defaults": {
-    "title": "DMBK",
+    "title": "Prototype",
     "description": "This is a website, isn't that cool?!",
     "site_url": "https://website.com",
     "bgcolor": "#ffffff"

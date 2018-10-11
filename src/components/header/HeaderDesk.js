@@ -4,11 +4,12 @@ import { StyledLink } from './../../styles/components'
 import { flexRowCenteredVert, bodyType } from './../../styles/mixins'
 import { heights, spacing, colors } from './../../styles/theme.json'
 import Menu from './../menus/Menu'
+import { meta_defaults } from './../../config.json'
 
 export default () =>
   <HeaderWrapper>
     <Logo to={'/'}>
-      <span>Dain Blodorn Kim</span>
+      <span>{meta_defaults.title}</span>
     </Logo>
     <Menu location={0}/>
   </HeaderWrapper>

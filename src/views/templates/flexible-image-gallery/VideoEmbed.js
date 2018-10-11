@@ -2,6 +2,7 @@ import React from 'react'
 import { SimpleVideo, FitImage } from './../../../components'
 import styled from 'styled-components'
 import { heights, spacing } from './../../../styles/theme.json'
+import { fixedHero } from './../../../styles/mixins'
 import TextOverlay from './TextOverlay'
 
 export default (props) => {
@@ -28,10 +29,5 @@ const VideoWrapper = styled.div`
   position: relative;
   max-height: calc(100vh - ${heights.header});
   margin-bottom: ${spacing.big_pad};
-  &.fixed-hero {
-    margin: 0;
-    max-height: 100vh;
-    height: 100vh;
-    overflow: hidden;
-  }
+  ${fixedHero(0, 0, 0)};
 `

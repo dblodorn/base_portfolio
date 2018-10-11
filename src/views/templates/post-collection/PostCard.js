@@ -13,7 +13,7 @@ export default (props) =>
       {(props.cardData.thumbnail && props.showThumbnail) && 
         <ThumbnailWrapper
           className={`${props.columns} ${props.style}`}
-          DeskTop={props.proportion.thumbnail_proportion}
+          Desktop={props.proportion.thumbnail_proportion}
           Mobile={props.proportion.thumbnail_proportion_mobile}
           Max={props.proportion.thumbnail_proportion_max}
         >

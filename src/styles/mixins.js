@@ -406,6 +406,22 @@ const grid = css`
   `}
 `
 
+const fixedHero = (top, bottom, left) => {
+  return css`
+    &.fixed-hero {
+      margin: 0;
+      max-height: 100vh;
+      height: 100vh;
+      overflow: hidden;
+      ${media.desktopNav`
+        padding-bottom: ${bottom};
+        padding-top: ${top};
+        padding-left: ${left};
+      `}
+    }
+  `
+}
+
 export {
   media,
   maxWidth,
@@ -442,5 +458,6 @@ export {
   opacityTransition,
   wrapperWidths,
   buttonStyle,
-  textShadow
+  textShadow,
+  fixedHero
 }
