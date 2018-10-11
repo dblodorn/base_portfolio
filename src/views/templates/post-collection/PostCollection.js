@@ -7,8 +7,8 @@ import { parseTaxonomies } from './../../../scripts'
 
 const returnTaxonomies = (props) => {
   return {
-    category: parseTaxonomies(props.data.post_collection, 'taxonomies', 'category'),
-    capabilities: parseTaxonomies(props.data.post_collection, 'taxonomies', 'capabilities'),
+    category: parseTaxonomies(props.post_collection, 'taxonomies', 'category'),
+    capabilities: parseTaxonomies(props.post_collection, 'taxonomies', 'capabilities'),
     client: parseTaxonomies(props.post_collection, 'taxonomies', 'client'),
     industry: parseTaxonomies(props.post_collection, 'taxonomies', 'industry')
   }

@@ -64,16 +64,4 @@ injectGlobal`
     font-size: 15vmin;
     ${fonts.sans};
   }
-  *::-webkit-scrollbar {
-    width: 2px;
-  }
-  *::-webkit-scrollbar-track {
-    background: ${colors.dk_blue};
-  }
-  *::-webkit-scrollbar-thumb {
-    background: ${colors.lt_blue};
-  }
-  *::-webkit-scrollbar-thumb:hover {
-    background: ${colors.mint};
-  }
 `

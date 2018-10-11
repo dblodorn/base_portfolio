@@ -213,6 +213,44 @@ const FullPageBgWrapper = styled.aside`
   z-index: 0;
 `
 
+const ModalWrapper = styled.div`
+  ${_.flexCenteredAll};
+  position: fixed;
+  z-index: 12000;
+  width: 100vw;
+  height: 100vh;
+  background-color: ${props => props.theme.popup_bg_color || colors.black};
+  padding: calc(${heights.header} / 2) 0;
+  ${_.media.desktopNav`
+    padding: calc(${heights.header} / 2);
+  `}
+`
+
+const ModalContentWrapper = styled.div`
+  ${_.flexCenteredAll};
+  max-height: ${props => props.maxHeight};
+  width: 100%;
+  height: 100%;
+  max-width: 100rem;
+  position: relative;
+`
+
+const CloseButton = styled.button`
+  ${_.buttonInit};
+  width: ${props => props.size};
+  height: ${props => props.size};
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  padding: 0;
+  z-index: 11000;
+  cursor: pointer;
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+`
+
 export {
   Main,
   Section,
@@ -235,5 +273,8 @@ export {
   ButtonLink,
   StyledButton,
   GridWrapper,
-  ProportionWrapper
+  ProportionWrapper,
+  ModalWrapper,
+  ModalContentWrapper,
+  CloseButton
 }

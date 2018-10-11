@@ -1,29 +1,44 @@
-import React, { Fragment } from 'react'
-import styled from 'styled-components'
-import { Video, PostBasics, pageData } from './../components'
+import React, { Fragment, Component } from 'react'
+import styled, { ThemeProvider } from 'styled-components'
+import { themeA, themes } from './../styles/theme'
+import { Video, PostBasics, pageData, BackClose } from './../components'
 import { Section } from './../styles/components'
-import { fixedHero, flexCenteredAll } from './../styles/mixins'
-import { colors, heights } from './../styles/theme.json'
+import { flexCenteredAll, buttonInit } from './../styles/mixins'
+import { colors } from './../styles/theme.json'
 
 export default pageData((props) => {
   return (
     <Fragment>
       <PostBasics data={props}/>
-      <VideoSection>
-        <VideoWrapper>
-          <Video coverUrl={props.thumbnail} videoUrl={props.video_url} autoplay={true} single={true}/>
-        </VideoWrapper>
-      </VideoSection>
+      <ThemeProvider theme={themes[props.theme] || themeA}>
+        <VideoSection>
+          <BackClose color={themes[props.theme].popup_close_color || themeA.popup_close_color}/>
+          <VideoWrapper>
+            <Video coverUrl={props.thumbnail} videoUrl={props.video_url} autoplay={true} single={true}/>
+          </VideoWrapper>
+        </VideoSection>
+      </ThemeProvider>
     </Fragment>
   )
 })
 
 const VideoSection = styled(Section)`
   ${flexCenteredAll};
-  ${fixedHero(0, 0, 0)};
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background-color: ${colors.black};
 `
 
 const VideoWrapper = styled.div`
   width: 75vw;
+`
+const BackButtonStyle = styled.button`
+  ${buttonInit};
+  color: white;
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
 `

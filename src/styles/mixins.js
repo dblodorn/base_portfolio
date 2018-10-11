@@ -412,12 +412,18 @@ const fancyScroll = css`
   }
   ::-webkit-scrollbar-track {
     background: ${colors.white};
+    border: 0;
+    width: 2px;
   }
   ::-webkit-scrollbar-thumb {
     background: ${colors.blue};
+    width: 2px;
+    border: 0;
   }
   ::-webkit-scrollbar-thumb:hover {
     background: ${colors.grey};
+    width: 2px;
+    border: 0;
   }
 `
 
@@ -440,20 +446,32 @@ const fixedHero = (top, bottom, left) => {
   `
 }
 
+const fixedWindow = css`
+  ${fancyScroll};
+  padding: ${heights.header} 0 ${heights.footer};
+  width: 50vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  article {
+    padding-top: ${spacing.double_pad};
+    padding-bottom: ${heights.footer};
+  }
+`
+
 const halfFixed = css`
-  &.half_fixed {
-    ${fancyScroll};
-    padding: ${heights.header} 0 ${heights.footer};
-    width: 50vw;
-    height: 100vh;
-    position: fixed;
+  &.fixed_left {
+    ${fixedWindow};
     left: 0;
-    top: 0;
-    border-right: ${shared.border_thin};
-    z-index: 100;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
+    border-right: ${shared.border_thin};    
+  }
+  &.fixed_right {
+    ${fixedWindow};
+    right: 0;    
   }
 `
 
@@ -495,5 +513,6 @@ export {
   buttonStyle,
   textShadow,
   fixedHero,
-  halfFixed
+  halfFixed,
+  fixedWindow
 }

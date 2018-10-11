@@ -7,7 +7,6 @@ import VideoGrid from './video-grid/VideoGrid'
 import NotFound from './../NotFound'
 
 export default pageData((props) => {
-  console.log(props)
   return (
     <Fragment>
       <PostBasics data={props}/>

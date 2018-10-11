@@ -1,17 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-const imageModal = document.getElementById('single-image-modal')
+const ModalNode = document.getElementById('modal')
 
-class ImageModal extends React.Component {
+class Modal extends React.Component {
   constructor(props) {
     super(props)
     this.el = document.createElement('div')
   }
   componentDidMount() {
-    imageModal.appendChild(this.el)
+    ModalNode.appendChild(this.el)
   }
   componentWillUnmount() {
-    imageModal.removeChild(this.el)
+    ModalNode.removeChild(this.el)
   }
   render() {
     return ReactDOM.createPortal(
@@ -21,4 +21,4 @@ class ImageModal extends React.Component {
   }
 }
 
-export default ImageModal
+export default Modal

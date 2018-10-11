@@ -11,7 +11,7 @@ export default (props) =>
     <Head title={props.data.title} description={props.data.short_description}/>
     {(props.data.top_content) &&
       <ThemeProvider theme={themes[props.data.theme] || themeA}>
-        <PostBasicsSection className={'half_fixed'}>
+        <PostBasicsSection className={(props.data.container_width === 'fixed_left' || 'fixed_right') ? props.data.container_width : false}>
           <Article className={props.data.container_width}> 
             <H1>{props.data.title}</H1>
             <StyledMarkup dangerouslySetInnerHTML={{__html: props.data.description }}/>
@@ -30,8 +30,4 @@ const PostBasicsSection = styled(Section)`
     padding-top: ${spacing.double_pad};
   `}
   ${halfFixed}
-  article {
-    padding-top: ${spacing.double_pad};
-    padding-bottom: ${heights.footer};
-  }
 `
