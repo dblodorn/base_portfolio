@@ -14,6 +14,7 @@ import FitImage from './utils/FitImage'
 import SimpleVideo from './utils/SimpleVideo'
 import PopupGrid from './PopupGrid'
 import Spinner from './utils/Spinner'
+import PlayButton from './utils/PlayButton'
 
 // Modals
 import SingleImageModal from './modals/SingleImageModal'
@@ -37,6 +38,7 @@ export {
   Video,
   PopupGrid,
   Spinner,
+  PlayButton,
   // MailScrape,
   Carousel
 }

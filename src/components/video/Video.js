@@ -1,15 +1,16 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled, { css } from 'styled-components'
 import ReactPlayer from 'react-player'
 import { setVideoPlaying, setVideoState } from './../../state/actions'
-import { buttonInit, flexRowCenteredAll, absoluteTopFull, opacityTransition } from './../../styles/mixins'
+import { absoluteTopFull, opacityTransition } from './../../styles/mixins'
+import { PlayButtonWrapper } from './../../styles/components'
 import { colors } from './../../styles/theme.json'
 import ErrorBoundary from '../utils/ErrorBoundary'
-import BgImage from './../utils/BgImage'
+import FitImage from './../utils/FitImage'
 import PlayButton from './../utils/PlayButton'
 
-class Video extends PureComponent {
+class Video extends Component {
   state = {
     url: null,
     playing: false,
@@ -23,7 +24,14 @@ class Video extends PureComponent {
     started: false,
     buffering: false
   }
+
   // LIFECYCLE
+  componentWillMount() {
+    if (this.props.autoplay) {
+      this.onPlay()
+    }
+  }
+
   componentWillUnmount() {
     this.setState({
       playing: false,
@@ -32,6 +40,7 @@ class Video extends PureComponent {
     this.props.video_playing(null)
     this.props.video_state('stopped')
   }
+
   componentWillReceiveProps(nextProps) {
     if (this.state.url != this.props.current_video) {
       this.setState({
@@ -48,6 +57,7 @@ class Video extends PureComponent {
       playing: !this.state.playing
     })
   }
+
   stop = () => {
     this.setState({
       url: null,
@@ -56,6 +66,7 @@ class Video extends PureComponent {
     this.props.video_playing(null)
     this.props.video_state('stopped')
   }
+
   onPlay = () => {
     setTimeout(() => {
       this.setState({
@@ -67,6 +78,7 @@ class Video extends PureComponent {
       this.props.video_state('playing')
     }, 1)
   }
+
   onPause = () => {
     this.setState({
       playing: false
@@ -102,10 +114,12 @@ class Video extends PureComponent {
       <VideoContainer>
         <ErrorBoundary>
           <VideoWrapper>
-            <VideoThumbnail Opacity={(this.state.started) ? 0 : 1} className={(this.state.started) && 'playing'}>
-              <PlayButtonWrapper onClick={this.onPlay}><PlayButton color={colors.white}/></PlayButtonWrapper>
-              {(this.props.coverUrl != null) && <BgImage Source={this.props.coverUrl} BgSize={'cover'}/>}
-            </VideoThumbnail>
+            {(!this.props.autoplay) &&
+              <VideoThumbnail Opacity={(this.state.started) ? 0 : 1} className={(this.state.started) && 'playing'}>
+                <PlayButtonWrapper onClick={this.onPlay}><PlayButton color={colors.white}/></PlayButtonWrapper>
+                {(this.props.coverUrl != null) && <FitImage src={this.props.coverUrl} fit={'cover'}/>}
+              </VideoThumbnail>
+            }
             <VideoHolder Opacity={(this.state.started) ? 1 : 0}>
               <ReactPlayer
                 url={this.props.videoUrl}
@@ -189,16 +203,4 @@ const VideoHolder = styled.div`
   ${absoluteTopFull};
   ${opacityTransition};
   opacity: ${props => props.Opacity};
-`
-
-const LoadingPlayingCommon = css`
-  ${flexRowCenteredAll};
-  ${absoluteTopFull};
-  z-index: 9000;
-`
-
-const PlayButtonWrapper = styled.button`
-  ${buttonInit};
-  ${LoadingPlayingCommon};
-  cursor: pointer;
 `

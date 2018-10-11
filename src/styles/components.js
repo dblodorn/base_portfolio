@@ -212,6 +212,15 @@ const FullPageBgWrapper = styled.aside`
   z-index: 0;
 `
 
+const PlayButtonWrapper = styled.button`
+  ${_.flexRowCenteredAll};
+  ${_.absoluteTopFull};
+  z-index: 9000;
+  ${_.buttonInit};
+  ${_.LoadingPlayingCommon};
+  cursor: pointer;
+`
+
 export {
   Main,
   Section,
@@ -234,5 +243,6 @@ export {
   ButtonLink,
   StyledButton,
   GridWrapper,
-  ProportionWrapper
+  ProportionWrapper,
+  PlayButtonWrapper
 }

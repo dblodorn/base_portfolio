@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Route, Switch } from 'react-router'
 import Document from './Document'
-import { NotFound, Templates } from './views'
+import { NotFound, Templates, SingleVideo } from './views'
 
 class Routes extends Component {
   constructor(props) {
@@ -41,7 +41,8 @@ class Routes extends Component {
       <Document>
         <Switch>
           {(this.props.api_data) && this._buildRoutes(this.props.api_data.posts.pages)}
-          {(this.props.api_data) && <Route exact path={'/:postType/:id'} component={Templates}/>}
+          {(this.props.api_data) && <Route exact path={'/project/:id'} component={Templates}/>}
+          {(this.props.api_data) && <Route exact path={'/video/:id'} component={SingleVideo}/>}
           <Route component={NotFound}/>
         </Switch>
       </Document>
