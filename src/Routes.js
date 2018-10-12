@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Route, Switch } from 'react-router'
 import Document from './Document'
-import { NotFound, Templates, SingleVideo } from './views'
+import { NotFound, Templates, SingleVideo, Shop } from './views'
 
 class Routes extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class Routes extends Component {
           )
         } else {
           return (
-            <Route exact path={'/'} component={Templates} key={'home'}/>
+            <Route exact path={'/'} component={Shop} key={'home'}/>
           )
         }
       })

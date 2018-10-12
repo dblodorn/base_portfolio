@@ -9,11 +9,20 @@ import {
   setFooterState,
   setHeaderStyle
 } from './a_window_data'
+
 import { 
   setPage,
   setVideoPlaying,
   setVideoState
 } from './a_content-state'
+
+import {
+  updateQuantityInCart,
+  removeLineItemInCart,
+  handleCartClose,
+  handleCartOpen,
+  addVariantToCart
+} from './a_cart'
 
 export {
   fetchApiData,
@@ -27,5 +36,10 @@ export {
   setModalState,
   setVideoState,
   setFooterState,
-  setHeaderStyle
+  setHeaderStyle,
+  updateQuantityInCart,
+  removeLineItemInCart,
+  handleCartClose,
+  handleCartOpen,
+  addVariantToCart
 }

@@ -16,8 +16,10 @@ import {
   videoPlayingState
 } from './r_content-state'
 import content from './content'
+import cart from './r_cart'
 
 const rootReducer = combineReducers({
+  cart: cart,
   api_data: apiData,
   themes: themeData,
   taxonomy_data: taxonomyData,

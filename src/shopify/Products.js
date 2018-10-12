@@ -13,7 +13,6 @@ class Products extends Component {
         />
       );
     });
-
     return (
       <div className="Product-wrapper">
         {products}
