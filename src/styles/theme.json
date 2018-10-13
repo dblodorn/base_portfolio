@@ -12,7 +12,8 @@
   "widths": {
     "max_large": "124rem",
     "max_medium": "92rem",
-    "max_small": "72rem"
+    "max_small": "72rem",
+    "sidebar_desktop": "24rem"
   },
   "heights": {
     "header": "6rem",
@@ -37,6 +38,8 @@
     "lt_grey": "#D8D8D8",
     "green": "green",
     "yellow": "yellow",
+    "logo_color_a": "#e81900",
+    "logo_color_b": "#29bdad",
     "display_font_a_color": "#2619d1",
     "display_font_b_color": "#fff",
     "body_font_a_color": "#8f8f8f",

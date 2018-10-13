@@ -1,21 +1,9 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { heights, spacing, shared, colors, breakpoints } from './theme.json'
+import { heights, spacing, shared, colors, widths } from './theme.json'
 import * as _ from './mixins'
 
 // DOM NODES
-const Main = styled.main`
-  ${_.animationFadeIn(1000, 150)};
-  ${_.flexColumn};
-  width: 100%;
-  position: relative;
-  min-height: calc(100vh - ${heights.footer});
-  ${_.media.desktopNav`
-    padding-top: ${heights.header};
-    padding-bottom: ${heights.footer};
-  `}
-`
-
 const Section = styled.section`
   width: 100%;
   ${_.flexColumn};
@@ -151,6 +139,11 @@ const StyledMarkup = styled.div`
     ${_.bodyType};
     color: ${props => props.theme.body_copy_color}!important;
     font-family: ${props => props.theme.body_copy_font}!important;
+    margin-bottom: ${spacing.single_pad};
+    max-width: ${widths.max_medium};
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
   a {
     ${_.defaultLink};
@@ -182,6 +175,15 @@ const NavItem = styled.li`
     text-decoration: underline;
     * { color: ${colors.active_color}; }
   }
+  &.sidebar {
+    ${_.media.desktopNav`
+      padding-bottom: ${spacing.single_pad};
+      &.footer {
+        padding-bottom: 0;
+      }
+    `}
+  }
+  &.top-horizontal {}
 `
 
 const SocialLink = styled.a`
@@ -252,7 +254,6 @@ const CloseButton = styled.button`
 `
 
 export {
-  Main,
   Section,
   Article,
   PadWrapper,

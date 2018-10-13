@@ -9,12 +9,12 @@ import { colors } from './../styles/theme.json'
 export default pageData((props) => {
   return (
     <Fragment>
-      <PostBasics data={props}/>
-      <ThemeProvider theme={themes[props.theme] || themeA}>
+      <PostBasics data={props.project} style={props.style}/>
+      <ThemeProvider theme={themes[props.project.theme] || themeA}>
         <VideoSection>
-          <BackClose color={themes[props.theme].popup_close_color || themeA.popup_close_color}/>
+          <BackClose color={themes[props.project.theme].popup_close_color || themeA.popup_close_color}/>
           <VideoWrapper>
-            <Video coverUrl={props.thumbnail} videoUrl={props.video_url} autoplay={true} single={true}/>
+            <Video coverUrl={props.project.thumbnail} videoUrl={props.project.video_url} autoplay={true} single={true}/>
           </VideoWrapper>
         </VideoSection>
       </ThemeProvider>

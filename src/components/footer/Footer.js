@@ -5,13 +5,13 @@ import { Transition } from 'react-spring'
 import { setMenuState } from './../../state/actions'
 import { flexColumn, mainPadding, media, flexRowCenteredVert } from '../../styles/mixins'
 import Menu from './../menus/Menu'
-import { heights, colors, spacing } from './../../styles/theme.json'
+import { heights, colors, spacing, widths } from './../../styles/theme.json'
 
 const Footer = (props) =>
   <Transition from={{ opacity: 0, transform: `translateY(${heights.footer})` }} enter={{ opacity: 1, transform: `translateY(0})` }} leave={{ opacity: 0, transform: `translateY(${heights.footer})`, pointerEvents: 'none' }}>
     {props.footer_state && (styles => 
-      <FooterWrapper style={styles}>
-        <Menu location={1}/>
+      <FooterWrapper style={styles} className={props.orientation}>
+        <Menu location={1} navLocation={'footer'} orientation={props.orientation}/>
       </FooterWrapper>
     )}
   </Transition>
@@ -46,10 +46,16 @@ const FooterWrapper =  styled.footer`
     position: fixed;
     bottom: 0;
     left: 0;
-    background-color: ${colors.footer_bg_color};
     ${mainPadding};
+    background-color: ${colors.footer_bg_color}; 
     * {
       color: ${colors.footer_type_color}!important;
     }
   `}
+  &.sidebar {
+    ${media.desktopNav`
+      padding-left: calc(${widths.sidebar_desktop} + ${spacing.double_pad});
+      justify-content: flex-end;
+    `}
+  }
 `

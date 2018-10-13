@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
-import { injectGlobal } from 'styled-components'
-import { Main } from './styles/components'
-import { colors, fonts } from './styles/theme.json'
+import styled, { injectGlobal } from 'styled-components'
+import { animationFadeIn, flexColumn, media } from './styles/mixins'
+import { colors, fonts, heights, widths } from './styles/theme.json'
 import { routeName } from './scripts'
 import { Footer, Header } from './components'
 import { LoadingPage } from './views'
@@ -12,10 +12,10 @@ const Document = (props) => {
     return (
       <Fragment>
         <Header/>
-        <Main id={routeName(props.router.location.pathname).routeClass}>
+        <Main id={routeName(props.router.location.pathname).routeClass} className={props.header_style}>
           {props.children}
         </Main>
-        <Footer/>
+        <Footer orientation={props.header_style}/>
       </Fragment>
     )
   } else {
@@ -26,9 +26,31 @@ const Document = (props) => {
 export default connect(
   state => ({
     api_data: state.api_data,
+    header_style: state.header_style,
     router: state.router
   })
 )(Document)
+
+// MAIN STYLING
+const Main = styled.main`
+  ${animationFadeIn(1000, 150)};
+  ${flexColumn};
+  width: 100vw;
+  position: relative;
+  min-height: calc(100vh - ${heights.footer});
+  &.sidebar {
+    ${media.desktopNav`
+      padding-left: ${widths.sidebar_desktop};
+      padding-bottom: ${heights.footer};
+    `}
+  }
+  &.top-horizontal {
+    ${media.desktopNav`
+      padding-top: ${heights.header};
+      padding-bottom: ${heights.footer};
+    `}
+  }
+`
 
 // NORMALIZE CSS
 injectGlobal`

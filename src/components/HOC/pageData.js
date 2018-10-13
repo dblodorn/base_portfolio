@@ -13,7 +13,8 @@ export default (InnerComponent) => {
     constructor(props){
       super(props)
       this.state = {
-        project: null
+        project: null,
+        style: this.props.style
       }
       this._postFilter = this._postFilter.bind(this);
     }
@@ -43,7 +44,7 @@ export default (InnerComponent) => {
     render(){
       return (
         <InnerComponent
-          {...this.state.project}
+          {...this.state}
         />
       )
     }
@@ -52,7 +53,8 @@ export default (InnerComponent) => {
     state => ({
       data: state.api_data.posts,
       slug: state.router.location.pathname,
-      router: state.router
+      router: state.router,
+      style: state.header_style
     })
   )(PostWrapper)
 }

@@ -1,11 +1,11 @@
 import React,  { Fragment } from 'react'
 import { connect } from 'react-redux'
 import styled, { ThemeProvider } from 'styled-components'
-import { themeA, themes } from './../../../styles/theme'
+import { themeA, themes } from './../../../../styles/theme'
 import LazyLoad from 'react-lazyload'
-import { ProportionWrapper, H3, SmallP } from './../../../styles/components'
-import { absoluteTopFull, opacityTransition, mainPadding, textShadow  } from './../../../styles/mixins'
-import { colors } from './../../../styles/theme.json'
+import { ProportionWrapper, H3, SmallP } from './../../../../styles/components'
+import { absoluteTopFull, opacityTransition, mainPadding, textShadow  } from './../../../../styles/mixins'
+import { colors } from './../../../../styles/theme.json'
 
 const VideoCaption = (props) =>
   <VideoCaptionWrapper className={'hover-reveal'}>

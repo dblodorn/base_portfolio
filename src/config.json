@@ -11,7 +11,7 @@
     "mailchimp_url": ""
   },
   "styling": {
-    "header_style": "top"
+    "header_style": "top-horizontal"
   },
   "fonts": [
     "Authentic",

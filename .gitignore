@@ -13,3 +13,4 @@ yarn-error.log*
 *.njsproj
 *.sln
 _comps/assets-templates.sketch
+_comps

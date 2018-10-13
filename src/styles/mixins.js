@@ -467,11 +467,18 @@ const halfFixed = css`
   &.fixed_left {
     ${fixedWindow};
     left: 0;
-    border-right: ${shared.border_thin};    
+    border-right: ${shared.border_thin};   
+    &.sidebar {
+      width: calc(50vw - (${widths.sidebar_desktop} / 2));
+      left: ${widths.sidebar_desktop};
+    } 
   }
   &.fixed_right {
     ${fixedWindow};
-    right: 0;    
+    right: 0;
+    &.sidebar {
+      width: calc(50vw - (${widths.sidebar_desktop} / 2));
+    }    
   }
 `
 

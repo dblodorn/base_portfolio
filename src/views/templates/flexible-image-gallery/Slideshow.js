@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { fixedHero } from './../../../styles/mixins'
 
 export default (props) =>
-  <CarouselWrapper className={(props.data.is_hero) && 'fixed-hero'}>
+  <CarouselWrapper className={(props.data.is_hero) && `fixed-hero ${props.style}`}>
     <Carousel 
       slides={props.data.slides}
       navigation={props.data.controls}
@@ -17,7 +17,7 @@ export default (props) =>
 // STYLES
 const CarouselWrapper = styled.div`
   display: block;
-  width: 100vw;
+  width: 100%;
   height: 56.25vw;
   position: relative;
   max-height: 100vh;

@@ -6,8 +6,6 @@ import { StyledLink, NavItem } from './../../styles/components'
 import { setMenuState } from './../../state/actions'
 import { smallType } from './../../styles/mixins'
 
-// (props.cardData.post_type === 'page') ? `/${props.cardData.slug}` : `/${props.cardData.post_type}/${props.cardData.slug}`
-
 const returnLink = (slug, subroute) => {
   if (subroute) {
     return `/${subroute}/${slug}`
@@ -19,7 +17,7 @@ const returnLink = (slug, subroute) => {
 const Menulink = (props) => {
   return (
     <ThemeProvider theme={themes[props.theme] || themeA}>
-      <NavItem className={(`/${props.path}` == `${props.route}`) ? 'active' : null}>
+      <NavItem className={(`/${props.path}` == `${props.route}`) ? `active ${props.classes}` : props.classes}>
         <NavLink to={returnLink(props.path, props.sub_route)} onClick={() => props.menu_toggle(false)}>
           <span dangerouslySetInnerHTML={{__html: props.page }}/>
         </NavLink>

@@ -10,11 +10,11 @@ const Menu = (props) => {
     return data.map((item, i) => {
       if (!item.is_home && !item.external_link) {
         return (
-          <MenuLink page={item.title} path={item.slug} sub_route={item.sub_route} key={`${i}-${item.id}`}/>
+          <MenuLink page={item.title} path={item.slug} sub_route={item.sub_route} key={`${i}-${item.id}`} classes={`${props.orientation} ${props.navLocation}`}/>
         )
       } else if (item.external_link) {
         return (
-          <NavItem key={`${i}-${item.id}`}>
+          <NavItem key={`${i}-${item.id}`} className={`${props.orientation} ${props.navLocation}`}>
             <ExternalLink href={item.url} target='_blank'><span>{item.title}</span></ExternalLink>
           </NavItem>
         )
@@ -22,8 +22,8 @@ const Menu = (props) => {
     })
   }
   return (
-    <MenuWrapper>
-      <NavList>
+    <MenuWrapper className={`${props.orientation} ${props.navLocation}`}>
+      <NavList className={`${props.orientation} ${props.navLocation}`}>
         {props.children}
         {(props.api_data) && buildNav(props.api_data.menus[props.location].items)}
       </NavList>
@@ -39,23 +39,46 @@ export default connect(
 
 // STYLES
 const MenuWrapper = styled.menu`
-  ${flexCenteredAll};
   height: 100%;
   padding-bottom: .5rem;
-  ${media.desktopNav`
-    margin-left: auto;
-  `}
+  ${flexCenteredAll};
+  &.sidebar {
+    ${media.desktopNav`
+      flex-shrink: 0;
+      height: auto;
+      padding-bottom: 0;
+    `}
+  }
+  &.top-horizontal {
+    ${media.desktopNav`
+      margin-left: auto;
+      padding-bottom: 0;
+    `}
+  }
 `
 
 const NavList = styled.ul`
   ${flexColumn};
   position: relative;
   text-align: center;
-  ${media.desktopNav`
-    ${flexRow};
-    margin-left: auto;
-    transform: translateY(4px);
-  `}
+  &.sidebar {
+    ${media.desktopNav`
+      ${flexColumn};
+      margin-right: auto;
+      text-align: left;
+      &.footer {
+        ${flexRow};
+        text-align: right;
+      }
+    `}
+  }
+  &.top-horizontal {
+    ${media.desktopNav`
+      ${flexRow};
+      margin-left: auto;
+      transform: translateY(4px);
+    `}
+  }
 `
 
 const ExternalLink = styled.a`
