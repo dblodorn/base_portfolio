@@ -4,20 +4,30 @@ import { connect } from 'react-redux'
 import ReactPlayer from 'react-player'
 import Swiper from 'react-id-swiper/lib/custom'
 import Waypoint from 'react-waypoint'
+import { setFooterState } from './../../state/actions'
 import CarouselSlide from './CarouselSlide'
-import { spacing } from './../../styles/theme.json'
+import { spacing, heights } from './../../styles/theme.json'
 import { buttonInit, absoluteTopFull, absoluteCentered } from './../../styles/mixins'
 import { PrevButton, NextButton } from './../utils/PrevNextButton'
 
 class Carousel extends Component {
   constructor(props) {
     super(props)
+    console.log(this.props)
+    const autoplay = () => {
+      if (!this.props.autoplay) {
+        return false
+      } else {
+        return {
+          delay: 1500,
+          disableOnInteraction: false
+        }
+      }
+    }
     this.state = {
       playing: false,
-      autoplay: {
-        delay: 1500,
-        disableOnInteraction: false
-      }
+      autoplay: autoplay(),
+      transitionTime: this.props.transition_time || 1500
     }
     this._wayPointEnter = this._wayPointEnter.bind(this)
     this._wayPointLeft = this._wayPointLeft.bind(this)
@@ -25,7 +35,9 @@ class Carousel extends Component {
   }
 
   _wayPointEnter() {
-    this.swiper.autoplay.start()
+    if (this.props.autoplay) {
+      this.swiper.autoplay.start()
+    }
   }
 
   _wayPointLeft() {
@@ -67,6 +79,7 @@ class Carousel extends Component {
     } else {
       this.swiper.autoplay.stop()
     }
+    // this.props.footer_state(false)
   }
 
   componentWillUnmount() {
@@ -76,6 +89,7 @@ class Carousel extends Component {
       })
       this.player.seekTo(0)
     }
+    // this.props.footer_state(true)
   }
 
   render() {
@@ -85,7 +99,7 @@ class Carousel extends Component {
           this._slideChange()
         }
       },
-      autoplay: (this.props.autoplay) ? this.state.autoplay : false,
+      autoplay: this.state.autoplay,
       pagination: {
         el: (this.props.pagination) ? '.swiper-pagination' : null,
         type: 'bullets',
@@ -99,14 +113,14 @@ class Carousel extends Component {
       fadeEffect: {
         crossFade: true
       },
-      speed: 3000,
+      speed: this.props.transition_time,
       renderPrevButton: () => <button className="swiper-button-prev"><PrevButton/></button>,
       renderNextButton: () => <button className="swiper-button-next"><NextButton/></button>,
     }
 
     const HeroSlides = this.props.slides.map((slide, i) =>
       <HeroSlide key={i} data-slidetype={slide.slide_type} className={(this.props.navigation) && 'nav'}>
-        <CarouselSlide slideData={slide}>
+        <CarouselSlide slideData={slide} caption={this.props.captions}>
           {(slide.slide_type === 'video') &&
             <ReactPlayer
               ref={node => { if (node) this.player = node.player }}
@@ -141,6 +155,9 @@ class Carousel extends Component {
 export default connect(
   state => ({
     window_width: state.resize_state.window_width
+  }),
+  dispatch => ({
+    footer_state: (bool) => dispatch(setFooterState(bool))
   })
 )(Carousel)
 
@@ -161,7 +178,7 @@ const HeroSlide = styled.div`
 `
 
 const HeroSlider = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 100%;
   position: relative;
   .swiper-container {
@@ -184,6 +201,11 @@ const HeroSlider = styled.div`
   .hero-player {
     ${absoluteTopFull};
     z-index: 100;
+  }
+  .swiper-pagination {
+    bottom: 7rem;
+    padding: 0 7rem;
+    text-align: right;
   }
   video {
     ${absoluteCentered};

@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import MenuLink from './MenuLink'
 import { flexRow, flexColumn, flexCenteredAll, media, defaultLink, smallType } from './../../styles/mixins'
 import { NavItem } from './../../styles/components'
+import { spacing } from './../../styles/theme.json'
 
 const Menu = (props) => {
   const buildNav = (data) => {
@@ -46,7 +47,7 @@ const MenuWrapper = styled.menu`
     ${media.desktopNav`
       flex-shrink: 0;
       height: auto;
-      padding-bottom: 0;
+      padding: ${spacing.double_pad};
     `}
   }
   &.top-horizontal {
@@ -65,7 +66,8 @@ const NavList = styled.ul`
     ${media.desktopNav`
       ${flexColumn};
       margin-right: auto;
-      text-align: left;
+      text-align: center;
+      width: 100%;
       &.footer {
         ${flexRow};
         text-align: right;

@@ -12,5 +12,5 @@ export default () =>
 // STYLES
 const LoadingWrapper = styled.div`
   ${fullWindow};
-  background-color: ${colors.blue};
+  background-color: ${colors.black};
 `

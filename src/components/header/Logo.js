@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import { themeA, themes } from './../../styles/theme'
 import { bodyType } from './../../styles/mixins'
-import { spacing } from './../../styles/theme.json'
+import { spacing, shared } from './../../styles/theme.json'
 import { StyledLink } from './../../styles/components'
 
 export default (props) =>
@@ -21,7 +21,7 @@ export default (props) =>
     </Logo>
   </ThemeProvider>
 
-const Logo = styled(StyledLink)`
+  const Logo = styled(StyledLink)`
   ${bodyType};
   object-fit: contain;
   display: block;
@@ -31,6 +31,8 @@ const Logo = styled(StyledLink)`
   &.sidebar {
     height: auto;
     width: 100%;
+    padding: ${spacing.double_pad};
+    border-bottom: ${shared.border_thin};
   }
   svg {
     width: 100%;
