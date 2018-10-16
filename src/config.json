@@ -13,6 +13,7 @@
   "styling": {
     "header_style": "top-horizontal"
   },
+  "shop": true,
   "fonts": [
     "Authentic",
     "Knif Mono",

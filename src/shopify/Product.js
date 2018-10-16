@@ -1,5 +1,9 @@
-import React, {Component} from 'react';
-import VariantSelector from './VariantSelector';
+import React, {Component} from 'react'
+import styled from 'styled-components'
+import { grid } from './../styles/mixins'
+import { H5, H6 } from './../styles/components'
+import { widths } from './../styles/theme.json'
+import VariantSelector from './VariantSelector'
 
 class Product extends Component {
   constructor(props) {
@@ -59,19 +63,26 @@ class Product extends Component {
       );
     });
     return (
-      <div className="Product">
+      <ProductCard>
         {this.props.product.images.length ? <img src={variantImage.src} alt={`${this.props.product.title} product shot`}/> : null}
-        <h5 className="Product__title">{this.props.product.title}</h5>
-        <span className="Product__price">${variant.price}</span>
+        <H5>{this.props.product.title}</H5>
+        <H6>${variant.price}</H6>
         {variantSelectors}
         <label className="Product__option">
-          Quantity
-          <input min="1" type="number" defaultValue={variantQuantity} onChange={this.handleQuantityChange}></input>
+          Quantity <input min="1" type="number" defaultValue={variantQuantity} onChange={this.handleQuantityChange}></input>
         </label>
         <button className="Product__buy button" onClick={() => this.props.addVariantToCart(variant.id, variantQuantity)}>Add to Cart</button>
-      </div>
+      </ProductCard>
     );
   }
 }
 
 export default Product;
+
+// STYLES
+const ProductCard = styled.li`
+  img {
+    width: 100%;
+    height: auto;
+  }
+`

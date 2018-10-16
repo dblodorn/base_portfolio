@@ -13,7 +13,8 @@
     "max_large": "124rem",
     "max_medium": "92rem",
     "max_small": "72rem",
-    "sidebar_desktop": "24rem"
+    "sidebar_desktop": "24rem",
+    "cart": "100vw"
   },
   "heights": {
     "header": "6rem",
