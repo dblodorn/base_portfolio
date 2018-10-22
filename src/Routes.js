@@ -26,7 +26,7 @@ class Routes extends Component {
           )
         } else {
           return (
-            <Route exact path={'/'} component={Shop} key={'home'}/>
+            <Route exact path={'/'} component={Templates} key={'home'}/>
           )
         }
       })

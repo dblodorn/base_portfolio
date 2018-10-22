@@ -16,17 +16,7 @@ const Document = (props) => {
     return (
       <Fragment>
         <Header/>
-        {(shop) &&
-          <Cart
-            checkout={props.cart.checkout}
-            isCartOpen={props.cart.isCartOpen}
-            handleCartClose={handleCartClose}
-            handleCartOpen={handleCartOpen}
-            updateQuantityInCart={updateQuantityInCart}
-            removeLineItemInCart={removeLineItemInCart}
-          />
-        }
-        <Main id={routeName(props.router.location.pathname).routeClass} className={(props.cart.isCartOpen) ? `cart-open ${props.header_style}` : props.header_style}>
+        <Main id={routeName(props.router.location.pathname).routeClass} className={props.header_style}>
           {props.children}
         </Main>
         <Footer orientation={props.header_style}/>
@@ -41,8 +31,7 @@ export default connect(
   state => ({
     api_data: state.api_data,
     header_style: state.header_style,
-    router: state.router,
-    cart: state.cart
+    router: state.router
   })
 )(Document)
 

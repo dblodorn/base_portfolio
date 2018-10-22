@@ -113,7 +113,7 @@ class Carousel extends Component {
       fadeEffect: {
         crossFade: true
       },
-      speed: this.props.transition_time,
+      speed: 1500,
       renderPrevButton: () => <button className="swiper-button-prev"><PrevButton/></button>,
       renderNextButton: () => <button className="swiper-button-next"><NextButton/></button>,
     }
