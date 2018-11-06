@@ -23,10 +23,10 @@ export default class extends Component {
   render() {
     return (
       <Wrapper>
-        <ImgWrapper Opacity={(this.state.loaded) ? 1 : 0} onClick={this.props.clickFunction} className={(this.props.clickFunction) && 'hover'}>
+        <ImgWrapper Opacity={(this.state.loaded) ? 1 : 0} onClick={this.props.clickFunction} className={(this.props.clickFunction || this.props.hover) && 'hover'}>
           <ImgFit src={this.props.src} onLoad={this.handleImageLoaded.bind(this)} Fit={this.props.fit}/>
         </ImgWrapper>
-        {(!this.state.loaded) && <Spinner size={'4rem'} color={colors.blue} stroke={1} /> }
+        {(!this.state.loaded) && <Spinner size={'4rem'} color={colors.spinner_color} stroke={1} /> }
       </Wrapper>
     )
   }
@@ -41,6 +41,7 @@ const ImgWrapper = styled.div`
   ${absoluteTopFull};
   ${opacityTransition};
   opacity: ${props => props.Opacity};
+  display: block;
   &.hover {
     cursor: pointer;
     &:hover {

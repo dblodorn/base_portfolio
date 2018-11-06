@@ -258,6 +258,29 @@ const CloseButton = styled.button`
   }
 `
 
+// POST COLLECTION
+const ExcerptWrapper = styled.div`
+  ${_.opacityTransition};
+  padding: ${spacing.double_pad} ${spacing.double_pad} 0;
+`
+
+const ProjectTitle = styled.h3`
+  ${_.bigType};
+  color: ${props => props.theme.display_font_color}!important;
+  font-family: ${props => props.theme.display_font};
+  text-transform: ${props => props.theme.display_case};
+  padding: ${spacing.double_pad} ${spacing.double_pad} 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+`
+
+const CardP = styled(P)`
+  color: ${props => props.theme.display_font_color}!important;
+  font-family: ${props => props.theme.body_copy_font};
+  max-width: ${widths.max_small};
+`
+
 export {
   Section,
   Article,
@@ -282,5 +305,8 @@ export {
   ProportionWrapper,
   ModalWrapper,
   ModalContentWrapper,
-  CloseButton
+  CloseButton,
+  ExcerptWrapper,
+  ProjectTitle,
+  CardP
 }

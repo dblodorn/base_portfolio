@@ -54,7 +54,8 @@
     "popup_bg_color_a": "#ffffff",
     "popup_bg_color_b": "#ffffff",
     "popup_close_color_a": "#222222",
-    "popup_close_color_b": "#222222"
+    "popup_close_color_b": "#222222",
+    "spinner_color": "#222222"
   },
   "fonts": {
     "sans": "FFF Regular, system-ui, sans-serif",
@@ -76,18 +77,6 @@
       "micro": "1rem",
       "micro_sm": "1rem"
     }
-  },
-  "global": {
-    "logo_size": "25vmin",
-    "border_weight": "5px",
-    "logo_size_desk": "8rem",
-    "article_width": "70rem",
-    "max_width": "92rem",
-    "super_wide": "124rem",
-    "column_width": "40rem",
-    "menu_width": "6.5rem",
-    "border_thin": "1px solid #180c06",
-    "border_thick": "4px solid #180c06"
   },
   "shared": {
     "logo_size": "25vmin",

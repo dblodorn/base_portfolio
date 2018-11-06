@@ -3,51 +3,71 @@ import styled, { ThemeProvider } from 'styled-components'
 import { themeA, themes } from './../../../styles/theme'
 import LazyLoad from 'react-lazyload'
 import { FitImage } from './../../../components'
-import { P, PadWrapper, ButtonLink, ProportionWrapper } from './../../../styles/components'
-import { bigType, flexColumn, media, flexRowWrap } from './../../../styles/mixins'
-import { spacing, shared, widths } from './../../../styles/theme.json'
+import { CardP, ExcerptWrapper, ProjectTitle, PadWrapper, ButtonLink, ProportionWrapper } from './../../../styles/components'
+import { flexColumn, media, flexRowWrap } from './../../../styles/mixins'
+import { shared, spacing } from './../../../styles/theme.json'
 import Taxonomies from './Taxonomies'
 
+/*
+  Action Type
+  
+  popup_grid : Popup Grid
+  link_wrapper : Link Wrapper
+  link_button : Link Button
+  text_link : Text Link
+
+
+  props.data.content.thumbnail_style
+
+  hover_image : Title with hover Image, tap on mobile
+  hover_title : Image with hover caption, tap on mobile
+  image_title : Image with caption underneath
+  image_only : Image Only
+  text_only : Text only link
+
+*/
+
 export default (props) =>
-    <CardWrapper className={`${props.columns} ${props.style}`}>
-      {(props.cardData.thumbnail && props.showThumbnail) && 
-        <ThumbnailWrapper
-          className={`${props.columns} ${props.style}`}
-          Desktop={props.proportion.thumbnail_proportion}
-          Mobile={props.proportion.thumbnail_proportion_mobile}
-          Max={props.proportion.thumbnail_proportion_max}
-        >
-          <LazyLoad height='100%'>
-            <FitImage src={props.cardData.thumbnail} fit={'cover'}/>
-          </LazyLoad>
-        </ThumbnailWrapper>
+  <CardWrapper className={`${props.data.columns} ${props.data.style}`}>
+    {(props.cardData.thumbnail && (props.data.thumbnail_style === 'image_title')) && 
+      <ThumbnailWrapper
+        className={`${props.data.columns} ${props.data.style}`}
+        Desktop={props.data.thumbnail_proportion}
+        Mobile={props.data.thumbnail_proportion_mobile}
+        Max={props.data.thumbnail_proportion_max}
+      >
+        <LazyLoad height='100%'>
+          <FitImage src={props.cardData.thumbnail} fit={'cover'}/>
+        </LazyLoad>
+      </ThumbnailWrapper>
+    }
+    <ThemeProvider theme={themes[props.data.theme] || themeA}>
+      <CardInfo className={`${props.data.columns} ${props.data.style}`}>
+      <ProjectTitle>{props.cardData.title}</ProjectTitle>
+      {(props.cardData.short_description && props.data.show_description) &&
+        <ExcerptWrapper>
+          <CardP>{props.cardData.short_description}</CardP>
+        </ExcerptWrapper>
       }
-      <ThemeProvider theme={themes[props.theme] || themeA}>
-        <CardInfo className={`${props.columns} ${props.style}`}>
-          {(props.showTitle) && <ProjectTitle>{props.cardData.title}</ProjectTitle>}
-          {(props.cardData.short_description) &&
-            <ExcerptWrapper>
-              <CardP>{props.cardData.short_description}</CardP>
-            </ExcerptWrapper>
-          }
-          {(props.showTaxonomies) && 
-            <Taxonomies title={`${props.cardData.title} : Taxonomies`} taxonomies={props.cardData.taxonomies}/>
-          }
-          {(props.linkButton) &&
-            <LinkWrapper>
-              <ButtonLink to={(props.cardData.post_type === 'page') ? `/${props.cardData.slug}` : `/${props.cardData.post_type}/${props.cardData.slug}`}>
-                <span>More</span>
-              </ButtonLink>
-            </LinkWrapper>
-          }
-        </CardInfo>
-      </ThemeProvider>
-    </CardWrapper>
+      {(props.data.show_post_taxonomies) && 
+          <Taxonomies title={`${props.cardData.title} : Taxonomies`} taxonomies={props.cardData.taxonomies}/>
+        }
+        {(props.data.link_style === 'button_link') &&
+          <LinkWrapper>
+          <ButtonLink to={(props.cardData.post_type === 'page') ? `/${props.slug}` : `/${props.slug}/${props.cardData.slug}`}>
+              <span>{props.data.link_cta}</span>
+            </ButtonLink>
+          </LinkWrapper>
+        }
+      </CardInfo>
+    </ThemeProvider>
+  </CardWrapper>
 
 // STYLES
 const CardWrapper = styled.li`
   ${flexColumn};
   position: relative;
+  padding-bottom: ${spacing.double_pad};
   &.border {
     border-bottom: ${shared.border_thin};
     ${media.desktopNav`
@@ -69,23 +89,6 @@ const ThumbnailWrapper = styled(ProportionWrapper)`
   }
 `
 
-const ExcerptWrapper = styled.div`
-  padding: ${spacing.double_pad};
-  background-color: ${props => props.theme.top_bg_color};
-`
-
-const ProjectTitle = styled.h3`
-  ${bigType};
-  color: ${props => props.theme.display_font_color}!important;
-  font-family: ${props => props.theme.display_font};
-  text-transform: ${props => props.theme.display_case};
-  background-color: ${props => props.theme.top_bg_color};
-  padding: ${spacing.double_pad} ${spacing.double_pad} 0;
-  display: block;
-  width: 100%;
-  margin-bottom: 0;
-`
-
 const LinkWrapper = styled(PadWrapper)`
   display: flex;
   margin-top: auto;
@@ -101,12 +104,6 @@ const LinkWrapper = styled(PadWrapper)`
   &.four_col {
     justify-content: flex-end;
   }
-`
-
-const CardP = styled(P)`
-  color: ${props => props.theme.display_font_color}!important;
-  font-family: ${props => props.theme.body_copy_font};
-  max-width: ${widths.max_small};
 `
 
 const CardInfo = styled.div`
