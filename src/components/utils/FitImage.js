@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
 import Spinner from './Spinner'
-import { absoluteCentered, opacityTransition, absoluteTopFull } from './../../styles/mixins'
+import { ImgFit } from './../../styles/components'
+import { opacityTransition, absoluteTopFull } from './../../styles/mixins'
 import { colors } from './../../styles/theme.json'
 
 export default class extends Component {
@@ -51,11 +52,3 @@ const ImgWrapper = styled.div`
     }
   }
 `
-
-const ImgFit = styled.img`
-  ${absoluteCentered};
-  width: 100%;
-  height: 100%;
-  object-fit: ${props => props.Fit};
-`
-

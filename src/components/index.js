@@ -6,6 +6,7 @@ import pageData from './HOC/pageData'
 import Header from './header/Header'
 import Footer from './footer/Footer'
 import PostBasics from './PostBasics'
+import Logo from './header/Logo'
 
 // Utility Components
 import FitImage from './utils/FitImage'
@@ -21,8 +22,8 @@ import SingleImageModal from './modals/SingleImageModal'
 import VideoModal from './modals/VideoModal'
 
 // Plugin Compnents - most have external dependencies
-//import MailScrape from './plugins/MailScrape'
-import Carousel from './plugins/Carousel'
+import MultimediaSlider from './carousel/MultimediaSlider'
+import SimpleSlider from './carousel/SimpleSlider'
 import Video from './video/Video'
 
 export {
@@ -41,6 +42,7 @@ export {
   PlayButton,
   Close,
   BackClose,
-  // MailScrape,
-  Carousel
+  SimpleSlider,
+  MultimediaSlider,
+  Logo
 }

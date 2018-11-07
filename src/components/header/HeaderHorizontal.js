@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Transition } from 'react-spring'
-import { flexRowCenteredVert } from '../../styles/mixins'
+import { flexRowCenteredVert, microType } from '../../styles/mixins'
 import { heights, spacing, colors } from './../../styles/theme.json'
 import { meta_defaults } from './../../config.json'
 import Menu from '../menus/Menu'
@@ -22,7 +22,7 @@ const HeaderWrapperHorizontal = styled.header`
   width: 100vw;
   ${flexRowCenteredVert};
   height: ${heights.header};
-  padding: 0 ${spacing.double_pad};
+  padding: 0 ${spacing.single_pad};
   position: fixed;
   top: 0;
   left: 0;
@@ -31,5 +31,6 @@ const HeaderWrapperHorizontal = styled.header`
   background-color: ${colors.header_bg_color};
   * {
     color: ${colors.header_type_color}!important;
+    ${microType};
   }
 `

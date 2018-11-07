@@ -244,11 +244,11 @@ const ModalContentWrapper = styled.div`
 
 const CloseButton = styled.button`
   ${_.buttonInit};
-  width: ${props => props.size};
-  height: ${props => props.size};
+  width: ${props => props.size || '6rem'};
+  height: ${props => props.size || '6rem'};
   position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
+  top: 1rem;
+  right: 1rem;
   padding: 0;
   z-index: 11000;
   cursor: pointer;
@@ -281,6 +281,13 @@ const CardP = styled(P)`
   max-width: ${widths.max_small};
 `
 
+const ImgFit = styled.img`
+  ${_.absoluteCentered};
+  width: 100%;
+  height: 100%;
+  object-fit: ${props => props.Fit};
+`
+
 export {
   Section,
   Article,
@@ -308,5 +315,6 @@ export {
   CloseButton,
   ExcerptWrapper,
   ProjectTitle,
-  CardP
+  CardP,
+  ImgFit
 }

@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { Transition } from 'react-spring'
 import { setMenuState } from './../../state/actions'
-import { flexColumn, mainPadding, media, flexRowCenteredVert } from '../../styles/mixins'
+import { flexColumn, microType, media, flexRowCenteredVert } from '../../styles/mixins'
 import Menu from './../menus/Menu'
-import { heights, colors, spacing, widths } from './../../styles/theme.json'
+import { heights, colors, spacing, widths, fonts } from './../../styles/theme.json'
 
 const Footer = (props) =>
   <Transition from={{ opacity: 0, transform: `translateY(${heights.footer})` }} enter={{ opacity: 1, transform: `translateY(0})` }} leave={{ opacity: 0, transform: `translateY(${heights.footer})`, pointerEvents: 'none' }}>
@@ -29,8 +29,7 @@ export default connect(
 // STYLES
 const FooterWrapper =  styled.footer`
   ${flexColumn};
-  ${mainPadding};
-  border-top: 1px solid ${colors.black};
+  padding: 0 ${spacing.single_pad};
   justify-content: center;
   width: 100vw;
   z-index: 100;
@@ -38,19 +37,16 @@ const FooterWrapper =  styled.footer`
   background-color: ${colors.black};
   position: relative;
   * {
+    ${microType};
     color: ${colors.white};
   }
   ${media.desktopNav`
     ${flexRowCenteredVert};
     height: ${heights.footer};
+    padding-bottom: 0;
     position: fixed;
     bottom: 0;
     left: 0;
-    ${mainPadding};
-    background-color: ${colors.footer_bg_color}; 
-    * {
-      color: ${colors.footer_type_color}!important;
-    }
   `}
   &.sidebar {
     ${media.desktopNav`

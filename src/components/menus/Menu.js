@@ -78,7 +78,6 @@ const NavList = styled.ul`
     ${media.desktopNav`
       ${flexRow};
       margin-left: auto;
-      transform: translateY(4px);
     `}
   }
 `

@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import { themeA, themes } from './../../../styles/theme'
+import { fixedHero } from './../../../styles/mixins'
 import { Section, H2, StyledMarkup, Article } from './../../../styles/components'
-import { PopupGrid } from './../../../components'
-import SlideShow from './Slideshow'
+import { PopupGrid, SimpleSlider, MultimediaSlider } from './../../../components'
+import { spacing, widths } from './../../../styles/theme.json'
 import VideoEmbed from './VideoEmbed'
 import VideoGrid from './video-grid/VideoGrid'
-import { spacing } from './../../../styles/theme.json'
 
 export default (props) => {
   return (
@@ -14,9 +14,13 @@ export default (props) => {
       {(props.data.content.layout) && props.data.content.layout.map((item, i) =>
         <LayoutSection className={(item.is_hero) && `hero ${props.style}`} key={`${i}-${item.module}`}>
           { (item.module === 'simple_slideshow')
-            ? <SlideShow data={item} style={props.style}/> :
+            ? <CarouselWrapper className={(item.is_hero) && `fixed-hero ${props.style}`}>
+                <SimpleSlider data={item}/>
+              </CarouselWrapper> :
             (item.module === 'slideshow')
-            ? <SlideShow data={item} style={props.style}/> :
+            ? <CarouselWrapper className={(item.is_hero) && `fixed-hero ${props.style}`}>
+                <MultimediaSlider data={item}/>
+              </CarouselWrapper> :
             (item.module === 'image_grid_popup')
             ? <PopupGridWrapper>
                 <PopupGrid
@@ -67,4 +71,16 @@ const WsyWrapper = styled(Article)`
 
 const PopupGridWrapper = styled.div`
   padding: ${spacing.double_pad} 0;
+`
+
+const CarouselWrapper = styled.div`
+  display: block;
+  width: 100vw;
+  height: 56.25vw;
+  position: relative;
+  max-height: 100vh;
+  ${fixedHero(0, 0, 0)}
+  &.sidebar {
+    padding-left: ${widths.sidebar_desktop};
+  }
 `

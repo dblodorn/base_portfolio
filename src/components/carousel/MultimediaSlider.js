@@ -6,38 +6,36 @@ import Swiper from 'react-id-swiper/lib/custom'
 import Waypoint from 'react-waypoint'
 import { setFooterState } from './../../state/actions'
 import CarouselSlide from './CarouselSlide'
-import { spacing, heights } from './../../styles/theme.json'
+import { spacing, colors } from './../../styles/theme.json'
 import { buttonInit, absoluteTopFull, absoluteCentered } from './../../styles/mixins'
 import { PrevButton, NextButton } from './../utils/PrevNextButton'
 
-class Carousel extends Component {
+class MultimediaSlider extends Component {
   constructor(props) {
     super(props)
-    console.log(this.props)
-    const autoplay = () => {
-      if (!this.props.autoplay) {
-        return false
-      } else {
-        return {
-          delay: 1500,
-          disableOnInteraction: false
-        }
-      }
-    }
     this.state = {
       playing: false,
-      autoplay: autoplay(),
       transitionTime: this.props.transition_time || 1500
     }
     this._wayPointEnter = this._wayPointEnter.bind(this)
     this._wayPointLeft = this._wayPointLeft.bind(this)
     this._slideChange = this._slideChange.bind(this)
+    this._onPlay = this._onPlay.bind(this)
+    this._stop = this._stop.bind(this)
   }
 
-  _wayPointEnter() {
-    if (this.props.autoplay) {
-      this.swiper.autoplay.start()
+  componentWillUnmount() {
+    if (this.state.playing) {
+      this.setState({
+        playing: false
+      })
+      this.player.seekTo(0)
     }
+  }
+
+  // METHODS
+  _wayPointEnter() {
+    this.swiper.autoplay.start()
   }
 
   _wayPointLeft() {
@@ -57,39 +55,16 @@ class Carousel extends Component {
 
   _onPlay() {
     this.player.seekTo(0)
-    this.setState({
-      playing: true
-    })
+    this.setState({ playing: true })
   }
 
   _stop() {
     if (this.state.playing) {
       setTimeout(() => {
         this.player.seekTo(0)
-        this.setState({
-          playing: false
-        })
+        this.setState({ playing: false })
       }, 3000)
     }
-  }
-
-  componentDidMount() {
-    if (this.props.autoplay) {
-      this._slideChange()
-    } else {
-      this.swiper.autoplay.stop()
-    }
-    // this.props.footer_state(false)
-  }
-
-  componentWillUnmount() {
-    if (this.state.playing) {
-      this.setState({
-        playing: false
-      })
-      this.player.seekTo(0)
-    }
-    // this.props.footer_state(true)
   }
 
   render() {
@@ -99,28 +74,16 @@ class Carousel extends Component {
           this._slideChange()
         }
       },
-      autoplay: this.state.autoplay,
-      pagination: {
-        el: (this.props.pagination) ? '.swiper-pagination' : null,
-        type: 'bullets',
-        clickable: true
-      },
-      navigation: {
-        nextEl: (this.props.navigation) ? '.swiper-button-next' : null,
-        prevEl: (this.props.navigation) ? '.swiper-button-prev' : null
-      },
+      autoplay: true,
       effect: 'fade',
-      fadeEffect: {
-        crossFade: true
-      },
-      speed: 1500,
-      renderPrevButton: () => <button className="swiper-button-prev"><PrevButton/></button>,
-      renderNextButton: () => <button className="swiper-button-next"><NextButton/></button>,
+      fadeEffect: { crossFade: true },
+      autoplayDisableOnInteraction: false,
+      speed: this.props.data.transition_time || 1500,
     }
 
-    const HeroSlides = this.props.slides.map((slide, i) =>
-      <HeroSlide key={i} data-slidetype={slide.slide_type} className={(this.props.navigation) && 'nav'}>
-        <CarouselSlide slideData={slide} caption={this.props.captions}>
+    const HeroSlides = this.props.data.slides.map((slide, i) =>
+      <HeroSlide key={i} data-slidetype={slide.slide_type}>
+        <CarouselSlide slideData={slide}>
           {(slide.slide_type === 'video') &&
             <ReactPlayer
               ref={node => { if (node) this.player = node.player }}
@@ -155,20 +118,10 @@ class Carousel extends Component {
 export default connect(
   state => ({
     window_width: state.resize_state.window_width
-  }),
-  dispatch => ({
-    footer_state: (bool) => dispatch(setFooterState(bool))
   })
-)(Carousel)
+)(MultimediaSlider)
 
 // STYLES
-const buttonWrap = css`
-  ${buttonInit};
-  padding: 0;
-  width: 4rem;
-  height: 6rem;
-`
-
 const HeroSlide = styled.div`
   width: 100%;
   height: 100%;
@@ -188,16 +141,6 @@ const HeroSlider = styled.div`
   .swiper-wrapper {
     height: 100%;
   }
-  .swiper-button-prev,
-  .swiper-container-rtl .swiper-button-next {
-    ${buttonWrap};
-    left: ${spacing.micro_pad};
-  }
-  .swiper-button-next,
-  .swiper-container-rtl .swiper-button-prev {
-    ${buttonWrap};
-    right: ${spacing.micro_pad};
-  }
   .hero-player {
     ${absoluteTopFull};
     z-index: 100;
@@ -205,7 +148,7 @@ const HeroSlider = styled.div`
   .swiper-pagination {
     bottom: 7rem;
     padding: 0 7rem;
-    text-align: right;
+    text-align: center;
   }
   video {
     ${absoluteCentered};
