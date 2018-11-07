@@ -300,6 +300,14 @@ const CarouselWrapper = styled.div`
   }
 `
 
+const CloseWrapper = styled.div`
+  ${_.flexRowCenteredVert};
+  justify-content: flex-end;
+  width: calc(${heights.header} - .5rem);
+  height: ${heights.header};
+  margin-left: ${spacing.single_pad};
+`
+
 export {
   Section,
   Article,
@@ -329,5 +337,6 @@ export {
   ProjectTitle,
   CardP,
   ImgFit,
-  CarouselWrapper
+  CarouselWrapper,
+  CloseWrapper
 }

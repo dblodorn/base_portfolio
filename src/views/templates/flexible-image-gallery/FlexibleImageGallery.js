@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import { themeA, themes } from './../../../styles/theme'
 import { Section, H2, StyledMarkup, Article, CarouselWrapper } from './../../../styles/components'
+import { fixedHero } from './../../../styles/mixins'
 import { PopupGrid, SimpleSlider, MultimediaSlider } from './../../../components'
 import { spacing } from './../../../styles/theme.json'
 import VideoEmbed from './VideoEmbed'
@@ -55,11 +56,7 @@ export default (props) => {
 // STYLES
 const LayoutSection = styled(Section)`
   &.hero {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    height: 100vh;
+    ${fixedHero(0, 0, 0)}
   }
   &:last-child {
     margin-bottom: 0;

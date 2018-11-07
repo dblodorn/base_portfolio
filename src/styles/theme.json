@@ -18,7 +18,7 @@
   },
   "heights": {
     "header": "4rem",
-    "mobile_header": "6rem",
+    "mobile_header": "5rem",
     "footer": "4rem",
     "player_icons": "2.5rem"
   },

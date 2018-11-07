@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import Swiper from 'react-id-swiper/lib/custom'
 import { ImgFit } from './../../styles/components'
 import { spacing, colors, shared, heights } from './../../styles/theme.json'
-import { buttonInit, absoluteTopFull, microType } from './../../styles/mixins'
+import { buttonInit, absoluteTopFull, microType, media } from './../../styles/mixins'
 import { PrevButton, NextButton } from './../utils/PrevNextButton'
 import TextOverlay from './../TextOverlay'
 
@@ -115,11 +115,13 @@ const HeroSlide = styled.div`
 `
 
 const SlideShowImg = styled(ImgFit)`
-  padding: ${props => 
-    (props.Fit === 'contain') 
-    ? `calc(${heights.header} * 2) ${heights.header}`
-    : `${heights.header} 0 ${heights.footer}`
-  };
+  ${media.desktopNav`
+    padding: ${props => 
+      (props.Fit === 'contain') 
+      ? `calc(${heights.header} * 2) ${heights.header}`
+      : `${heights.header} 0 ${heights.footer}`
+    };
+  `}
   &.modal {
     padding: ${props => 
       (props.Fit === 'contain') 

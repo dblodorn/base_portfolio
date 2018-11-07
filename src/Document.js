@@ -2,21 +2,23 @@ import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { Transition } from 'react-spring'
 import styled, { injectGlobal } from 'styled-components'
-import { handleCartClose, handleCartOpen, updateQuantityInCart, removeLineItemInCart } from './state/actions'
-import { animationFadeIn, flexColumn, media } from './styles/mixins'
+import { animationFadeIn, flexColumn, media, mobileMenuTransition } from './styles/mixins'
 import { colors, fonts, heights, widths } from './styles/theme.json'
 import { routeName } from './scripts'
 import { Footer, Header } from './components'
 import { LoadingPage } from './views'
-import Cart from './shopify/Cart'
-import { shop } from './config.json'
 
 const Document = (props) => {
   if (props.api_data) {
     return (
       <Fragment>
         <Header/>
-        <Main id={routeName(props.router.location.pathname).routeClass} className={props.header_style}>
+        <Main id={
+          routeName(props.router.location.pathname).routeClass}
+          className={[
+            props.header_style,
+            props.menu && `hide`
+          ].join(' ')}>
           {props.children}
         </Main>
         <Footer orientation={props.header_style}/>
@@ -31,7 +33,8 @@ export default connect(
   state => ({
     api_data: state.api_data,
     header_style: state.header_style,
-    router: state.router
+    router: state.router,
+    menu: state.menu
   })
 )(Document)
 
@@ -39,10 +42,19 @@ export default connect(
 const Main = styled.main`
   ${animationFadeIn(1000, 150)};
   ${flexColumn};
+  ${mobileMenuTransition};
   width: 100vw;
   position: relative;
-  min-height: calc(100vh - ${heights.footer});
-  transition: transform 400ms ease;
+  margin-top: ${heights.mobile_header};
+  min-height: calc(100vh - ${heights.mobile_header});
+  transform: translateX(0);
+  ${media.desktopNav`
+    margin-top: 0;
+    min-height: calc(100vh - ${heights.footer});
+  `}
+  &.hide {
+    transform: translateX(100vw);
+  }
   &.sidebar {
     ${media.desktopNav`
       padding-left: ${widths.sidebar_desktop};
@@ -54,9 +66,6 @@ const Main = styled.main`
       padding-top: ${heights.header};
       padding-bottom: ${heights.footer};
     `}
-  }
-  &.cart-open {
-    transform: translateX(-${widths.cart});
   }
 `
 

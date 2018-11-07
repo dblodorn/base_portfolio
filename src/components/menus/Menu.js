@@ -62,8 +62,10 @@ const NavList = styled.ul`
   position: relative;
   text-align: center;
   &.footer {
-    ${flexRow};
-    text-align: right;
+    ${media.desktopNav`
+      ${flexRow};
+      text-align: right;
+    `}
   }
   &.sidebar {
     ${media.desktopNav`

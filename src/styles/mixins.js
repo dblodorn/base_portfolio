@@ -422,6 +422,7 @@ const fixedHero = (top, bottom, left) => {
       max-height: 100vh;
       height: 100vh;
       overflow: hidden;
+      position: relative;
       ${media.desktopNav`
         padding-bottom: ${bottom};
         padding-top: ${top};
@@ -435,20 +436,22 @@ const fixedHero = (top, bottom, left) => {
 }
 
 const fixedWindow = css`
-  ${fancyScroll};
-  padding: ${heights.header} 0 ${heights.footer};
-  width: 50vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  z-index: 100;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-  article {
-    padding-top: ${spacing.double_pad};
-    padding-bottom: ${heights.footer};
-  }
+  ${media.desktopNav`
+    ${fancyScroll};
+    padding: ${heights.header} 0 ${heights.footer};
+    width: 50vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    article {
+      padding-top: ${spacing.double_pad};
+      padding-bottom: ${heights.footer};
+    }
+  `}
 `
 
 const halfFixed = css`
@@ -475,6 +478,11 @@ const menuTransition = css`
   opacity: 1;
   will-change: transform, opacity;
   transition: transform 300ms ease, opacity 300ms ease;
+`
+
+const mobileMenuTransition = css`
+  will-change: transform;
+  transition: transform 350ms ease;
 `
 
 const borderRadius = (radius) => {
@@ -550,5 +558,6 @@ export {
   halfFixed,
   fixedWindow,
   menuTransition,
-  headerFooterShared
+  headerFooterShared,
+  mobileMenuTransition
 }

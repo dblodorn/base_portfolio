@@ -7,14 +7,8 @@ import Menu from './../menus/Menu'
 import { heights, colors, spacing, widths } from './../../styles/theme.json'
 
 const FooterMobile = (props) =>
-  <FooterWrapper className={[
-    props.orientation,
-    !props.header_state ? `hide` : ``,
-    (props.direction === 'down') ? `scrolling` : ``
-  ].join(' ')} bgcolor={colors.header_bg_color}>
-    <FooterInner>
-      <Menu location={1} navLocation={'footer'} orientation={props.orientation}/>
-    </FooterInner>
+  <FooterWrapper bgcolor={colors.header_bg_color}>
+    <Menu location={1} navLocation={'footer'} orientation={props.orientation}/>
   </FooterWrapper>
 
 export default connect(
@@ -31,11 +25,10 @@ export default connect(
 // STYLES
 const FooterWrapper =  styled.footer`
   ${flexColumn};
-  padding: 0 ${spacing.single_pad};
+  padding: ${spacing.double_pad} ${spacing.single_pad} ${spacing.big_pad};
   justify-content: center;
   width: 100vw;
   z-index: 100;
-  padding-bottom: ${spacing.big_pad};
   background-color: ${props => props.bgcolor};
   transition: background-color 1000ms ease-in-out, transform 300ms ease-in-out, opacity 300ms ease-in-out;
   will-change: background-color, transform, opacity;
@@ -43,27 +36,5 @@ const FooterWrapper =  styled.footer`
   * {
     ${microType};
     color: ${colors.white};
-  }
-  ${media.desktopNav`
-    ${flexRowCenteredVert};
-    height: ${heights.footer};
-    padding-bottom: 0;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-  `}
-  &.sidebar {
-    ${media.desktopNav`
-      padding-left: calc(${widths.sidebar_desktop} + ${spacing.double_pad});
-      justify-content: flex-end;
-    `}
-  }
-  &.hide {
-    opacity: 0;
-    transform: translateY(${heights.footer});
-  }
-  &.scrolling {
-    opacity: 0;
-    transform: translateY(${heights.footer});
   }
 `

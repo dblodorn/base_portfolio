@@ -1,6 +1,5 @@
-import { store } from './../state/store'
-import { heights, spacing, fonts, colors, shared, breakpoints } from './theme.json'
-import defaults from './defaults.json'
+// import { store } from './../state/store'
+import { fonts, colors } from './theme.json'
 
 // Theme
 export const themeA = {
