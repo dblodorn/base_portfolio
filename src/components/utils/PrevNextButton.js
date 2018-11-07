@@ -25,7 +25,6 @@ const Button = styled.div`
   }
 `
 const returnColor = (color) => {
-  console.log(color)
   return (color === 'dark') ? colors.black : colors.white
 }
 

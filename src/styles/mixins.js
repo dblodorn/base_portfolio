@@ -306,7 +306,7 @@ const borderRadius = (radius) => {
 
 const textShadow = (blur, color) => {
   return css`
-    text-shadow: 2px 2px ${blur}px ${color};
+    text-shadow: 1px 1px ${blur}px ${color};
   `
 }
 

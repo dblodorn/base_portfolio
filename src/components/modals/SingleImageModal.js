@@ -10,6 +10,7 @@ import Close from './../utils/Close'
 class SingleImageModal extends Component {
     constructor(props) {
       super(props)
+      console.log(this.props)
       this.state = {
         modal: false
       }
@@ -25,14 +26,14 @@ class SingleImageModal extends Component {
     render() {
       return (
         <Fragment>
-          <FitImage clickFunction={() => this._ImageEnlarge()} src={this.props.src} fit={'contain'}/>
+          <FitImage clickFunction={() => this._ImageEnlarge()} src={this.props.src} fit={this.props.fit || 'cover'}/>
           <Transition from={{ opacity: 0 }} enter={{ opacity: 1 }} leave={{ opacity: 0, pointerEvents: 'none' }}>
             {this.state.modal && (styles => 
               <Modal>
                 <ThemeProvider theme={themes[this.props.theme] || themeA}>
                   <ModalWrapper style={styles}>
                     <Close clickFunction={() => this._ImageEnlarge()} color={themes[this.props.theme].popup_close_color || themeA.popup_close_color}/>
-                    <ModalContentWrapper maxHeight={'50rem'}>
+                    <ModalContentWrapper maxHeight={'90rem'}>
                       <FitImage clickFunction={() => this._ImageEnlarge()} src={this.props.src} fit={'contain'}/>
                     </ModalContentWrapper>
                   </ModalWrapper>

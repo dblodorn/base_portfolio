@@ -64,7 +64,7 @@ const VideoCaptionWrapper = styled.div`
   ${absoluteTopFull};
   z-index: 1;
   * {
-    ${textShadow(0, colors.blue)};
+    ${textShadow(0, colors.black)};
     color: ${colors.white}!important;
   }
 `

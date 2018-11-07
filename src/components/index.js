@@ -19,6 +19,7 @@ import BackClose from './utils/BackClose'
 
 // Modals
 import SingleImageModal from './modals/SingleImageModal'
+import SlideshowModal from './modals/SlideshowModal'
 import VideoModal from './modals/VideoModal'
 
 // Plugin Compnents - most have external dependencies
@@ -44,5 +45,6 @@ export {
   BackClose,
   SimpleSlider,
   MultimediaSlider,
-  Logo
+  Logo,
+  SlideshowModal
 }

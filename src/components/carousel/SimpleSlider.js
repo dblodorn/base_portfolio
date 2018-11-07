@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import Swiper from 'react-id-swiper/lib/custom'
 import { ImgFit } from './../../styles/components'
 import { spacing, colors, shared, heights } from './../../styles/theme.json'
-import { buttonInit, absoluteTopFull, absoluteCentered, flexCenteredAll, microType } from './../../styles/mixins'
+import { buttonInit, absoluteTopFull, microType } from './../../styles/mixins'
 import { PrevButton, NextButton } from './../utils/PrevNextButton'
 import TextOverlay from './../TextOverlay'
 
@@ -23,19 +23,40 @@ class SimpleSlider extends Component {
       }
     }
     this.state = {
+      revealSlider: false,
       autoplay: autoplay(),
-      transitionTime: this.props.data.transition_time || 1500
+      transitionTime: this.props.data.transition_time || 1500,
+      currentSlide: 0,
+      startPosition: this.props.currentSlide || 0
     }
+  }
+
+  _slideChange() {
+    this.setState({ currentSlide: this.swiper })
+    console.log(this.swiper)
   }
 
   componentDidMount() {
     if (!this.props.data.autoplay) {
       this.swiper.autoplay.stop()
     }
-  }
+    if (this.props.currentSlide) {
+      setTimeout(() => {
+        this.setState({
+          revealSlider: true
+        });
+        this.swiper.slideTo(this.state.startPosition);
+      }, 250);
+    }
+  };
 
   render() {
     const swiperParams = {
+      on: {
+        slideChange: () => {
+          this._slideChange();
+        }
+      },
       autoplay: this.state.autoplay,
       pagination: {
         el: (this.props.data.pagination === 'none' || !this.props.data.pagination) ? null : `.swiper-pagination`,
@@ -66,15 +87,15 @@ class SimpleSlider extends Component {
     return (
       <HeroSlider className={this.props.data.controls_color}>
         <Swiper {...swiperParams} ref={node => { if (node) this.swiper = node.swiper }}>
-          {this.props.data.slides.map((item, i) =>
-            <HeroSlide key={i + item.image.id} className={item.image_style}>
+          {this.props.data.slides.map((item) =>
+            <HeroSlide key={item.image.id + 'simple-slideshow'} className={this.props.data.image_style}>
               {(this.props.data.captions && !this.props.data.has_text_overlay) &&
                 <TextOverlay content={`<h2>${item.image.description.title}</h2><br><p>${item.image.description.caption}</p>`}/>
               }
               {(this.props.data.has_text_overlay) &&
                 <TextOverlay content={`${this.props.data.text_overlay_content}`}/>
               }
-              <SlideShowImg src={item.image.large} Fit={item.image_style}/>
+              <SlideShowImg src={item.image.large} Fit={this.props.data.image_style}/>
             </HeroSlide>
           )}
         </Swiper>

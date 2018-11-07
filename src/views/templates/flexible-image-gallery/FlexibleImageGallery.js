@@ -1,10 +1,9 @@
 import React, { Fragment } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import { themeA, themes } from './../../../styles/theme'
-import { fixedHero } from './../../../styles/mixins'
-import { Section, H2, StyledMarkup, Article } from './../../../styles/components'
+import { Section, H2, StyledMarkup, Article, CarouselWrapper } from './../../../styles/components'
 import { PopupGrid, SimpleSlider, MultimediaSlider } from './../../../components'
-import { spacing, widths } from './../../../styles/theme.json'
+import { spacing } from './../../../styles/theme.json'
 import VideoEmbed from './VideoEmbed'
 import VideoGrid from './video-grid/VideoGrid'
 
@@ -24,11 +23,13 @@ export default (props) => {
             (item.module === 'image_grid_popup')
             ? <PopupGridWrapper>
                 <PopupGrid
+                  data={item}
                   images={item.images}
                   width={item.ig_width}
                   columns={item.ig_columns}
                   proportion={item.thumbnail_proportion}
                   collectionType={null}
+                  type={item.popup_type}
                 />
               </PopupGridWrapper> :
             (item.module === 'wysiwig_content') 
@@ -71,16 +72,4 @@ const WsyWrapper = styled(Article)`
 
 const PopupGridWrapper = styled.div`
   padding: ${spacing.double_pad} 0;
-`
-
-const CarouselWrapper = styled.div`
-  display: block;
-  width: 100vw;
-  height: 56.25vw;
-  position: relative;
-  max-height: 100vh;
-  ${fixedHero(0, 0, 0)}
-  &.sidebar {
-    padding-left: ${widths.sidebar_desktop};
-  }
 `

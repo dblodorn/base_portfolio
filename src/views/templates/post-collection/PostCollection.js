@@ -16,25 +16,6 @@ mixin(_, {
   shuffle: shuffle
 })
 
-/*
-  props.data.content.insert_action
-  
-  popup_grid : Popup Grid
-  link_wrapper : Link Wrapper
-  link_button : Link Button
-  text_link : Text Link
-*/
-
-/*
-  props.data.content.thumbnail_style
-  
-  hover_image : Title with hover Image, tap on mobile
-  hover_title : Image with hover caption, tap on mobile
-  image_title : Image with caption underneath
-  image_only : Image Only
-  text_only : Text only link
-*/
-
 const LinkSwitch = (props) => {
   if (props.data.thumbnail_style === 'text_only') {
     return (
@@ -83,11 +64,13 @@ const PostCollection = (props) => {
       }
       {(props.data.content.insert_action === 'popup_grid')
         ?  <PopupGrid 
+              data={props.data.content}
               images={imageGrid()}
               width={props.data.content.container_width}
               columns={props.data.content.columns}
               proportion={props.data.content.thumbnail_proportion}
               collectionType={'post-collection'}
+              type={'single'}
             />
         : <GridWrapper className={`${props.data.content.container_width} ${props.data.content.columns}`}>
             {props.data.content.insert_type === 'curated'

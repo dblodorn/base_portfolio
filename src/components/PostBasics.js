@@ -35,4 +35,7 @@ const PostBasicsSection = styled(Section)`
       padding-top: 0;
     `}
   }
+  h1 {
+    padding-bottom: ${spacing.double_pad};
+  }
 `

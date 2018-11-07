@@ -288,6 +288,18 @@ const ImgFit = styled.img`
   object-fit: ${props => props.Fit};
 `
 
+const CarouselWrapper = styled.div`
+  display: block;
+  width: 100vw;
+  height: 56.25vw;
+  position: relative;
+  max-height: 100vh;
+  ${_.fixedHero(0, 0, 0)}
+  &.sidebar {
+    padding-left: ${widths.sidebar_desktop};
+  }
+`
+
 export {
   Section,
   Article,
@@ -316,5 +328,6 @@ export {
   ExcerptWrapper,
   ProjectTitle,
   CardP,
-  ImgFit
+  ImgFit,
+  CarouselWrapper
 }
