@@ -9,7 +9,7 @@ import { meta_defaults } from './../../config.json'
 export default (props) =>
   <ThemeProvider theme={themes[props.theme] || themeA}>
     <Logo to={'/'} className={props.orientation}>
-      <span>{meta_defaults.title}</span>
+      <span>{props.title}</span>
     </Logo>
   </ThemeProvider>
 

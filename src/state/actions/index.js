@@ -7,7 +7,9 @@ import {
   setModalState,
   setHeaderState,
   setFooterState,
-  setHeaderStyle
+  setHeaderStyle,
+  setScrollDirection,
+  setCurrentPixel
 } from './a_window_data'
 
 import { 
@@ -41,5 +43,7 @@ export {
   removeLineItemInCart,
   handleCartClose,
   handleCartOpen,
-  addVariantToCart
+  addVariantToCart,
+  setScrollDirection,
+  setCurrentPixel
 }

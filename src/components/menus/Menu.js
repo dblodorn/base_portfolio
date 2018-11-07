@@ -41,7 +41,6 @@ export default connect(
 // STYLES
 const MenuWrapper = styled.menu`
   height: 100%;
-  padding-bottom: .5rem;
   ${flexCenteredAll};
   &.sidebar {
     ${media.desktopNav`
@@ -62,22 +61,21 @@ const NavList = styled.ul`
   ${flexColumn};
   position: relative;
   text-align: center;
+  &.footer {
+    ${flexRow};
+    text-align: right;
+  }
   &.sidebar {
     ${media.desktopNav`
       ${flexColumn};
       margin-right: auto;
       text-align: center;
       width: 100%;
-      &.footer {
-        ${flexRow};
-        text-align: right;
-      }
     `}
   }
   &.top-horizontal {
     ${media.desktopNav`
       ${flexRow};
-      margin-left: auto;
     `}
   }
 `

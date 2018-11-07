@@ -1,15 +1,19 @@
 import React, { Fragment } from 'react'
-import withStore from '../HOC/withStore'
+import { connect } from 'react-redux'
 import HeaderDesk from './HeaderDesk'
 import HeaderMobile from './HeaderMobile'
 import { breakpoints } from './../../styles/theme.json'
 
-export default withStore((props) =>
+const Header = (props) =>
   <Fragment>
-    {
-      (props.resize_state.window_width >= breakpoints.desktop)
+    {(props.resize_state.window_width >= breakpoints.desktop)
       ? <HeaderDesk/>
       : <HeaderMobile/>
     }
   </Fragment>
-)
+
+export default connect(
+  state => ({
+    resize_state: state.resize_state
+  })
+)(Header)

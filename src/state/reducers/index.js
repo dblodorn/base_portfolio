@@ -1,5 +1,8 @@
 import { combineReducers } from 'redux'
-import { apiData, taxonomyData, themeData } from './apiData'
+import { 
+  apiData,
+  taxonomyData
+} from './apiData'
 import { 
   resizeState, 
   menuState, 
@@ -8,7 +11,9 @@ import {
   modalState, 
   headerStyle,
   headerState,
-  footerState
+  footerState,
+  scrollDirectionState,
+  currentPixelState
 } from './r_window_data'
 import { 
   pageState,
@@ -16,14 +21,16 @@ import {
   videoPlayingState
 } from './r_content-state'
 import content from './content'
-import cart from './r_cart'
+// import cart from './r_cart'
 
 const rootReducer = combineReducers({
-  cart: cart,
+  // cart: cart,
   api_data: apiData,
-  themes: themeData,
+  // themes: themeData,
   taxonomy_data: taxonomyData,
   resize_state: resizeState,
+  scroll_direction: scrollDirectionState,
+  current_pixel: currentPixelState,
   fonts_loaded: fontState,
   touch_state: touchState,
   modal: modalState,

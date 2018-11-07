@@ -17,9 +17,23 @@ const uniqSubArray = (array, filterKey) => {
   return alphabeticalResult;
 };
 
-export default (array, key, subKey) => {
+const parseTaxonomies = (array, key, subKey) => {
   const trimToTerms = uniqSubArray(
     uniqSubArray(array, key)
     , subKey);
   return trimToTerms;
+}
+
+const returnTaxonomies = (props) => {
+  return {
+    category: parseTaxonomies(props.post_collection, 'taxonomies', 'category'),
+    capabilities: parseTaxonomies(props.post_collection, 'taxonomies', 'capabilities'),
+    client: parseTaxonomies(props.post_collection, 'taxonomies', 'client'),
+    industry: parseTaxonomies(props.post_collection, 'taxonomies', 'industry')
+  }
+}
+
+export {
+  returnTaxonomies,
+  parseTaxonomies
 }

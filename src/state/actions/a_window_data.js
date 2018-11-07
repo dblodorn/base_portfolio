@@ -64,6 +64,20 @@ const setResizeState = () => {
   }
 }
 
+const setScrollDirection = (string) => {
+  return {
+    type: 'SCROLL_DIRECTION',
+    string
+  };
+}
+
+const setCurrentPixel = (string) => {
+  return {
+    type: 'SCROLL_PIXEL',
+    string
+  };
+}
+
 // EXPORTS
 export {
   setResizeState,
@@ -73,5 +87,7 @@ export {
   setModalState,
   setHeaderState,
   setFooterState,
-  setHeaderStyle
+  setHeaderStyle,
+  setScrollDirection,
+  setCurrentPixel
 }

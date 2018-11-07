@@ -298,18 +298,6 @@ const animationFadeIn = (time, delay) => {
   `
 }
 
-const borderRadius = (radius) => {
-  return css`
-    border-radius: ${radius}!important;
-  `
-}
-
-const textShadow = (blur, color) => {
-  return css`
-    text-shadow: 1px 1px ${blur}px ${color};
-  `
-}
-
 const fullBg = css`
   background-repeat: no-repeat;
   background-size: cover;
@@ -482,6 +470,45 @@ const halfFixed = css`
   }
 `
 
+const menuTransition = css`
+  transform: translateY(0);
+  opacity: 1;
+  will-change: transform, opacity;
+  transition: transform 300ms ease, opacity 300ms ease;
+`
+
+const borderRadius = (radius) => {
+  return css`
+    border-radius: ${radius}!important;
+  `
+}
+
+const textShadow = (blur, color) => {
+  return css`
+    text-shadow: 1px 1px ${blur}px ${color};
+  `
+}
+
+const headerFooterShared = (color) => {
+  return css`
+    ${flexRowCenteredVert};
+    width: 100vw;
+    padding: 0 ${spacing.single_pad};
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: background-color 1000ms ease-in-out, transform 300ms ease-in-out, opacity 300ms ease-in-out;
+    will-change: background-color, transform, opacity;
+    transform: translateY(0);
+    height: 100%;
+    z-index: 8000;
+    * {
+      color: ${color}!important;
+      ${microType};
+    }
+  `
+}
+
 export {
   media,
   maxWidth,
@@ -521,5 +548,7 @@ export {
   textShadow,
   fixedHero,
   halfFixed,
-  fixedWindow
+  fixedWindow,
+  menuTransition,
+  headerFooterShared
 }
