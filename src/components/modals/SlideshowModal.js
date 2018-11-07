@@ -17,10 +17,10 @@ class SlideshowModal extends Component {
         current_slide: 0
       }
       this._ImageEnlarge = this._ImageEnlarge.bind(this)
-      console.log(this.props)
     }
   
     _ImageEnlarge(index) {
+      console.log(index)
       this.setState({
         modal: !this.state.modal,
         current_slide: index
@@ -39,7 +39,7 @@ class SlideshowModal extends Component {
                   Max={this.props.data.thumbnail_proportion}
                 >
                   <LazyLoad height='100%'>
-                    <FitImage clickFunction={() => this._ImageEnlarge(i)} src={item.image.large} fit={this.props.data.fit || 'cover'}/>
+                    <FitImage clickFunction={() => this._ImageEnlarge(i + 1)} src={item.image.large} fit={this.props.data.fit || 'cover'}/>
                   </LazyLoad>
                 </ProportionWrapper>
               </li>
@@ -50,7 +50,7 @@ class SlideshowModal extends Component {
               <Modal>
                 <ThemeProvider theme={themes[this.props.theme] || themeA}>
                   <ModalWrapper style={styles}>
-                    <Close clickFunction={() => this._ImageEnlarge()} color={themes[this.props.theme].popup_close_color || themeA.popup_close_color}/>
+                    <Close clickFunction={() => this._ImageEnlarge(0)} color={themes[this.props.theme].popup_close_color || themeA.popup_close_color}/>
                     <CarouselWrapper className={`fixed-hero`}>
                       <SimpleSlider 
                         data={{
@@ -65,6 +65,7 @@ class SlideshowModal extends Component {
                           captions: false
                         }}
                         currentSlide={this.state.current_slide}
+                        modal={`modal`}
                       />
                     </CarouselWrapper>
                   </ModalWrapper>

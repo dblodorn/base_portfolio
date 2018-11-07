@@ -11,7 +11,6 @@ import TextOverlay from './../TextOverlay'
 class SimpleSlider extends Component {
   constructor(props) {
     super(props)
-    console.log(this.props.data)
     const autoplay = () => {
       if (!this.props.data.autoplay) {
         return false
@@ -25,38 +24,27 @@ class SimpleSlider extends Component {
     this.state = {
       revealSlider: false,
       autoplay: autoplay(),
-      transitionTime: this.props.data.transition_time || 1500,
-      currentSlide: 0,
-      startPosition: this.props.currentSlide || 0
+      transitionTime: this.props.data.transition_time || 500
     }
-  }
-
-  _slideChange() {
-    this.setState({ currentSlide: this.swiper })
-    console.log(this.swiper)
   }
 
   componentDidMount() {
-    if (!this.props.data.autoplay) {
-      this.swiper.autoplay.stop()
-    }
-    if (this.props.currentSlide) {
-      setTimeout(() => {
-        this.setState({
-          revealSlider: true
-        });
-        this.swiper.slideTo(this.state.startPosition);
-      }, 250);
-    }
+    setTimeout(() => {
+      this.setState({
+        revealSlider: true
+      });
+      if (this.props.currentSlide) {
+        this.swiper.slideTo(this.props.currentSlide)
+        console.log(this.props.currentSlide)
+      }
+      if (!this.props.data.autoplay) {
+        this.swiper.autoplay.stop()
+      }
+    }, 250);
   };
 
   render() {
     const swiperParams = {
-      on: {
-        slideChange: () => {
-          this._slideChange();
-        }
-      },
       autoplay: this.state.autoplay,
       pagination: {
         el: (this.props.data.pagination === 'none' || !this.props.data.pagination) ? null : `.swiper-pagination`,
@@ -85,21 +73,22 @@ class SimpleSlider extends Component {
     }
 
     return (
-      <HeroSlider className={this.props.data.controls_color}>
-        <Swiper {...swiperParams} ref={node => { if (node) this.swiper = node.swiper }}>
-          {this.props.data.slides.map((item) =>
-            <HeroSlide key={item.image.id + 'simple-slideshow'} className={this.props.data.image_style}>
-              {(this.props.data.captions && !this.props.data.has_text_overlay) &&
-                <TextOverlay content={`<h2>${item.image.description.title}</h2><br><p>${item.image.description.caption}</p>`}/>
-              }
-              {(this.props.data.has_text_overlay) &&
-                <TextOverlay content={`${this.props.data.text_overlay_content}`}/>
-              }
-              <SlideShowImg src={item.image.large} Fit={this.props.data.image_style}/>
-            </HeroSlide>
-          )}
-        </Swiper>
-      </HeroSlider>
+      (this.state.revealSlider) &&
+        <HeroSlider className={`${this.props.data.controls_color} ${this.props.modal}`}>
+          <Swiper {...swiperParams} ref={node => { if (node) this.swiper = node.swiper }}>
+            {this.props.data.slides.map((item) =>
+              <HeroSlide key={item.image.id + 'simple-slideshow'} className={this.props.data.image_style}>
+                {(this.props.data.captions && !this.props.data.has_text_overlay) &&
+                  <TextOverlay content={`<h2>${item.image.description.title}</h2><br><p>${item.image.description.caption}</p>`}/>
+                }
+                {(this.props.data.has_text_overlay) &&
+                  <TextOverlay content={`${this.props.data.text_overlay_content}`}/>
+                }
+                <SlideShowImg src={item.image.large} Fit={this.props.data.image_style} className={`${this.props.modal}`}/>
+              </HeroSlide>
+            )}
+          </Swiper>
+        </HeroSlider>
     )
   }
 }
@@ -131,6 +120,13 @@ const SlideShowImg = styled(ImgFit)`
     ? `calc(${heights.header} * 2) ${heights.header}`
     : `${heights.header} 0 ${heights.footer}`
   };
+  &.modal {
+    padding: ${props => 
+      (props.Fit === 'contain') 
+      ? spacing.double_pad
+      : spacing.double_pad
+    };
+  }
 `
 
 const HeroSlider = styled.div`
@@ -147,6 +143,7 @@ const HeroSlider = styled.div`
     }
     .swiper-pagination-bullet-active {
       background: ${colors.white};
+      opacity: 1;
     }
     .swiper-pagination-fraction {
       color: ${colors.white};
@@ -178,6 +175,12 @@ const HeroSlider = styled.div`
     }
     .swiper-button-prev.hover {
       cursor: ${shared.prev_black} 12 12, auto!important;
+    }
+  }
+  &.modal {
+    .swiper-pagination {
+      bottom: 1rem!important;
+      right: 1rem!important;
     }
   }
   .swiper-container {
