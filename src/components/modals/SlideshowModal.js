@@ -62,7 +62,7 @@ class SlideshowModal extends Component {
                           slides: this.props.data.images,
                           autoplay: false,
                           controls: 'fixed',
-                          pagination: 'bullets',
+                          pagination: 'fraction',
                           controls_color: 'dark',
                           image_style: 'contain',
                           transition_time: 300,
