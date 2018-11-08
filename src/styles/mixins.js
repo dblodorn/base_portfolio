@@ -9,6 +9,21 @@ const media = {
       ${ css(...args) }
     }
   `,
+  tablet: (...args) => css`
+    @media (max-width: 860px) {
+      ${ css(...args)}
+    }
+  `,
+  smallDesktop: (...args) => css`
+    @media (max-width: 1200px) {
+      ${ css(...args)}
+    }
+  `,
+  desktop: (...args) => css`
+    @media (min-width: 1201px) {
+      ${ css(...args)}
+    }
+  `,
   medium: (...args) => css`
     @media (min-width: ${breakpoints.desktop}px) {
       ${ css(...args) }
@@ -32,6 +47,73 @@ const media = {
 }
 
 // Layout & Positioning UTILS
+const grid = css`
+  flex-grow: 0;
+  flex-shrink: 0;
+  li {
+    width: 100%;
+    position: relative;
+  }
+  ${media.smallDesktop`
+    &.one_col > li {
+      width: 100%;
+    }
+    &.three_col > li {
+      width: calc(100% / 3);
+    }
+    &.four_col > li {
+      width: calc(100% / 3);
+    }
+    &.two_col > li {
+      width: 50%;
+    }
+  `}
+  ${media.tablet`
+    &.one_col > li {
+      width: 100%;
+    }  
+    &.three_col > li {
+      width: calc(100% / 2);
+    }
+    &.four_col > li {
+      width: calc(100% / 2);
+    }
+    &.two_col > li {
+      width: 50%;
+    }
+  `}
+  ${media.small`
+    &.one_col > li {
+      width: 100%;
+    }
+    &.three_col > li {
+      width: 50%;
+    }
+    &.four_col > li {
+      width: 100%;
+    }
+    &.two_col > li {
+      width: 50%;
+    }
+  `}
+  
+  
+  ${media.desktop`
+    &.one_col > li {
+      width: 100%;
+    }
+    &.four_col > li {
+      width: calc(100% / 4);
+    }
+    &.two_col > li {
+      width: 50%;
+    }
+    &.three_col > li {
+      width: calc(100% / 3);
+    }
+  `}
+`
+
 const maxWidth = css`
   width: 100%;
   max-width: ${shared.max_width};
@@ -371,29 +453,6 @@ const wrapperWidths = css`
   }
 `
 
-const grid = css`
-  flex-grow: 0;
-  flex-shrink: 0;
-  li {
-    width: 100%;
-    position: relative;
-  }
-  ${media.desktopNav`
-    &.one_col > li {
-      width: 100%;
-    }
-    &.three_col > li {
-      width: calc(100% / 3);
-    }
-    &.four_col > li {
-      width: 25%;
-    }
-    &.two_col > li {
-      width: 50%;
-    }
-  `}
-`
-
 const fancyScroll = css`
   ::-webkit-scrollbar {
     width: 2px;
@@ -420,7 +479,7 @@ const fixedHero = (top, bottom, left) => {
     &.fixed-hero {
       margin: 0;
       max-height: 100vh;
-      height: 100vh;
+      height: calc(100vh - ${heights.mobile_header});
       overflow: hidden;
       position: relative;
       ${media.desktopNav`

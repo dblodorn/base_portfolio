@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import { opacityTransition, absoluteCentered } from '../../styles/mixins'
+import { opacityTransition, absoluteCentered, media } from '../../styles/mixins'
 import { colors } from './../../styles/theme.json'
 
 const Button = styled.div`
   position: absolute;
+  display: none;
   top: 0;
   left: 0;
   width: 100%;
@@ -22,7 +23,11 @@ const Button = styled.div`
     height: 100%;
     object-fit: contain;
     fill: ${colors.overlay};
+    transform: translateY(-1rem);
   }
+  ${media.desktopNav`
+    display: block;
+  `}
 `
 const returnColor = (color) => {
   return (color === 'dark') ? colors.black : colors.white

@@ -1,13 +1,16 @@
 import React, { Fragment, Component } from 'react'
+import { connect } from 'react-redux'
 import { Transition } from 'react-spring'
 import LazyLoad from 'react-lazyload'
 import { ThemeProvider } from 'styled-components'
 import { themeA, themes } from './../../styles/theme'
 import { GridWrapper, ModalWrapper, CarouselWrapper, ProportionWrapper } from './../../styles/components'
+import { breakpoints } from './../../styles/theme.json'
 import Modal from './Modal'
 import FitImage from './../utils/FitImage'
 import Close from './../utils/Close'
 import SimpleSlider from './../carousel/SimpleSlider'
+import ImageCaption from './../ImageCaption'
 
 class SlideshowModal extends Component {
     constructor(props) {
@@ -20,11 +23,12 @@ class SlideshowModal extends Component {
     }
   
     _ImageEnlarge(index) {
-      console.log(index)
-      this.setState({
-        modal: !this.state.modal,
-        current_slide: index
-      })
+      if ((this.props.resize_state.window_width >= breakpoints.desktop) || this.props.mobile) {
+        this.setState({
+          modal: !this.state.modal,
+          current_slide: index
+        })
+      }
     }
 
     render() {
@@ -42,6 +46,7 @@ class SlideshowModal extends Component {
                     <FitImage clickFunction={() => this._ImageEnlarge(i + 1)} src={item.image.large} fit={this.props.data.fit || 'cover'}/>
                   </LazyLoad>
                 </ProportionWrapper>
+                {((this.props.captions === 'grid') || (this.props.captions === 'both')) && <ImageCaption caption={item.image.description}/>}
               </li>
             )}
           </GridWrapper>
@@ -66,6 +71,7 @@ class SlideshowModal extends Component {
                         }}
                         currentSlide={this.state.current_slide}
                         modal={`modal`}
+                        captions={this.props.captions}
                       />
                     </CarouselWrapper>
                   </ModalWrapper>
@@ -78,4 +84,8 @@ class SlideshowModal extends Component {
   }
 }
 
-export default SlideshowModal
+export default connect(
+  state => ({
+    resize_state: state.resize_state
+  })
+)(SlideshowModal)

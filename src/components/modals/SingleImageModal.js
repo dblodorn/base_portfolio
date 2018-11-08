@@ -1,15 +1,19 @@
 import React, { Fragment, Component } from 'react'
+import { connect } from 'react-redux'
 import { Transition } from 'react-spring'
-import styled, { ThemeProvider } from 'styled-components'
+import { ThemeProvider } from 'styled-components'
 import { themeA, themes } from './../../styles/theme'
-import { ModalWrapper, ModalContentWrapper } from './../../styles/components'
+import { ModalWrapper, ModalContentWrapper, CaptionWrapper } from './../../styles/components'
+import { breakpoints } from './../../styles/theme.json'
 import Modal from './Modal'
 import FitImage from './../utils/FitImage'
 import Close from './../utils/Close'
+import ImageCaption from './../ImageCaption'
 
 class SingleImageModal extends Component {
     constructor(props) {
       super(props)
+      console.log(this.props.captions)
       this.state = {
         modal: false
       }
@@ -17,9 +21,11 @@ class SingleImageModal extends Component {
     }
   
     _ImageEnlarge() {
-      this.setState({
-        modal: !this.state.modal
-      })
+      if ((this.props.resize_state.window_width >= breakpoints.desktop) || this.props.mobile) {
+        this.setState({
+          modal: !this.state.modal
+        })
+      }
     }
 
     render() {
@@ -33,7 +39,12 @@ class SingleImageModal extends Component {
                   <ModalWrapper style={styles}>
                     <Close clickFunction={() => this._ImageEnlarge()} color={themes[this.props.theme].popup_close_color || themeA.popup_close_color}/>
                     <ModalContentWrapper maxHeight={'90rem'}>
-                      <FitImage clickFunction={() => this._ImageEnlarge()} src={this.props.src} fit={'contain'}/>
+                      <FitImage src={this.props.src} fit={'contain'}/>
+                      {((this.props.captions === 'popup') || (this.props.captions === 'both')) &&
+                        <CaptionWrapper>
+                        <ImageCaption caption={this.props.description.description}/>
+                        </CaptionWrapper>
+                      }
                     </ModalContentWrapper>
                   </ModalWrapper>
                 </ThemeProvider>
@@ -45,4 +56,8 @@ class SingleImageModal extends Component {
   }
 }
 
-export default SingleImageModal
+export default connect(
+  state => ({
+    resize_state: state.resize_state
+  })
+)(SingleImageModal)

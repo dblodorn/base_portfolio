@@ -244,11 +244,11 @@ const ModalContentWrapper = styled.div`
 
 const CloseButton = styled.button`
   ${_.buttonInit};
-  width: ${props => props.size || '6rem'};
-  height: ${props => props.size || '6rem'};
+  width: ${props => props.size || '5rem'};
+  height: ${props => props.size || '5rem'};
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: .75rem;
+  right: .75rem;
   padding: 0;
   z-index: 11000;
   cursor: pointer;
@@ -308,6 +308,22 @@ const CloseWrapper = styled.div`
   margin-left: ${spacing.single_pad};
 `
 
+const CaptionWrapper = styled.div`
+  position: fixed;
+  bottom: 5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  ${_.media.desktopNav`
+    bottom: 0;
+    left: ${spacing.single_pad};
+    justify-content: flex-start;
+    * { 
+      text-align: left!important;
+    }
+  `}
+`
+
 export {
   Section,
   Article,
@@ -338,5 +354,6 @@ export {
   CardP,
   ImgFit,
   CarouselWrapper,
-  CloseWrapper
+  CloseWrapper,
+  CaptionWrapper
 }

@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
 import { connect } from 'react-redux'
 import Swiper from 'react-id-swiper/lib/custom'
-import { ImgFit } from './../../styles/components'
+import { ImgFit, CaptionWrapper } from './../../styles/components'
 import { spacing, colors, shared, heights } from './../../styles/theme.json'
 import { buttonInit, absoluteTopFull, microType, media } from './../../styles/mixins'
 import { PrevButton, NextButton } from './../utils/PrevNextButton'
 import TextOverlay from './../TextOverlay'
+import ImageCaption from './../ImageCaption'
 
 class SimpleSlider extends Component {
   constructor(props) {
@@ -35,7 +36,6 @@ class SimpleSlider extends Component {
       });
       if (this.props.currentSlide) {
         this.swiper.slideTo(this.props.currentSlide)
-        console.log(this.props.currentSlide)
       }
       if (!this.props.data.autoplay) {
         this.swiper.autoplay.stop()
@@ -85,6 +85,11 @@ class SimpleSlider extends Component {
                   <TextOverlay content={`${this.props.data.text_overlay_content}`}/>
                 }
                 <SlideShowImg src={item.image.large} Fit={this.props.data.image_style} className={`${this.props.modal}`}/>
+                {((this.props.captions === 'popup') || (this.props.captions === 'both')) && 
+                  <CaptionWrapper>
+                    <ImageCaption caption={item.image.description} />
+                  </CaptionWrapper>
+                }
               </HeroSlide>
             )}
           </Swiper>
@@ -103,8 +108,8 @@ export default connect(
 const buttonWrap = css`
   ${buttonInit};
   padding: 0;
-  width: 5rem;
-  height: 8rem;
+  width: 4rem;
+  height: 6rem;
 `
 
 const HeroSlide = styled.div`
@@ -123,11 +128,14 @@ const SlideShowImg = styled(ImgFit)`
     };
   `}
   &.modal {
-    padding: ${props => 
-      (props.Fit === 'contain') 
-      ? spacing.double_pad
-      : spacing.double_pad
-    };
+    padding-bottom: 8rem;
+    ${media.desktopNav`
+      padding: ${props => 
+        (props.Fit === 'contain') 
+        ? `${spacing.double_pad} ${spacing.big_pad} ${spacing.big_pad}`
+        : `${spacing.double_pad} ${spacing.big_pad} ${spacing.big_pad}`
+      };
+    `}
   }
 `
 
@@ -181,8 +189,11 @@ const HeroSlider = styled.div`
   }
   &.modal {
     .swiper-pagination {
-      bottom: 1rem!important;
-      right: 1rem!important;
+      bottom: 2rem;
+      ${media.desktopNav`
+        bottom: 1rem!important;
+        right: 1rem!important;
+      `}
     }
   }
   .swiper-container {
@@ -220,15 +231,22 @@ const HeroSlider = styled.div`
     z-index: 100;
   }
   .swiper-pagination {
-    bottom: calc(${heights.footer} + ${spacing.single_pad});
+    bottom: ${spacing.double_pad};
     padding: 0 ${spacing.single_pad};
-    text-align: right;
+    text-align: center;
+    ${media.desktopNav`
+      text-align: right;
+      bottom: calc(${heights.footer} + ${spacing.single_pad});
+    `}
   }
   .swiper-pagination-fraction {
     right: ${spacing.single_pad};
     ${microType};
-    text-align: right;
+    text-align: center;
     padding-right: ${spacing.single_pad};
+    ${media.desktopNav`
+      text-align: right;
+    `}
   }
   .swiper-pagination-bullet {
     width: 6px;
