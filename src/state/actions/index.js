@@ -27,6 +27,11 @@ import {
 } from './a_cart'
 
 export {
+  //updateQuantityInCart,
+  //removeLineItemInCart,
+  //handleCartClose,
+  //handleCartOpen,
+  //addVariantToCart,
   fetchApiData,
   setResizeState,
   setMenuState,
@@ -39,11 +44,6 @@ export {
   setVideoState,
   setFooterState,
   setHeaderStyle,
-  updateQuantityInCart,
-  removeLineItemInCart,
-  handleCartClose,
-  handleCartOpen,
-  addVariantToCart,
   setScrollDirection,
   setCurrentPixel
 }
