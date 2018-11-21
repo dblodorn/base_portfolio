@@ -4,6 +4,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.pug$/,
+        use: 'pug-loader'
+      },
+      {
         test: /\.(js)$/,
         exclude: /node_modules/,
         use: ['babel-loader']

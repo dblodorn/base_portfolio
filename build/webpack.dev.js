@@ -3,6 +3,7 @@ const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Dotenv = require('dotenv-webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const SWPrecache = require('sw-precache-webpack-plugin')
 const common = require('./webpack.common.js');
 const config = require('./../src/config.json');
 
@@ -21,8 +22,10 @@ module.exports = merge(common, {
       description: config.meta_defaults.description,
       bgcolor: config.meta_defaults.bgcolor,
       site_url: config.meta_defaults.site_url,
-      template: './templates/index.html'
+      keywords: config.meta_defaults.keywords,
+      template: './templates/index.pug',
+      inject: false
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
   ]
 });

@@ -3,7 +3,9 @@
   "meta_defaults": {
     "title": "Dain Blodorn Kim",
     "description": "This is a website, isn't that cool?!",
+    "keywords": "Dain Blodorn Kim, Dain Kim, Dain Blodorn",
     "site_url": "https://website.com",
+    "language": "en",
     "bgcolor": "#ffffff"
   },
   "mail_scrape": {
