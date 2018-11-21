@@ -1,9 +1,8 @@
 import fetch from 'isomorphic-fetch'
-import { wp_endpoint } from './../config.json'
 
 export default () => {
   return new Promise((resolve, reject) => {
-    fetch(wp_endpoint, {
+    fetch(process.env.API_ENDPOINT, {
       method: 'GET'
     })
       .then(res => resolve(res))

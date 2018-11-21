@@ -8,8 +8,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --mode development --env.NODE_ENV --open",
-    "build": "webpack --mode production --env.NODE_ENV"
+    "dev": "webpack-dev-server --config=build/webpack.dev.js --mode development --env.NODE_ENV --open",
+    "build": "webpack --progress --config=build/webpack.prod.js --mode production --env.NODE_ENV",
+    "json": "node scripts/write-json.js"
   },
   "babel": {
     "presets": [
@@ -54,10 +55,18 @@
     "babel-preset-stage-2": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.2",
+    "css-loader": "^1.0.1",
+    "dotenv": "^6.1.0",
+    "dotenv-webpack": "^1.5.7",
+    "fs-extra": "^7.0.1",
     "html-webpack-plugin": "^3.2.0",
     "react-hot-loader": "^4.3.4",
+    "style-loader": "^0.23.1",
     "webpack": "^4.16.3",
+    "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.5"
+    "webpack-dev-server": "^3.1.5",
+    "webpack-merge": "^4.1.4",
+    "webpack-shell-plugin": "^0.5.0"
   }
 }
