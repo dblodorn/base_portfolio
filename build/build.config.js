@@ -1,15 +1,5 @@
 const config = require('./../src/config.json')
 
-const pathsToClean = [
-  'dist'
-]
-
-const cleanOptions = {
-  exclude: ['_redirects'],
-  verbose: true,
-  dry: false
-}
-
 const htmlOptions = {
   title: config.meta_defaults.title,
   description: config.meta_defaults.description,
@@ -20,7 +10,5 @@ const htmlOptions = {
 }
 
 module.exports = {
-  pathsToClean,
-  cleanOptions,
   htmlOptions
 }

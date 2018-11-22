@@ -1,33 +1,35 @@
+const chalk = require('chalk');
 const fs = require('fs-extra');
 const fetch = require('isomorphic-fetch');
-const getDirname = require('path').dirname;
 const config = require('./../src/config.json');
 
-console.log(getDirname);
-
-const file = '/dist/data.json'
-
-const fetchData = () => {
-  return new Promise((resolve, reject) => {
-    fetch(config.wp_endpoint, {
-      method: 'GET'
+const fetchDataPlug = (options) => {
+  
+  console.log(chalk.blue(options.hash))
+  
+  const fetchData = () => {
+    return new Promise((resolve, reject) => {
+      fetch(config.wp_endpoint, {
+        method: 'GET'
+      })
+        .then(res => resolve(res))
+        .catch(err => reject(err))
     })
-      .then(res => resolve(res))
-      .catch(err => reject(err))
-  })
+  }
+
+  const dataHandler = (payload) => {
+    fs.writeJson(`./dist/data.${options.hash}.json`, payload)
+      .then(() => {
+        console.log('success!')
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }
+  
+  fetchData()
+    .then(response => response.json())
+    .then((payload) => dataHandler(payload))
 }
 
-const dataHandler = (payload) => {
-  // console.log(payload)
-  fs.writeJson('./dist/data.json', payload)
-    .then(() => {
-      console.log('success!')
-    })
-    .catch(err => {
-      console.error(err)
-    })
-}
-
-fetchData()
-  .then(response => response.json())
-  .then((payload) => dataHandler(payload))
+module.exports = fetchDataPlug

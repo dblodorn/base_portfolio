@@ -9,10 +9,20 @@ const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 const common = require('./webpack.common.js')
 const {
-  pathsToClean,
-  cleanOptions,
   htmlOptions
 } = require('./build.config.js')
+
+const pathsToClean = [
+  './dist'
+]
+
+const cleanOptions = {
+  exclude: ['_redirects'],
+  verbose: true,
+  dry: false
+}
+
+const WriteJsonPlugin = require('./../scripts/WriteJsonPlugin');
 
 module.exports = merge(common, {
   plugins: [
@@ -26,6 +36,7 @@ module.exports = merge(common, {
     new CopyWebpackPlugin([
       { from: './assets/**/*', to: './' }
     ]),
+    new WriteJsonPlugin({ options: true }),
     new HtmlWebpackPlugin({
       ...htmlOptions,
       template: './templates/index.prod.pug'
@@ -48,11 +59,11 @@ module.exports = merge(common, {
     }),
     new WebpackShellPlugin({
       onBuildStart: [
-        'echo "Webpack Start"',
-        'npm run json',
+        'echo "Webpack Start"'
       ],
       onBuildEnd: [
-        'echo "Webpack End"'
+        'echo "Webpack End"',
+        // 'npm run json'
       ]
     })
   ]
