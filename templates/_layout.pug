@@ -4,6 +4,8 @@ html(lang= htmlWebpackPlugin.options.language)
   include includes/_head.pug
   body(bgcolor= htmlWebpackPlugin.options.bgcolor)
     main(role="main")
-      block content
+      #modal
+      #root  
+    block scripts
     each js in htmlWebpackPlugin.files.js
       script(type='text/javascript', src=js, async)
