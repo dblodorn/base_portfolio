@@ -19,39 +19,37 @@ export default () => {
 
   let top = false
   
-  let scrollPixel = window.pageYOffset;
-  let scrollTime = 0;
+  let scrollPixel = window.pageYOffset
+  let scrollTime = 0
   const looper = () => {
-    const newPixel = window.pageYOffset;
-    const diff = newPixel - scrollPixel;
-    const speed = diff * 1.125;
+    const newPixel = window.pageYOffset
+    const diff = newPixel - scrollPixel
+    const speed = diff * 1.125
     if (speed > diff) {
-      scrollTime = scrollTime + 1;
+      scrollTime = scrollTime + 1
       if (scrollTime === threshold) {
-        directionHandler('down');
+        directionHandler('down')
         store.dispatch(setCurrentPixel(scrollPixel))
         top = false
       }
     } else if (speed < diff) {
-      scrollTime = scrollTime + 1;
+      scrollTime = scrollTime + 1
       if (scrollTime === threshold) {
-        directionHandler('up');
+        directionHandler('up')
         store.dispatch(setCurrentPixel(scrollPixel))
         top = false
       }
     } else {
-      scrollTime = 0;
+      scrollTime = 0
     }
-    scrollPixel = newPixel;
-    const docHeight = documentHeight();
+    scrollPixel = newPixel
     if (scrollPixel === 0 && (store.getState().scroll_direction !== 'at-top')) {
       if (!top) {
-        console.log('top')
-        directionHandler('at-top');
+        directionHandler('at-top')
         top = true
       }
     }
-    requestAnimationFrame(looper);
-  };
-  looper();
-};
+    requestAnimationFrame(looper)
+  }
+  looper()
+}

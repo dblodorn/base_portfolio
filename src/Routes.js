@@ -7,14 +7,7 @@ import { NotFound, Templates, SingleVideo, Shop } from './views'
 class Routes extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      routes_built: false
-    };
     this._buildRoutes = this._buildRoutes.bind(this)
-  }
-
-  componentDidMount() {
-    console.log('app Mounted')
   }
 
   _buildRoutes = (routes) => {
@@ -30,9 +23,6 @@ class Routes extends Component {
           )
         }
       })
-      this.setState({
-        routes_built: true
-      });
     }
   }
 
