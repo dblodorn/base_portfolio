@@ -43,6 +43,9 @@ module.exports = merge(common, {
     }),
     new ManifestPlugin({
       fileName: 'asset-manifest.json',
+      seed: {
+        'data.${stats.hash}.json'
+      }
     }),
     new SWPrecacheWebpackPlugin({
       dontCacheBustUrlsMatching: /\.\w{8}\./,
