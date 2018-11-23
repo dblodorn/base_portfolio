@@ -1,7 +1,6 @@
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const CopyWebpackPlugin = require("copy-webpack-plugin")
-const WebpackShellPlugin = require("webpack-shell-plugin")
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
@@ -11,6 +10,8 @@ const common = require('./webpack.common.js')
 const {
   htmlOptions
 } = require('./build.config.js')
+
+const TestPlugin = require('./../scripts/testPlugin')
 
 const pathsToClean = [
   './dist'
@@ -22,7 +23,7 @@ const cleanOptions = {
   dry: false
 }
 
-const WriteJsonPlugin = require('./../scripts/WriteJsonPlugin');
+const WriteJsonPlugin = require('./../scripts/WriteJsonPlugin')
 
 module.exports = merge(common, {
   plugins: [
@@ -36,16 +37,16 @@ module.exports = merge(common, {
     new CopyWebpackPlugin([
       { from: './assets/**/*', to: './' }
     ]),
-    new WriteJsonPlugin({ options: true }),
+    new WriteJsonPlugin({
+      options: true
+    }),
+    // new TestPlugin(),
     new HtmlWebpackPlugin({
       ...htmlOptions,
       template: './templates/index.prod.pug'
     }),
     new ManifestPlugin({
-      fileName: 'asset-manifest.json',
-      seed: {
-        'data.${stats.hash}.json'
-      }
+      fileName: 'asset-manifest.json'
     }),
     new SWPrecacheWebpackPlugin({
       dontCacheBustUrlsMatching: /\.\w{8}\./,
@@ -59,15 +60,6 @@ module.exports = merge(common, {
       minify: true, // minify and uglify the script
       navigateFallback: '/index.html',
       staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
-    }),
-    new WebpackShellPlugin({
-      onBuildStart: [
-        'echo "Webpack Start"'
-      ],
-      onBuildEnd: [
-        'echo "Webpack End"',
-        // 'npm run json'
-      ]
     })
   ]
 })

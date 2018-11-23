@@ -19,7 +19,7 @@ module.exports = {
     ]
   },
   plugins: [
-    
+    new webpack.ExtendedAPIPlugin()
   ],
   resolve: {
     extensions: ['*', '.js']
