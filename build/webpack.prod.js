@@ -5,13 +5,12 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
+const DataApiWebpackPlugin = require('./../scripts/DataApiWebpackPlugin')
 const Dotenv = require('dotenv-webpack')
 const common = require('./webpack.common.js')
 const {
   htmlOptions
 } = require('./build.config.js')
-
-const TestPlugin = require('./../scripts/testPlugin')
 
 const pathsToClean = [
   './dist'
@@ -22,8 +21,6 @@ const cleanOptions = {
   verbose: true,
   dry: false
 }
-
-const WriteJsonPlugin = require('./../scripts/WriteJsonPlugin')
 
 module.exports = merge(common, {
   plugins: [
@@ -37,8 +34,8 @@ module.exports = merge(common, {
     new CopyWebpackPlugin([
       { from: './assets/**/*', to: './' }
     ]),
-    new WriteJsonPlugin({
-      options: true
+    new DataApiWebpackPlugin({
+      endpoint: 'https://api-theme.dmbk.io/wp-json/api/v1/data/'
     }),
     // new TestPlugin(),
     new HtmlWebpackPlugin({
