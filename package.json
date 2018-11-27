@@ -58,7 +58,7 @@
     "css-loader": "^1.0.1",
     "dotenv": "^6.1.0",
     "dotenv-webpack": "^1.5.7",
-    "fetch-json-webpack-plugin": "^1.0.1",
+    "fetch-json-webpack-plugin": "^1.0.3",
     "fs-extra": "^7.0.1",
     "html-webpack-plugin": "^3.2.0",
     "node-fetch": "^2.3.0",
