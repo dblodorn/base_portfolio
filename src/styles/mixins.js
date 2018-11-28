@@ -6,16 +6,16 @@ import { spacing, fonts, shared, breakpoints, colors, widths, heights } from './
 const media = {
   small: (...args) => css`
     @media (max-width: 500px) {
-      ${ css(...args) }
+      ${ css(...args)}
     }
   `,
   tablet: (...args) => css`
-    @media (max-width: 860px) {
+    @media (min-width: 501px) {
       ${ css(...args)}
     }
   `,
   smallDesktop: (...args) => css`
-    @media (max-width: 1200px) {
+    @media (min-width: 861px) {
       ${ css(...args)}
     }
   `,
@@ -26,22 +26,22 @@ const media = {
   `,
   medium: (...args) => css`
     @media (min-width: ${breakpoints.desktop}px) {
-      ${ css(...args) }
+      ${ css(...args)}
     }
   `,
   desktopNav: (...args) => css`
     @media (min-width: ${breakpoints.desktop}px) {
-      ${ css(...args) }
+      ${ css(...args)}
     }
   `,
   big: (...args) => css`
     @media (min-width: ${breakpoints.big}px) {
-      ${ css(...args) }
+      ${ css(...args)}
     }
   `,
   touch: (...args) => css`
     @media (hover: none) {
-      ${ css(...args) }
+      ${ css(...args)}
     }
   `
 }
@@ -50,22 +50,18 @@ const media = {
 const grid = css`
   flex-grow: 0;
   flex-shrink: 0;
-  li {
-    width: 100%;
-    position: relative;
-  }
-  ${media.smallDesktop`
+  ${media.small`
     &.one_col > li {
       width: 100%;
     }
+    &.two_col > li {
+      width: 100%;
+    }
     &.three_col > li {
-      width: calc(100% / 3);
+      width: 100%;
     }
     &.four_col > li {
-      width: calc(100% / 3);
-    }
-    &.two_col > li {
-      width: 50%;
+      width: 100%;
     }
   `}
   ${media.tablet`
@@ -73,43 +69,41 @@ const grid = css`
       width: 100%;
     }  
     &.three_col > li {
-      width: calc(100% / 2);
+      width: 50%;
     }
     &.four_col > li {
-      width: calc(100% / 2);
+      width: 50%;
     }
     &.two_col > li {
       width: 50%;
     }
   `}
-  ${media.small`
+  ${media.smallDesktop`
     &.one_col > li {
       width: 100%;
     }
-    &.three_col > li {
-      width: 50%;
-    }
-    &.four_col > li {
-      width: 100%;
-    }
     &.two_col > li {
       width: 50%;
+    } 
+    &.three_col > li {
+      width: calc(100% / 3);
+    }
+    &.four_col > li {
+      width: calc(100% / 3);
     }
   `}
-  
-  
   ${media.desktop`
     &.one_col > li {
       width: 100%;
-    }
-    &.four_col > li {
-      width: calc(100% / 4);
     }
     &.two_col > li {
       width: 50%;
     }
     &.three_col > li {
       width: calc(100% / 3);
+    }
+    &.four_col > li {
+      width: calc(100% / 4);
     }
   `}
 `
