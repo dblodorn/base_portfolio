@@ -6,7 +6,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
 const FetchJsonWebpackPlugin = require('fetch-json-webpack-plugin')
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
-const Dotenv = require('dotenv-webpack')
 const common = require('./webpack.common.js')
 const {
   htmlOptions
@@ -25,9 +24,6 @@ const cleanOptions = {
 
 module.exports = merge(common, {
   plugins: [
-    new Dotenv({
-      path: './.prod.env'
-    }),
     new CleanWebpackPlugin(
       pathsToClean,
       cleanOptions
@@ -56,7 +52,7 @@ module.exports = merge(common, {
         }
         console.log(message);
       },
-      minify: true, // minify and uglify the script
+      minify: true,
       navigateFallback: '/index.html',
       staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
     })
