@@ -34,7 +34,7 @@ export default (props) =>
         className={`${props.data.columns} ${props.data.style}`}
         Desktop={props.data.thumbnail_proportion}
         Mobile={props.data.thumbnail_proportion_mobile}
-        Max={props.data.thumbnail_proportion_max}
+        Maximum={props.data.thumbnail_proportion_max}
       >
         <LazyLoad height='100%'>
           <FitImage src={props.cardData.thumbnail} fit={'cover'}/>

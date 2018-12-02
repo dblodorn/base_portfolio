@@ -18,7 +18,7 @@ const VideoCard = (props) =>
     <ProportionWrapper
       Desktop={props.proportion || 56.25}
       Mobile={props.proportion || 56.25}
-      Max={props.proportion || 56.25}
+      Maximum={props.proportion || 56.25}
     >
       {(!props.overflow)
         ? <LazyLoad height='100%'>

@@ -48,7 +48,7 @@ export default (props) => {
           className={`${props.data.columns} ${props.data.style}`}
           Desktop={props.data.thumbnail_proportion}
           Mobile={props.data.thumbnail_proportion_mobile}
-          Max={props.data.thumbnail_proportion_max}
+          Maximum={props.data.thumbnail_proportion_max}
         >
           {(props.data.link_style === 'full_link')
             ? <Link to={props.cardData.post_type === "page" ? `/${props.cardData.slug}` : `/${props.slug}/${props.cardData.slug}`}>

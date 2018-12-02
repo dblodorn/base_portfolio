@@ -15,6 +15,7 @@ module.exports = merge(common, {
     new HtmlWebpackPlugin({
       ...htmlOptions,
       template: './templates/index.dev.pug'
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ]
 })

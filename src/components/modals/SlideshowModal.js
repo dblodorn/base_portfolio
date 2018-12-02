@@ -40,7 +40,7 @@ class SlideshowModal extends Component {
                 <ProportionWrapper 
                   DeskTop={this.props.data.thumbnail_proportion}
                   Mobile={this.props.data.thumbnail_proportion}
-                  Max={this.props.data.thumbnail_proportion}
+                  Maximum={this.props.data.thumbnail_proportion}
                 >
                   <LazyLoad height='100%'>
                     <FitImage clickFunction={() => this._ImageEnlarge(i + 1)} src={item.image.large} fit={this.props.data.fit || 'cover'}/>

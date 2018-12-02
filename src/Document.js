@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
-import { Transition } from 'react-spring'
-import styled, { injectGlobal } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 import { animationFadeIn, flexColumn, media, mobileMenuTransition } from './styles/mixins'
 import { colors, fonts, heights, widths } from './styles/theme.json'
 import { routeName } from './scripts'
@@ -12,6 +11,7 @@ const Document = (props) => {
   if (props.api_data) {
     return (
       <Fragment>
+        <GlobalStyles/>
         <Header/>
         <Main id={
           routeName(props.router.location.pathname).routeClass}
@@ -70,7 +70,7 @@ const Main = styled.main`
 `
 
 // NORMALIZE CSS
-injectGlobal`
+const GlobalStyles = createGlobalStyle`
   html {
     font-size: 58%;
   }

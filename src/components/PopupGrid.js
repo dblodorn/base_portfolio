@@ -15,7 +15,7 @@ export default (props) => {
             <ProportionWrapper 
               DeskTop={props.proportion}
               Mobile={props.proportion}
-              Max={props.proportion}
+              Maximum={props.proportion}
             >
               <LazyLoad height='100%'>
                 <SingleImageModal 

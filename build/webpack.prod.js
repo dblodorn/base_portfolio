@@ -34,7 +34,10 @@ module.exports = merge(common, {
       hash: true,
     }),
     new CopyWebpackPlugin([
-      { from: './assets/**/*', to: './' }
+      {
+        from: './assets/**/*',
+        to: './'
+      }
     ]),
     new HtmlWebpackPlugin({
       ...htmlOptions,

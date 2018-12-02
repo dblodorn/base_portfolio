@@ -38,7 +38,7 @@ const ProportionWrapper = styled.div`
     padding-bottom: ${props => `${props.Desktop}%` || `50%`};
   `}
   ${_.media.big`
-    padding-bottom: ${props => `${props.Max}%` || `45%`};
+    padding-bottom: ${props => `${props.Maximum}%` || `45%`};
   `}
 `
 

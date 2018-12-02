@@ -5,13 +5,12 @@ import Routes from './Routes'
 import { setHeaderState } from './state/actions'
 import { scrollWatcher } from './scripts'
 import { breakpoints } from './styles/theme.json'
-
 class App extends Component {
   constructor(props) {
     super(props)
     scrollWatcher()
     this.props.history.listen(() => {
-      window.scrollTo(0, 0)
+      window.scrollTo(1, 0)
     })
   }
   componentWillMount() {
