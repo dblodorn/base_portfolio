@@ -6,7 +6,7 @@ const htmlOptions = {
   bgcolor: config.meta_defaults.bgcolor,
   site_url: config.meta_defaults.site_url,
   keywords: config.meta_defaults.keywords,
-  inject: false,
+  inject: true,
 }
 
 module.exports = {
