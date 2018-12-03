@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
+const path = require('path')
 
 module.exports = {
   module: {
@@ -20,6 +21,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.HashedModuleIdsPlugin(),
     new webpack.ExtendedAPIPlugin(),
     new LodashModuleReplacementPlugin({
       'shorthands': true,
@@ -32,6 +34,24 @@ module.exports = {
     extensions: ['*', '.js']
   },
   output: {
-    filename: '[name].[hash].js'
+    filename: '[name].[hash].js',
+    path: path.resolve(__dirname, '../dist')
   },
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      chunks: 'all',
+      maxInitialRequests: Infinity,
+      minSize: 0,
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name(module) {
+            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+            return `npm.${packageName.replace('@', '')}`;
+          },
+        },
+      },
+    }
+  }
 }
