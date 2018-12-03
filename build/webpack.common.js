@@ -1,4 +1,5 @@
 const webpack = require('webpack')
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 
 module.exports = {
   module: {
@@ -19,7 +20,8 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.ExtendedAPIPlugin()
+    new webpack.ExtendedAPIPlugin(),
+    new LodashModuleReplacementPlugin
   ],
   resolve: {
     extensions: ['*', '.js']
