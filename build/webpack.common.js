@@ -21,7 +21,12 @@ module.exports = {
   },
   plugins: [
     new webpack.ExtendedAPIPlugin(),
-    new LodashModuleReplacementPlugin
+    new LodashModuleReplacementPlugin({
+      'shorthands': true,
+      'flattening': true,
+      'collections': true,
+      'cloning': true,
+    })
   ],
   resolve: {
     extensions: ['*', '.js']
