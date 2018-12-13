@@ -1,5 +1,6 @@
-const webpack = require('webpack')
 const merge = require('webpack-merge')
+const CompressionPlugin = require('compression-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const CopyWebpackPlugin = require("copy-webpack-plugin")
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -23,6 +24,26 @@ const cleanOptions = {
 }
 
 module.exports = merge(common, {
+  optimization: {
+    runtimeChunk: 'single',
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          ecma: 6,
+          compress: true,
+          output: {
+            comments: false,
+            beautify: false
+          }
+        }
+      })
+    ],
+    splitChunks: {
+      chunks: 'all',
+      maxInitialRequests: Infinity,
+      minSize: 0
+    }
+  },
   plugins: [
     new CleanWebpackPlugin(
       pathsToClean,
@@ -46,6 +67,7 @@ module.exports = merge(common, {
     new ManifestPlugin({
       fileName: 'asset-manifest.json'
     }),
+    new CompressionPlugin(),
     new SWPrecacheWebpackPlugin({
       dontCacheBustUrlsMatching: /\.\w{8}\./,
       filename: 'service-worker.js',
