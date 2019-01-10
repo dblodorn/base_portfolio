@@ -9,7 +9,8 @@ const FetchJsonWebpackPlugin = require('fetch-json-webpack-plugin')
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const common = require('./webpack.common.js')
 const {
-  htmlOptions
+  htmlOptions,
+  api
 } = require('./build.config.js')
 
 const pathsToClean = [
@@ -50,7 +51,7 @@ module.exports = merge(common, {
       cleanOptions
     ),
     new FetchJsonWebpackPlugin({
-      endpoint: 'https://api-theme.dmbk.io/wp-json/api/v1/data/',
+      endpoint: api,
       filename: 'data',
       hash: true,
     }),
