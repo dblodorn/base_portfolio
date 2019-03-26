@@ -50,7 +50,7 @@ module.exports = merge(common, {
       cleanOptions
     ),
     new FetchJsonWebpackPlugin({
-      endpoint: 'https://api-theme.dmbk.io/wp-json/api/v1/data/',
+      endpoint: 'https://dmbk.network/wp-json/api/v1/data/',
       filename: 'data',
       hash: true,
     }),
