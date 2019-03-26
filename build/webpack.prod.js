@@ -9,7 +9,8 @@ const FetchJsonWebpackPlugin = require('fetch-json-webpack-plugin')
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const common = require('./webpack.common.js')
 const {
-  htmlOptions
+  htmlOptions,
+  api
 } = require('./build.config.js')
 
 const pathsToClean = [

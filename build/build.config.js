@@ -9,6 +9,9 @@ const htmlOptions = {
   inject: true,
 }
 
+const api = config.wp_endpoint
+
 module.exports = {
-  htmlOptions
+  htmlOptions,
+  api
 }
